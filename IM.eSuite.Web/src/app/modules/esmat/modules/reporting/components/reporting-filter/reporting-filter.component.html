@@ -1,0 +1,94 @@
+<form #filterForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">            
+        <ngx-select name="report" allowClear="true" [items]="reports" [placeholder]="'eSMAT.Reporting.SubTitle' | translate" [(ngModel)]="model.report"
+        (select)="onReportSelected()" (remove)="onReportRemoved()" required></ngx-select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">            
+        <ngx-select name="plant" allowClear="true" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate" [(ngModel)]="model.plantId"
+          (select)="onPlantSelected($event)" (remove)="onPlantRemoved()" (typed)="onPlantSearchChanged($event)" required></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.SmatByEmployee && model.report != ReportTypeEnum.SmatBySmator && model.report != ReportTypeEnum.SmatByEmployeeExcel && model.report != ReportTypeEnum.SmatBySmatorExcel && model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <ngx-select name="department" allowClear="true" [items]="departments" [placeholder]="'Organization.Levels.Department' | translate" [(ngModel)]="model.departmentId"
+          (select)="onDepartmentSelected($event)" (remove)="onDepartmentRemoved()"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.SmatByEmployee && model.report != ReportTypeEnum.SmatBySmator && model.report != ReportTypeEnum.SmatByEmployeeExcel && model.report != ReportTypeEnum.SmatBySmatorExcel && model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <ngx-select name="workshop" allowClear="true" [items]="workshops" [placeholder]="'Organization.Levels.Workshop' | translate" [(ngModel)]="model.workshopId" 
+          (select)="onWorkshopSelected($event)" (remove)="onWorkshopRemoved()"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.SmatByEmployee && model.report != ReportTypeEnum.SmatBySmator && model.report != ReportTypeEnum.SmatByEmployeeExcel && model.report != ReportTypeEnum.SmatBySmatorExcel && model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <ngx-select name="job" allowClear="true" [items]="jobs" [placeholder]="'Organization.Levels.Job' | translate" [(ngModel)]="model.jobId" 
+          (select)="onJobSelected($event)" (remove)="onJobRemoved()"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.SmatByEmployee && model.report != ReportTypeEnum.SmatBySmator && model.report != ReportTypeEnum.SmatByEmployeeExcel && model.report != ReportTypeEnum.SmatBySmatorExcel && model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <ngx-select name="workstation" allowClear="true" [items]="workstations" [placeholder]="'Organization.Levels.Workstation' | translate" [(ngModel)]="model.workstationId"
+          (select)="onWorkstationSelected($event)" (remove)="onWorkstationRemoved()"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.SmatByEmployee && model.report != ReportTypeEnum.SmatBySmator && model.report != ReportTypeEnum.SmatByEmployeeExcel && model.report != ReportTypeEnum.SmatBySmatorExcel && model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <ngx-select name="task" allowClear="true" [items]="tasks" [placeholder]="'Organization.Levels.Task' | translate" [(ngModel)]="model.taskId"
+          [disabled]="model.report == ReportTypeEnum.SmatByOrganization"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report == ReportTypeEnum.SmatByEmployee || model.report == ReportTypeEnum.SmatBySmator || model.report == ReportTypeEnum.SmatByEmployeeExcel || model.report == ReportTypeEnum.SmatBySmatorExcel">
+      <div class="form-group">
+        <input name="search" [placeholder]="'Common.Fields.Name' | translate" [(ngModel)]="model.search" class="form-control" />
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report != ReportTypeEnum.SmatByEmployee && model.report != ReportTypeEnum.SmatBySmator && model.report != ReportTypeEnum.SmatByEmployeeExcel && model.report != ReportTypeEnum.SmatBySmatorExcel && model.report != ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <div class="input-group">
+          <input [placeholder]="'eSMAT.Smat.DateRange' | translate" type="text" class="form-control" bsDaterangepicker [bsConfig]="{containerClass:'theme-dark-blue'}" 
+            #dateRangePicker="bsDaterangepicker" [bsValue]="model.dateRange" (bsValueChange)="onDateRangeChanged($event)" />
+          <div class="input-group-addon" (click)="dateRangePicker.toggle()">
+            <i class="fa fa-calendar"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="model.report == ReportTypeEnum.ObservationByCategory || model.report == ReportTypeEnum.ObservationByOrganization">
+      <div class="hidden-xs col-sm-6 col-md-3" >
+        <div class="form-group">
+          <div class="form-control no-border"></div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+          <ngx-select name="type" allowClear="true" [items]="observationTypes" [placeholder]="'Common.Fields.Type' | translate" [disabled]="!model.plantId" [(ngModel)]="model.observationTypeId"
+            (select)="onTypeSelected()" (remove)="onTypeRemoved()" required></ngx-select>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+          <ngx-select name="category" allowClear="true" [items]="categories" [placeholder]="'Common.Fields.Category' | translate" 
+            [(ngModel)]="model.observationCategoryId"></ngx-select>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="model.report == ReportTypeEnum.GaiaExport">
+      <div class="form-group">
+        <ngx-select name="month" allowClear="true" [items]="months" [placeholder]="'eSMAT.Reporting.Month' | translate" 
+            [(ngModel)]="model.month" required></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">
+        <button class="btn btn-primary pull-right-xs" type="submit" [disabled]="filterForm.invalid || !model.dateRange">{{"Common.Buttons.Search" | translate}}</button>
+      </div>
+    </div>
+  </div>
+</form>

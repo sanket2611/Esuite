@@ -1,0 +1,58 @@
+<section class="content-header">
+  <h1>{{"eAction.ActionForm.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <form [formGroup]="actionForm" (ngSubmit)="onSubmit()">
+          <div class="box-body">
+            <accordion>
+              <accordion-group [isOpen]="true">
+                <div accordion-heading class="clearfix">
+                  {{'eAction.ActionForm.General' | translate}}
+                  <span class="pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>
+                <div class="row">                  
+                  <div class="col-xs-12">
+                    <app-location-fields [parentForm]="actionForm" [location]="location" (onPlantChangedRequest)="onPlantChanged($event)"></app-location-fields>
+                    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.categoryId.invalid && !actionForm.controls.categoryId.pristine}">
+                      <label>{{"Common.Fields.Category" | translate}} <span class="text-danger">*</span> </label>
+                      <ngx-select allowClear="true" formControlName="categoryId" [items]="categories" [placeholder]="'Common.Fields.Category' | translate" 
+                        (select)="onCategorySelected($event)" (remove)="onCategoryRemoved()"></ngx-select>
+                      <div class="help-block" *ngIf="actionForm.controls.categoryId.invalid && !actionForm.controls.categoryId.pristine">
+                        {{"Common.Forms.RequiredField" | translate}}
+                      </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.subCategoryId.invalid && !actionForm.controls.subCategoryId.pristine}">
+                      <label>{{"Common.Fields.SubCategory" | translate}}</label>
+                      <ngx-select allowClear="true" formControlName="subCategoryId" [items]="subcategories" [placeholder]="'Common.Fields.SubCategory' | translate"></ngx-select>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group [isOpen]="true">
+                <div accordion-heading class="clearfix">
+                  {{'eAction.ActionForm.Details' | translate}}
+                  <span class="float-right pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>
+                <app-action-fields [actionForm]="actionForm" [plantId]="this.plantId" [isEditMode]="isEditMode"></app-action-fields>
+              </accordion-group>
+            </accordion>
+          </div>
+          <div class="box-footer">
+            <button type="button" class="btn btn-default" [routerLink]="['/e-action']" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+            <button type="submit" class="btn btn-success pull-right" [disabled]="actionForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eAction_Action_Write')">
+              {{"Common.Buttons.Save" | translate}}
+              <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

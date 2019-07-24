@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <ngx-select name="delegation" allowClear="true" [items]="delegations" [placeholder]="'Plant.Delegation' | translate" [(ngModel)]="request.delegationId" 
+                (select)="onDelegationSelected()" (remove)="onDelegationRemoved()"></ngx-select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <ngx-select name="country" allowClear="true" [items]="countries" [placeholder]="'Plant.Country' | translate" [(ngModel)]="request.countryId"
+            (select)="onCountrySelected()" (remove)="onCountryRemoved()"></ngx-select>                                    
+        </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">
+          <ngx-select name="sector" allowClear="true" [items]="sectors" [placeholder]="'Plant.Sector' | translate" [(ngModel)]="request.sectorId" 
+              (select)="onSectorSelected()" (remove)="onSectorRemoved()"></ngx-select>
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">
+          <ngx-select name="businessUnit" allowClear="true" [items]="businessUnits" [placeholder]="'Plant.BusinessUnit' | translate" [(ngModel)]="request.businessUnitId" 
+              (select)="onBusinessUnitSelected()" (remove)="onBusinessUnitRemoved()"></ngx-select>
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">
+          <ngx-select name="soa" allowClear="true" [items]="soas" [placeholder]="'Plant.SOA' | translate" [(ngModel)]="request.soaId" 
+              (select)="onSOASelected()" (remove)="onSOARemoved()"></ngx-select>
+      </div>
+  </div>
+</div>

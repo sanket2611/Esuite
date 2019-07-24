@@ -1,0 +1,111 @@
+<section class="content-header">
+  <h1>{{"eRisk.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eRisk.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12">
+            </div>
+          </div>
+          <br/>        
+          <app-organization-filter [configuration]="filterConfiguration" 
+            (onFilterChanged)="onFilterChanged($event)" (onFilterRemoved)="onFilterRemoved()"></app-organization-filter>
+          <hr/>
+          <div class="row hidden-xs">
+            <div class="col-sm-6">
+              <button class="btn btn-info" (click)="onExportClicked()" *ngIf="false">
+                <i class="fa fa-download"></i> {{"Common.Buttons.Export" | translate}} 
+              </button> 
+            </div>
+            <div class="col-sm-6">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr class="bg-purple">
+                      <th rowspan="2" th-sort="lastevaluationdate" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.CreatedAt" | translate}}</th>
+                      <th rowspan="2" th-sort="department" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Department" | translate}}</th>
+                      <th rowspan="2" th-sort="workshop" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Workshop" | translate}}</th>
+                      <th rowspan="2" th-sort="job" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Job" | translate}}</th>
+                      <th colspan="2" class="bg-navy">{{"eRisk.Critical" | translate}}</th>
+                      <th colspan="2" class="bg-red">{{"eRisk.High" | translate}}</th>
+                      <th colspan="2" class="bg-yellow">{{"eRisk.Medium" | translate}}</th>
+                      <th colspan="2" class="bg-green">{{"eRisk.Low" | translate}}</th>
+                      <th rowspan="2" th-sort="sum" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.ScoreSum" | translate}}</th>
+                    </tr>
+                    <tr class="bg-purple">
+                      <th th-sort="critical.count" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Count" | translate}}</th>
+                      <th th-sort="critical.sum" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Score" | translate}}</th>
+                      <th th-sort="high.count" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Count" | translate}}</th>
+                      <th th-sort="high.sum" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Score" | translate}}</th>
+                      <th th-sort="medium.count" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Count" | translate}}</th>
+                      <th th-sort="medium.sum" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Score" | translate}}</th>
+                      <th th-sort="low.count" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Count" | translate}}</th>
+                      <th th-sort="low.sum" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Score" | translate}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let consolidation of data.entries">
+                      <td>{{consolidation.lastEvaluationDate | date:'shortDate':'':locale}}</td>
+                      <td>{{consolidation.department}}</td>
+                      <td>{{consolidation.workshop}}</td>
+                      <td>{{consolidation.job}}</td>
+                      <td>{{consolidation.critical.count}}</td>
+                      <td>{{consolidation.critical.sum}}</td>
+                      <td>{{consolidation.high.count}}</td>
+                      <td>{{consolidation.high.sum}}</td>
+                      <td>{{consolidation.medium.count}}</td>
+                      <td>{{consolidation.medium.sum}}</td>
+                      <td>{{consolidation.low.count}}</td>
+                      <td>{{consolidation.low.sum}}</td>
+                      <td>{{consolidation.sum}}</td>
+                    </tr>
+                    <tr *ngIf="data.entries && data.entries.length == 0">
+                      <td colspan="13" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot *ngIf="data.entries && data.entries.length != 0">
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="text-bold">Total</td>
+                      <td>{{totals.critical.count}}</td>
+                      <td>{{totals.critical.sum}}</td>
+                      <td>{{totals.high.count}}</td>
+                      <td>{{totals.high.sum}}</td>
+                      <td>{{totals.medium.count}}</td>
+                      <td>{{totals.medium.sum}}</td>
+                      <td>{{totals.low.count}}</td>
+                      <td>{{totals.low.sum}}</td>
+                      <td>{{totals.critical.sum + totals.high.sum + totals.medium.sum + totals.low.sum}}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

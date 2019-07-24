@@ -1,0 +1,126 @@
+<section class="content-header">
+  <h1>{{"Organization.Title" | translate}}</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"Organization.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-6">              
+              <button class="btn btn-warning hidden-xs hidden-sm" (click)="onImportClicked()" *ngIf="authorizationService.hasRole('eSuite_MasterData_Plant_Write')">
+                <i class="fa fa-upload"></i> {{"Common.Buttons.Import" | translate}}
+              </button>
+              <a class="btn btn-info hidden-xs hidden-sm" [href]="templateUrl" >
+                <i class="fa fa-download"></i> {{"Common.Buttons.Template" | translate}}
+              </a>
+            </div>
+          </div>
+          <br/>
+          <app-organization-list-filter
+              [organizationFilter]="organizationFilter"              
+              (onOrganizationFilteredRequest)="onOrganizationFiltered($event)" 
+              (onFilterRemovedRequest)="onFilterRemoved()"></app-organization-list-filter>
+          <hr/>
+          <h4>
+            <span *ngIf="isLevelType(OrganizationLevelType.Undefined)">{{"Organization.SubTitles.Plants" | translate}}</span>
+            <span *ngIf="isLevelType(OrganizationLevelType.Plant)">{{"Organization.SubTitles.Departments" | translate:organizationFilter}}</span>
+            <span *ngIf="isLevelType(OrganizationLevelType.Department)">{{"Organization.SubTitles.Workshops" | translate:organizationFilter}}</span>
+            <span *ngIf="isLevelType(OrganizationLevelType.Workshop)">{{"Organization.SubTitles.Jobs" | translate:organizationFilter}}</span>
+            <span *ngIf="isLevelType(OrganizationLevelType.Job)">{{"Organization.SubTitles.Workstations" | translate:organizationFilter}}</span>
+            <span *ngIf="isLevelType(OrganizationLevelType.Workstation)">{{"Organization.SubTitles.Tasks" | translate:organizationFilter}}</span>
+          </h4>
+          <br/>          
+          <div class="row">
+            <div class="col-xs-6 form-group">
+                <button class="btn btn-primary" [routerLink]="['form-plant']" *ngIf="authorizationService.hasRole('eSuite_MasterData_Plant_Write') && isLevelType(OrganizationLevelType.Undefined)">
+                  {{"Organization.AddButtons.Plant" | translate}}
+                </button>
+                <button class="btn btn-primary" [routerLink]="['form']" [queryParams]="{ plantId: organizationFilter.id }" *ngIf="authorizationService.hasRole('eSuite_MasterData_Organization_Write') && isLevelType(OrganizationLevelType.Plant)">
+                  {{"Organization.AddButtons.Department" | translate}}                    
+                </button>
+                <button class="btn btn-primary" [routerLink]="['form']" [queryParams]="{ parentId: organizationFilter.id }" *ngIf="authorizationService.hasRole('eSuite_MasterData_Organization_Write') && !isLevelType(OrganizationLevelType.Undefined) && !isLevelType(OrganizationLevelType.Plant)">
+                  <span *ngIf="isLevelType(OrganizationLevelType.Department)">{{"Organization.AddButtons.Workshop" | translate}}</span>
+                  <span *ngIf="isLevelType(OrganizationLevelType.Workshop)">{{"Organization.AddButtons.Job" | translate}}</span>
+                  <span *ngIf="isLevelType(OrganizationLevelType.Job)">{{"Organization.AddButtons.Workstation" | translate}}</span>
+                  <span *ngIf="isLevelType(OrganizationLevelType.Workstation)">{{"Organization.AddButtons.Task" | translate}}</span>
+              </button> 
+              <button type="button" class="btn btn-info" (click)="onUpperLevelClicked()" *ngIf="!isLevelType(OrganizationLevelType.Undefined)">
+                <i class="fa fa-search-minus"></i>                
+                <span *ngIf="isLevelType(OrganizationLevelType.Plant)">{{"Organization.DetailButtons.Plants" | translate}}</span>
+                <span *ngIf="isLevelType(OrganizationLevelType.Department)">{{"Organization.DetailButtons.Departments" | translate}}</span>
+                <span *ngIf="isLevelType(OrganizationLevelType.Workshop)">{{"Organization.DetailButtons.Workshops" | translate}}</span>
+                <span *ngIf="isLevelType(OrganizationLevelType.Job)">{{"Organization.DetailButtons.Jobs" | translate}}</span>
+                <span *ngIf="isLevelType(OrganizationLevelType.Workstation)">{{"Organization.DetailButtons.Workstations" | translate}}</span>
+              </button>             
+            </div>
+            <div class="col-sm-6 hidden-xs">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr>
+                      <th th-sort="name" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Name" | translate}}</th>
+                      <th th-sort="gaiaCode" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)" *ngIf="isLevelType(OrganizationLevelType.Undefined)">{{"Plant.GaiaCode" | translate}}</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  *ngFor="let organization of data.entries">                      
+                      <td>{{organization.name}}</td>
+                      <td *ngIf="isLevelType(OrganizationLevelType.Undefined)">{{organization.gaiaCode}}</td>
+                      <td class="action-column">
+                        <button type="button" class="btn btn-info" (click)="onLowerLevelsClicked(organization)" *ngIf="!isLevelType(OrganizationLevelType.Workstation)">
+                          <i  class="fa fa-search-plus"></i>
+                          <span *ngIf="isLevelType(OrganizationLevelType.Undefined)">{{"Organization.DetailButtons.Departments" | translate}}</span>
+                          <span *ngIf="isLevelType(OrganizationLevelType.Plant)">{{"Organization.DetailButtons.Workshops" | translate}}</span>
+                          <span *ngIf="isLevelType(OrganizationLevelType.Department)">{{"Organization.DetailButtons.Jobs" | translate}}</span>
+                          <span *ngIf="isLevelType(OrganizationLevelType.Workshop)">{{"Organization.DetailButtons.Workstations" | translate}}</span>
+                          <span *ngIf="isLevelType(OrganizationLevelType.Job)">{{"Organization.DetailButtons.Tasks" | translate}}</span>
+                        </button>
+                        <button type="button" class="btn bg-navy" [routerLink]="isLevelType(OrganizationLevelType.Undefined) ? ['form-plant', organization.id] : ['form', organization.id]">
+                          <i  class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </button>
+                        <button type="button" class="btn btn-danger" (click)="onDeleteOrganizationClicked(organization)" *ngIf="authorizationService.hasRole('eSuite_MasterData_Organization_Write') && !isLevelType(OrganizationLevelType.Undefined)">
+                          <i  class="fa fa-trash"></i>
+                          {{"Common.Buttons.Delete" | translate}}
+                        </button>
+                      </td>                      
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td [attr.colspan]="isLevelType(OrganizationLevelType.Undefined)?4: 3" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div #deleteOrganizationModal="bs-modal" bsModal class="modal fade">
+  <app-organization-delete [organization]="selectedOrganization" [modal]="deleteOrganizationModal" (deletedOrganizationRequest)="onOrganizationDeleted($event)"></app-organization-delete>
+</div>
+<div #importOrganizationModal="bs-modal" bsModal class="modal fade">
+  <app-organization-import [modal]="importOrganizationModal" (importedOrganizationRequest)="onOrganizationImported()"></app-organization-import>
+</div>

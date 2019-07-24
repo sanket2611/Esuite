@@ -1,0 +1,91 @@
+<section class="content-header">
+  <h1>{{"eRisk.RiskForm.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <form [formGroup]="riskForm" (ngSubmit)="onSubmit()">
+          <div class="box-body">
+            <accordion>
+              <accordion-group [isOpen]="true">
+                <div accordion-heading class="clearfix">
+                  {{'eRisk.RiskForm.GeneralInformations' | translate}}
+                  <span class="pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>              
+                <app-risk-informations-form [parentForm]="riskForm" [isEditMode]="isEditMode"
+                  (onPlantChangedRequest)="onPlantChanged($event)" [informations]="informationVM"></app-risk-informations-form>
+              </accordion-group>            
+              <accordion-group [isOpen]="false" >
+                <div accordion-heading class="clearfix">
+                  {{'eRisk.RiskForm.DangerousSituations' | translate}}
+                  <span class="float-right pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>              
+                <app-risk-situation-form [parentForm]="riskForm" [situations]="situationsVM" [plantId]="plantId" ></app-risk-situation-form >                
+              </accordion-group>            
+              <accordion-group [isOpen]="false" >
+                <div accordion-heading class="clearfix">
+                  {{'eRisk.RiskForm.InitialRisk' | translate}}
+                  <span class="float-right pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>
+                <app-risk-score [parentForm]="riskForm" controlName="initialRisk" [scoreModel]="initialRiskVM" [hasRequiredFields]="false"></app-risk-score>                  
+              </accordion-group> 
+              <accordion-group [isOpen]="false" >
+                <div accordion-heading class="clearfix">
+                    {{'eRisk.RiskForm.MeansoOfControl' | translate}}
+                  <span class="float-right pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>              
+                <app-risk-control-form [parentForm]="riskForm" [plantId]="plantId" [riskControl]="riskControlVM"></app-risk-control-form>
+              </accordion-group> 
+              <accordion-group [isOpen]="false" >
+                <div accordion-heading class="clearfix">
+                    {{'eRisk.RiskForm.RiskWithMeansOfControl' | translate}}
+                  <span class="float-right pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>
+                <app-risk-score [parentForm]="riskForm" controlName="finalRisk" [scoreModel]="finalRiskVM" [hasRequiredFields]="true"></app-risk-score>
+              </accordion-group>
+              <accordion-group [isOpen]="false" >
+                <div accordion-heading class="clearfix">
+                    {{'eRisk.RiskForm.MoreInformation' | translate}}
+                  <span class="float-right pull-right">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </div>
+                <app-risk-more-informations-form [parentForm]="riskForm" [moreInformation]="moreInformationVM" [(file)]="file" (fileDownload)="onDownloadFileClicked()"></app-risk-more-informations-form>
+              </accordion-group>
+            </accordion>
+            
+            <div class="pull-right">
+              <button type="button" class="btn btn-primary" (click)="onAddActionClicked()">
+                  <i class="fa fa-flag-checkered"></i> 
+                  <span *ngIf="isEditMode && actionPlanId">{{"eSMAT.Smat.UpdateActionPlan" | translate}}</span>
+                  <span *ngIf="!isEditMode || (isEditMode && !actionPlanId)">{{"eSMAT.Smat.AddActionPlan" | translate}}</span>
+              </button>
+            </div>
+          </div>
+          <div class="box-footer">
+              <button type="button" class="btn btn-default" [routerLink]="['/e-risk/assessment']" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+              <button type="submit" class="btn btn-success pull-right" [disabled]="riskForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eRisk_Risk_Write')">
+                {{"Common.Buttons.Save" | translate}}
+                <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+              </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<div #actionModal="bs-modal" bsModal class="modal fade" *ngIf="authorizationService.hasRole('eAction_Action_Write')">
+  <app-risk-action-modal [modal]="actionModal" [plantId]="plantId"
+  [isEditMode]="actionPlanId" [actionForm]="actionForm" [actionPlan]="actionPlanVM"></app-risk-action-modal>
+</div>

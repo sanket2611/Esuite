@@ -1,0 +1,58 @@
+<div class="row">              
+  <div class="col-xs-6">
+    <button class="btn btn-primary" [routerLink]="[filterModel.observationCategoryId, 'sub-category-form']" *ngIf="!isCategoryStandard">
+      {{"eSMAT.ObservationManagement.AddSubCategoryButton" | translate}}
+    </button>
+  </div>
+  <div class="col-sm-6 hidden-xs">
+    <div class="pull-right">
+      <app-page-size [model]="pageSizeVm"  (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped table-bordered dataTable">
+        <thead>
+          <tr>
+            <th th-sort="description" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.SubCategory" | translate}}</th>
+            <th th-sort="isActive" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.ObservationManagement.Enabled" | translate}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subCategory of data.entries" >           
+            <td>{{subCategory.description}}</td>
+            <td class="text-center">
+              <input type="checkbox" [name]="'isActive_'+subCategory.id" [(ngModel)]="subCategory.isActive" (change)="onActiveChanged(subCategory)" />
+            </td>
+            <td class="action-column">                
+              <button type="button" class="btn bg-navy" [routerLink]="['sub-category-form', subCategory.id, filterModel.plantId]" *ngIf="!subCategory.isStandard">
+                <i  class="fa fa-wrench"></i>
+                {{"Common.Tables.Update" | translate}}
+              </button>                      
+              <button type="button" class="btn btn-danger" (click)="onDeleteClicked(subCategory)" *ngIf="!subCategory.isStandard">
+                <i  class="fa fa-trash"></i>
+                {{"Common.Buttons.Delete" | translate}}
+              </button>
+            </td>                      
+          </tr>
+          <tr *ngIf="data.entries.length == 0">
+            <td colspan="3" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-7 pull-right">
+    <div class="pull-right">
+        <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+    </div>
+  </div>
+</div>
+<div #deleteObservationSubCategoryModal="bs-modal" bsModal class="modal fade">
+  <app-observation-sub-category-delete [subCategory]="selectedSubCategory" [modal]="deleteObservationSubCategoryModal" (deletedObservationSubCategoryRequest)="onObservationSubCategoryDeleted($event)"></app-observation-sub-category-delete>
+</div>

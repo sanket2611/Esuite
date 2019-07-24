@@ -1,0 +1,17 @@
+<div class="row" *ngIf="data">
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" [title]="'eSMAT.Reporting.PieChart' | translate" (click)="onPieChartClicked()" [disabled]="!isBarChart">
+        <i class="fa fa-pie-chart"></i>
+      </button>
+      <button type="button" class="btn btn-default" [title]="'eSMAT.Reporting.BarChart' | translate" (click)="onBarChartClicked()" [disabled]="isBarChart">
+        <i class="fa fa-bar-chart"></i>
+      </button>
+    </div>    
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10">    
+    <canvas id="chart"></canvas>
+  </div>  
+</div>

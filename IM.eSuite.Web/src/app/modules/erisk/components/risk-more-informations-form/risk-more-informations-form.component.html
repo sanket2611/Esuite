@@ -1,0 +1,22 @@
+<div class="row" [formGroup]="informationForm">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label>
+                <i class="fa fa-file"></i> {{"Common.Fields.File" | translate}}
+            </label>
+            <div [ngClass]="{'input-group': moreInformation && moreInformation.filePath}">
+                <input type="file" #file class="form-control" accept="/*" capture="camera" (change)="onFileChange($event)" />
+                <div class="input-group-btn" *ngIf="moreInformation && moreInformation.filePath">
+                    <button type="button" class="btn btn-info" (click)="onDownloadFileClicked()"><i class="fa fa-download"></i>
+                        {{"Common.Buttons.Save" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label>{{'Common.Fields.Comment' | translate}} <span class="text-danger"></span> </label>
+            <textarea class="form-control" formControlName="comment"></textarea>
+        </div>
+    </div>
+</div>

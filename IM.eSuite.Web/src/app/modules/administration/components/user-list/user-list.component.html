@@ -1,0 +1,92 @@
+<section class="content-header">
+  <h1>{{"Administration.Users.Title" | translate}}</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"Administration.Users.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <button class="btn btn-primary" [routerLink]="['form']" *ngIf="authorizationService.hasRole('eSuite_Administration_User_Write')">
+                {{"Administration.Users.AddUser" | translate}}
+              </button>
+              <button class="btn btn-warning hidden-xs hidden-sm" (click)="onImportClicked()" *ngIf="authorizationService.hasRole('eSuite_Administration_User_Write')">
+                <i class="fa fa-upload"></i> {{"Common.Buttons.Import" | translate}}
+              </button>
+              <a class="btn btn-info hidden-xs hidden-sm" [href]="templateUrl" >
+                <i class="fa fa-download"></i> {{"Common.Buttons.Template" | translate}}
+              </a>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <app-user-list-filter (onFilterRemovedRequest)="onFilterRemoved()" (onUserFilteredRequest)="onUserFiltered($event)"></app-user-list-filter>
+          </div>
+          <hr/>
+          <div class="row hidden-xs">
+            <div class="col-sm-6 col-sm-offset-6">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>          
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr>
+                      <th th-sort="id" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Tables.Id" | translate}}</th>
+                      <th th-sort="userName" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Administration.Users.SGId" | translate}}</th>
+                      <th th-sort="firstName" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Administration.Users.FirstName" | translate}}</th>
+                      <th th-sort="lastName" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Administration.Users.LastName" | translate}}</th>
+                      <th th-sort="email" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Administration.Users.Email" | translate}}</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of data.entries">
+                      <td>{{user.id}}</td>
+                      <td>{{user.userName}}</td>
+                      <td>{{user.firstName}}</td>
+                      <td>{{user.lastName}}</td>
+                      <td>{{user.email}}</td>
+                      <td class="action-column">
+                        <button type="button" class="btn bg-navy" [routerLink]="['form', user.id]">
+                          <i  class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </button>                      
+                        <button type="button" class="btn btn-danger" (click)="onDeleteClicked(user)" *ngIf="authorizationService.hasRole('eSuite_Administration_User_Write')">
+                          <i  class="fa fa-trash"></i>
+                          {{"Common.Buttons.Delete" | translate}}
+                        </button>
+                      </td>                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div #deleteUserModal="bs-modal" bsModal class="modal fade">
+  <app-user-delete [user]="selectedUser" [modal]="deleteUserModal" (deletedUserRequest)="onUserDeleted($event)"></app-user-delete>
+</div>
+<div #importUserModal="bs-modal" bsModal class="modal fade">
+  <app-user-import [modal]="importUserModal" (importedUserRequest)="onUserImported()"></app-user-import>
+</div>

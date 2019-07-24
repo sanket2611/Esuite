@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+.wrapper {
+    height: auto !important;
+    min-height: 100% !important;
+}
+
+.dataTable .action-column{
+    white-space: nowrap;
+}
+
+@media (max-width:768px){
+    .pull-right-xs {
+        float: right;
+    }
+}
+
+@media (min-width:768px){
+    .ngx-select__choices{
+        width: auto !important;    
+    }
+}
+
+.dropdown-multi-select .selected-list .c-btn{
+    box-shadow: none !important;
+}
+
+.dropdown-multi-select .c-token,
+.dropdown-multi-select .pure-checkbox input[type="checkbox"]:checked + label:before
+{
+    background: #3C8DBC !important;
+}
+.dropdown-multi-select .pure-checkbox label::before {
+    border-color: #3C8DBC !important;
+}
+
+.dropdown-multi-select .selected-list .c-btn {
+    padding: 8px;
+}

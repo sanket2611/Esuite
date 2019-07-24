@@ -1,0 +1,79 @@
+<section class="content-header">
+  <h1>{{"eRisk.EPIManagement.Title" | translate}}</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eRisk.EPIManagement.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <app-epi-category-list-filter (filterModelChange)="onFilterChanged($event)"></app-epi-category-list-filter>
+          <hr />
+
+          <div class="row" *ngIf="data">
+            <div class="col-xs-6">
+              <a class="btn btn-primary" [routerLink]="[plantId,'form']" *ngIf="authorizationService.hasRole('eRisk_MasterData_Epi_Write')">
+                {{"eRisk.EPIManagement.EPIAddButton" | translate }}
+              </a>
+            </div>
+            <div class="col-xs-6 hidden-xs">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr>
+                      <th th-sort="epiCategoryDescription" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Category"
+                        | translate}}</th>
+                      <th th-sort="description" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Name"
+                        | translate}}</th>
+                      <th th-sort="isEnabled" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Enablement"
+                        | translate}}</th>
+                      <th th-sort="IsStandard" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let epi of data.entries">
+                      <td>{{epi.epiCategoryDescription}}</td>
+                      <td>{{epi.description}}</td>
+                      <td> <input type="checkbox" (change)="onEnablementUpdate(epi.id,$event)" [checked]='epi.isEnabled' />
+                      <td class="action-column">
+                        <button type="button" class="btn bg-navy" [routerLink]="[plantId,'form', epi.id]" *ngIf="authorizationService.hasRole('eRisk_MasterData_Epi_Write')  && !epi.isStandard  ">
+                          <i class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </button>
+                        <button type="button" class="btn btn-danger" (click)="onDeleteEpiClicked(epi)" *ngIf="authorizationService.hasRole('eRisk_MasterData_Epi_Write')  && !epi.isStandard  ">
+                          <i class="fa fa-trash"></i>
+                          {{"Common.Buttons.Delete" | translate}}
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td colspan="2" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" |
+                        translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div #deleteEpiModal="bs-modal" bsModal class="modal fade">
+  <app-epi-delete [epi]="selectedEpi" [modal]="deleteEpiModal" (deletedEpiRequest)="onEpiDeleted($event)"></app-epi-delete>
+</div>

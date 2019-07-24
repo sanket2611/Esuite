@@ -1,0 +1,61 @@
+<div class="row">              
+  <div class="col-xs-6"> 
+    <button class="btn btn-primary" [routerLink]="[filterModel.plantId, 'category-form']">
+      {{"eSMAT.ObservationManagement.AddCategoryButton" | translate}}
+    </button>
+  </div>
+  <div class="col-sm-6 hidden-xs">
+    <div class="pull-right">
+      <app-page-size [model]="pageSizeVm"  (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped table-bordered dataTable">
+        <thead>
+          <tr>            
+            <th th-sort="categoryType" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Type" | translate}}</th>
+            <th th-sort="description" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Category" | translate}}</th>
+            <th th-sort="isStandard" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.ObservationManagement.Standard" | translate}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of data.entries" >
+            <td>{{category.categoryType}}</td>
+            <td>{{category.description}}</td>
+            <td>{{category.isStandard}}</td>
+            <td class="action-column">
+              <button type="button" class="btn btn-info" (click)="onSubCategoryClicked(category.id)">
+                <i  class="fa fa-search-plus"></i> {{"eSMAT.ObservationManagement.SubCategoriesButton" | translate:organizationFilter}}
+              </button>
+              <button type="button" class="btn bg-navy" [routerLink]="[filterModel.plantId, 'category-form', category.id]" *ngIf="!category.isStandard">
+                <i  class="fa fa-wrench"></i>
+                {{"Common.Tables.Update" | translate}}
+              </button>                      
+              <button type="button" class="btn btn-danger" (click)="onDeleteClicked(category)" *ngIf="!category.isStandard">
+                <i  class="fa fa-trash"></i>
+                {{"Common.Buttons.Delete" | translate}}
+              </button>
+            </td>                      
+          </tr>
+          <tr *ngIf="data.entries.length == 0">
+            <td colspan="4" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-7 pull-right">
+    <div class="pull-right">
+      <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+    </div>
+  </div>
+</div>
+<div #deleteObservationCategoryModal="bs-modal" bsModal class="modal fade">
+  <app-observation-category-delete [category]="selectedCategory" [modal]="deleteObservationCategoryModal" (deletedObservationCategoryRequest)="onObservationCategoryDeleted($event)"></app-observation-category-delete>
+</div>

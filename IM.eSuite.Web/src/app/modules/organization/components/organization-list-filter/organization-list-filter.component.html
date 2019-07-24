@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">            
+            <ngx-select allowClear="true" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate" [(ngModel)]="plantId"
+                (select)="onPlantSelected($event)" (remove)="onPlantRemoved()" (typed)="onPlantSearchChanged($event)"></ngx-select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <ngx-select name="department" allowClear="true" [items]="departments" [placeholder]="'Organization.Levels.Department' | translate" [(ngModel)]="departmentId"
+                (select)="onDepartmentSelected($event)" (remove)="onDepartmentRemoved()"></ngx-select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <ngx-select name="workshop" allowClear="true" [items]="workshops" [placeholder]="'Organization.Levels.Workshop' | translate" [(ngModel)]="workshopId" 
+                (select)="onWorkshopSelected($event)" (remove)="onWorkshopRemoved()"></ngx-select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <ngx-select name="job" allowClear="true" [items]="jobs" [placeholder]="'Organization.Levels.Job' | translate" [(ngModel)]="jobId" 
+                (select)="onJobSelected($event)" (remove)="onJobRemoved()"></ngx-select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <ngx-select name="workstation" allowClear="true" [items]="workstations" [placeholder]="'Organization.Levels.Workstation' | translate" [(ngModel)]="workstationId"
+                (select)="onWorkstationSelected($event)" (remove)="onWorkstationRemoved()"></ngx-select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <button class="btn btn-primary pull-right-xs" type="button" [disabled]="!organizationFilter" (click)="onOrganizationSearchClicked()">{{"Common.Buttons.Search" | translate}}</button>
+        </div>
+    </div>
+</div>

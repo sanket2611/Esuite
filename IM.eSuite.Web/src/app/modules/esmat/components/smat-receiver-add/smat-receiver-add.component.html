@@ -1,0 +1,11 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{ "eSMAT.AddButtons.Receiver" | translate }}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <app-smat-receiver-fields [plant]="plant" [modal]="modal" [reset]="reset" (receiverCreatedRequest)="onReceiverCreated($event)"></app-smat-receiver-fields>
+  </div>
+</div>

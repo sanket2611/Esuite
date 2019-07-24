@@ -1,0 +1,7 @@
+<div class="col-xs-7 col-md-4">
+  <ngx-select name="user" allowClear="true" [items]="users" [placeholder]="'Administration.Users.User' | translate" [(ngModel)]="userId" 
+    (remove)="onUserRemoved()" (typed)="onUserSearchChanged($event)"></ngx-select>              
+</div>
+<div class="col-xs-5">
+  <button class="btn btn-primary" type="button" (click)="onUserSearchClicked()" [disabled]="!userId">{{"Common.Buttons.Search" | translate}}</button>
+</div>

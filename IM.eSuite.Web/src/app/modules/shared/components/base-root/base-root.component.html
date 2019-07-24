@@ -1,0 +1,8 @@
+<app-header [model]="header"></app-header>
+<app-sidebar [model]="sideBar"></app-sidebar>
+
+<div class="content-wrapper" [style.min-height.px]="contentHeight">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

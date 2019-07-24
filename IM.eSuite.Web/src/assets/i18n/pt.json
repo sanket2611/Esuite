@@ -1,0 +1,304 @@
+{
+    "Application": {
+      "Pole": "IM",
+      "Name": "eSuite",
+      "ShortName": "eS"
+    },
+    "Core": {
+      "PageSize": {
+        "Label": "Número de entradas:"
+      }
+    },
+    "Authentication": {
+      "Login": {
+        "Message": "Faça login para iniciar sua sessão",
+        "Button": "Login com SSO"
+      },
+      "SSO": {
+        "Message": "Login em andamento, por favor aguarde."
+      },
+      "Forbidden": {
+        "Title": "Proibido",
+        "Message": "Você não tem permissão para fazer a ação solicitada."
+      }
+    },
+    "Common": {
+      "Tables": {
+        "Update": "Atualizar",
+        "Id": "Identidade",
+        "NoEntries": "Não há entradas para exibir."
+      },
+      "Buttons": {
+        "Save": "Salve ",
+        "Cancel": "Cancelar",
+        "Search": "Pesquisa",
+        "Delete": "Excluir",
+        "Template": "Modelo",
+        "Import": "Importar",
+        "Export": "Exportar",
+        "Add": "Adicionar",
+        "Yes": "Sim",
+        "No": "Não"
+      },
+      "Modals": {
+        "DeleteTitle": "Confirmar exclusão?",
+        "Close": "Fechar",
+        "ImportHelpText": "apenas arquivos .xlsx. Tamanho máximo: 500kB",
+        "ErrorsTitle": "Erros",
+        "ErrorItem": "Linha {{line}}: {{message}}"
+      },
+      "Forms": {
+        "RequiredField": "Este campo é obrigatório.",
+        "InvalidEmail": "Email inválido.",
+        "InvalidSGId": "O SGId é inválido. Deve começar por uma letra maiúscula seguida por 7 dígitos.",
+        "SelectAll": "Selecionar tudo"
+      },
+      "Fields": {
+        "Name": "Nome",
+        "File": "Arquivo",
+        "Date": "Encontro",
+        "Type": "Tipo",
+        "Description": "Descrição",
+        "DueDate": "Data de Vencimento",
+        "Category": "Categoria",
+        "SubCategory": "Subcategoria"
+      }
+    },
+    "Home": {
+      "Enter": "Entrar",
+      "BackMenu": "Vá para eSuite",
+      "Applications": "Aplicações",
+      "MasterData": "Dados mestre"
+    },
+    "Administration": {
+      "Users": {
+        "Title": "Lista de usuários",
+        "SubTitle": "Comercial",
+        "ImportTitle": "Importar usuários",
+        "UserDetailsTitle": "Detalhes dos usuários",
+        "AddUser": "Adicionar usuário",
+        "Users": "Comercial",
+        "User": "Do utilizador",
+        "SGId": "SGID",
+        "FirstName": "Primeiro nome",
+        "LastName": "Último nome",
+        "Email": "O email",
+        "PermissionsTitle": "Permissões por aplicação",
+        "SuccessfullyCreated": "Usuário com SGId {{SGId}} foi criado com sucesso.",
+        "AlreadyExists": "Usuário com SGId {{SGId}} já existe.",
+        "SuccessfullyUpdated": "Usuário com SGId {{SGId}} foi atualizado com sucesso.",
+        "NotFound": "Usuário com id {{id}} não foi encontrado.",
+        "NotFoundInDirectory": "Usuário com SGId {{SGId}} não foi encontrado no diretório.",
+        "ConfirmationDelete": "Deseja excluir {{firstName}} {{lastName}} (SGId = {{userName}})?",
+        "SuccessfullyDeleted": "Usuário com SGId {{SGId}} foi excluído com sucesso.",
+        "ErrorDeleted": "Ocorreu um erro ao excluir usuário com SGId {{SGId}}.",
+        "SuccessfullyImported": "{{imported}} usuários foram importados com sucesso."
+      }
+    },
+    "Organization": {
+      "Title": "Lista de organizações",
+      "SubTitle": "Organização",
+      "ImportTitle": "Importar organizações",
+      "SubTitles": {
+        "Plants": "Plantas",
+        "Departments": "Departamentos em {{name}}",
+        "Workshops": "Workshops em {{name}}",
+        "Jobs": "Empregos em {{name}}",
+        "Workstations": "Estações de trabalho em {{name}}",
+        "Tasks": "Tarefas no {{name}}"
+      },
+      "OrganizationDetailsTitle": "Detalhes da organização",
+      "AddButtons": {
+        "Plant": "Adicionar planta",
+        "Department": "Adicionar departamento",
+        "Workshop": "Adicionar workshop",
+        "Job": "Adicionar emprego",
+        "Workstation": "Adicionar estação de trabalho",
+        "Task": "Adicionar tarefa"
+      },
+      "DetailButtons": {
+        "Plants": "Plantas",
+        "Departments": "Departamentos",
+        "Workshops": "Workshops",
+        "Jobs": "Empregos",
+        "Workstations": "Workstations",
+        "Tasks": "Tarefas"
+      },
+      "Organizations": "Organizações",
+      "Organization": "Organização",
+      "LowerLevels": "Níveis mais baixos",
+      "ParentOrganization": "Organização dos pais",
+      "SuccessfullyCreated": "Organização com nome {{name}} foi criada com sucesso.",
+      "AlreadyExists": "Organização com nome {{name}} já existe.",
+      "SuccessfullyUpdated": "Organização com nome {{name}} foi atualizada com sucesso.",
+      "NotFound": "Organização com id {{id}} não foi encontrado.",
+      "ConfirmationDelete": "Você deseja excluir {{name}}?",
+      "SuccessfullyDeleted": "Organização com nome {{name}} foi excluída com sucesso.",
+      "ErrorDeleted": "Ocorreu um erro ao excluir a organização com nome {{name}}",
+      "SuccessfullyImported": "{{imported}} organizações foram importadas com sucesso.",
+      "Levels": {
+        "Plant": "Plantar",
+        "Department": "Departamento",
+        "Workshop": "Oficina",
+        "Job": "Trabalho",
+        "Workstation": "Posto de trabalho",
+        "Task": "Tarefa"
+      }
+    },
+    "Plant": {
+      "PlantDetailsTitle": "Detalhes da planta",
+      "GaiaCode": "Código Gaia",
+      "Delegation": "Delegação",
+      "Country": "País",
+      "Sector": "Setor",
+      "BusinessUnit": "Unidade de negócio",
+      "SOA": "SOA",
+      "InvalidGaiaCode": "O código Gaia deve conter exatamente 6 caracteres letras maiúsculas ou números",
+      "SuccessfullyCreated": "Planta com nome {{name}} foi criada com sucesso.",
+      "AlreadyExists": "Plant com código Gaia {{gaiaCode}} já existe.",
+      "SuccessfullyUpdated": "Planta com nome {{name}} foi atualizada com sucesso.",
+      "NotFound": "Plant with id {{id}} não foi encontrado.",
+      "ConfirmationDelete": "Você deseja excluir {{name}}?",
+      "SuccessfullyDeleted": "Planta com nome {{name}} foi excluída com sucesso.",
+      "ErrorDeleted": "Ocorreu um erro ao deletar planta com nome {{name}}."
+    },
+    "eSMAT": {
+      "Title": "Lista de SMATs",
+      "SmatReceivers": "Receptores SMAT",
+      "SmatReceiverDetails": "SMAT Receiver Details",
+      "SubTitle": "SMATs",
+      "History": "História",
+      "AddButtons": {
+        "Scheduled": "SMAT agendado",
+        "Unscheduled": "SMAT não programado",
+        "Receiver": "Add Receiver",
+        "Observation": "Adicionar observação",
+        "Language": "Adicionar idioma"
+      },
+      "Schedule": {
+        "Title": "Agende um SMAT",
+        "ImportTitle": "Calendário de Importação",
+        "SuccessfullyCreated": "Agenda foi criada com sucesso.",
+        "SuccessfullyUpdated": "O agendamento foi atualizado com sucesso.",
+        "NotFound": "Agendar com id {{id}} não foi encontrado.",
+        "ConfirmationDelete": "Você deseja excluir o agendamento com o ID {{id}}?",
+        "SuccessfullyDeleted": "Agendar com id {{id}} foi excluído com sucesso.",
+        "ErrorDeleted": "Ocorreu um erro ao deletar agendamento com id {{id}}.",
+        "SuccessfullyImported": "As programações {{imported}} foram importadas com sucesso."
+      },
+      "Unscheduled": {
+        "Title": "Adicionar um SMAT não agendado"
+      },
+      "Smatee": "Smatee",
+      "Smator": "Smator",
+      "SmatForm": "SMAT Form",
+      "DueDate": "Data de Vencimento",
+      "SmatLeader": "SMAT Leader",
+      "SmatLeader2": "SMAT Leader 2",
+      "SmatReceiver2": "Receptor SMAT 2",
+      "SmatReceiver": {
+        "Title": "Lista de receptores Smat",
+        "SubTitle": "Receptor Smat",
+        "ImportTitle": "Importar receptor SMAT",
+        "SuccessfullyCreated": "O receptor Smat com nome {{firstName}} {{lastName}} foi criado com sucesso.",
+        "SuccessfullyUpdated": "O receptor Smat com nome {{firstName}} {{lastName}} foi atualizado com sucesso.",
+        "NotFound": "Smat receptor com id {{id}} não foi encontrado.",
+        "ConfirmationDelete": "Você deseja excluir {{name}}?",
+        "SuccessfullyDeleted": "O receptor Smat com nome {{name}} foi excluído com sucesso.",
+        "ErrorDeleted": "Ocorreu um erro ao excluir o receptor smat com o nome {{name}}.",
+        "SuccessfullyImported": "{{imported}} receptores SMAT foram importados com sucesso."
+      },
+      "Observations": "Observações",
+      "ObservationManagement": {
+        "Title": "Lista de Observação",
+        "SubTitle": "Observação",
+        "AddCategoryButton": "Adicionar categoria",
+        "AddSubCategoryButton": "Adicionar subcategoria",        
+        "SubCategoriesButton": "Subcategorias",
+        "Standard": "Standard",
+        "Enabled": "Ativado ?",
+        "Language": "Língua",
+        "ConfirmationDelete": "Você deseja excluir {{value}}?",
+        "SuccessfullyCreated": "A categoria de observação foi criada com sucesso.",
+        "SuccessfullyUpdated": "A categoria de observação foi atualizada com sucesso.",
+        "ConfirmationCategoryDelete": "Você deseja excluir {{description}}?",
+        "SuccessfullyDeleted": "Categoria de observação {{description}} foi excluída com sucesso.",
+        "ErrorDeleted": "Ocorreu um erro ao excluir categoria de observação {{description}}.",
+        "SuccessfullyStatusUpdated": "Status foi atualizado com sucesso.",
+        "ErrorUpdated": "Ocorreu um erro ao atualizar o status."
+      },
+      "Smat": {
+        "Start": "Começar",
+        "Shift": "Mudança",
+        "PerformedDate": "Data de execução",
+        "FeedbackEmails": "Comentários e-mails",
+        "DateRange": "Intervalo de datas",
+        "Comment": "Comente",
+        "IsImmediateAction": "Esta é uma ação imediata",
+        "IsToBeReportedAsTF4Or5": "Para ser reportado como TF4 / TF5",
+        "IsImmediateActionToolTip": "Ação implementada 24 horas no máximo após a visita SMAT",
+        "IsToBeReportedAsTF4Or5ToolTip": "A observação SMAT pode ser reportada e analisada como near-miss (TF4) ou situação insegura (TF5)",
+        "PositivePoint": "Pontos positivos",
+        "UnsafeAct": "Atos inseguros",
+        "UnsafeCondition": "Condições inseguras",
+        "General": "Geral",
+        "Photo": "Foto",
+        "ViewPhoto": "Ver foto",
+        "AdditionalInformation": "Informação adicional",
+        "AddActionPlan": "Adicionar plano de ação",
+        "UploadHelpText": "Tamanho máximo 3MB",
+        "ExceededImageSize": "Tamanho do arquivo superior a 3 MB",
+        "SuccessfullyCreated": "Smat foi criado com sucesso.",
+        "SuccessfullyUpdated": "Smat foi atualizado com sucesso.",
+        "NotFound": "Smat id {{id}} não foi encontrado.",
+        "ConfirmationDelete": "Você quer apagar smat com id {{id}}?",
+        "SuccessfullyDeleted": "Smat com id {{id}} foi deletado com sucesso.",
+        "ErrorDeleted": "Ocorreu um erro ao deletar smat com id {{id}}.",
+        "UploadingImages": "Carregando imagens ...",
+        "SuccessfullyUploadedImage": "A imagem {{index}} de {{total}} foi enviada com sucesso."
+      },
+      "Reporting": {
+        "Title": "Reportings",
+        "SubTitle": "Reporting",
+        "NoResult": "Sem resultados",
+        "PieChart": "Gráfico de pizza",
+        "BarChart": "Gráfico de barras",
+        "HorizontalBarChart": "Gráfico de barras horizontais",
+        "Type": {
+          "SmatByEmployee": "Smats por funcionários",
+          "SmatBySmator": "Smats por smat leader",
+          "SmatByEmployeeExcel": "Smats por funcionários (Excel)",
+          "SmatBySmatorExcel": "Smats por smat leader (Excel)",
+          "SmatByMonth": "Smats por mês",
+          "SmatByOrganization": "Smats por organização",
+          "ObservationByType": "Observações por tipo",
+          "ObservationByTypeAndMonth": "Observações por mês",
+          "ObservationByCategory": "Observações por categoria / subcategoria",
+          "ObservationByOrganization": "Observações por organização",
+          "GaiaExport": "Exportação de Gaia (Excel)",
+          "FullReport": "Relatório completo (Excel)"
+        },
+        "NumberOfSmat": "Número de smats",
+        "Total": "Total"
+      }
+    },
+    "eAction": {
+      "Title": "Lista de planos de ação",
+      "SubTitle": "Planos de ação",
+      "Number": "Ação n °",
+      "CreatedBy": "Criado por",
+      "CreatedAt": "Criado em",
+      "Status": "Status",
+      "Source": "Fonte",
+      "ActionForm": {
+        "AdditionalInformation": "Informação adicional",
+        "Title": "Adicionar um plano de ação",
+        "General": "Observação do alvo",
+        "Details": "Detalhes",
+        "ActionTaken": "Ação tomada em resposta ao incidente",
+        "AssignedEmployee": "Funcionário responsável",
+        "CompletedDate": "Data de conclusão",
+        "ClosedDate": "Data fechada"
+      }
+    }
+  }

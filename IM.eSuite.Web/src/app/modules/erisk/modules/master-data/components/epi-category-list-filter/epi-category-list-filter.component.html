@@ -1,0 +1,22 @@
+<div class="row">
+  <form #epiFilterForm="ngForm" (ngSubmit)="onEpiSearchClicked()">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="form-group">
+          <ngx-select allowClear="true" name="plant" [items]='plants' [placeholder]="'Organization.Levels.Plant' | translate"
+            [(ngModel)]="epiCategoryFilter.plantId"  (remove)="onPlantRemoved()" required ></ngx-select>
+        </div>
+      </div>  
+      <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="form-group">            
+            <ngx-select allowClear="true" [items]="categories" [placeholder]="'eRisk.EPIManagement.EPICategory' | translate" name="epiCategory" [(ngModel)]="epiCategoryFilter.epiCategoryId"
+              (remove)="onCategoryRemoved()"></ngx-select>
+          </div>
+        </div>
+    <div class="col-xs-12 col-md-3">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary pull-right-xs" type="button" [disabled]="epiFilterForm.invalid" 
+          (click)="onEpiSearchClicked()">{{"Common.Buttons.Search" | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,93 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                {{"eRisk.RiskForm.AddMeansOfControl" | translate}}
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </h4>   
+        </div>
+        <div class="modal-body">
+            <div class="form-group" [ngClass]="{'has-error': type.invalid && !type.pristine}">
+                <label>{{'Common.Fields.Category' | translate}} <span class="text-danger">*</span></label>
+                <ngx-select name="type" allowClear="true" [(ngModel)]="model.type" [items]="categories" 
+                    [placeholder]="'Common.Fields.Category' | translate" #type="ngModel" required></ngx-select>
+                    <div class="help-block" *ngIf="type.invalid && !type.pristine">
+                        {{"Common.Forms.RequiredField" | translate}}
+                    </div>
+                </div>
+            <hr/>
+            <form #descriptionForm="ngForm">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group" [ngClass]="{'has-error': language.invalid && !language.pristine}">
+                            <label>{{"Common.Fields.Language" | translate}} <span class="text-danger">*</span></label>
+                            <ngx-select name="language" allowClear="true" [items]="languages" [placeholder]="'Common.Fields.Language' | translate"
+                                [(ngModel)]="selectedDescription.languageId" #language="ngModel" required>
+                            </ngx-select>
+                            <div class="help-block" *ngIf="language.invalid && !language.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-9">
+                        <div class="form-group" [ngClass]="{'has-error': value.invalid && !value.pristine}">
+                            <label>{{"Common.Fields.Description" | translate}} <span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-9">
+                                    <input name="value" type="text" [(ngModel)]="selectedDescription.value" #value="ngModel" class="form-control" required>
+                                    <div class="help-block" *ngIf="value.invalid && !value.pristine">
+                                        {{"Common.Forms.RequiredField" | translate}}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-3">
+                                    <button type="button" class="btn btn-success pull-right" [disabled]="language.invalid || value.invalid"
+                                        (click)="onAddDescriptionClicked()">{{(selectedIndex == null ? "Common.Buttons.Add" : "Common.Tables.Update") | translate}}</button>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>            
+            </form>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                    <thead>
+                    <tr>                        
+                        <th>{{"Common.Fields.Language" | translate}}</th>
+                        <th>{{"Common.Fields.Description" | translate}}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let description of model.descriptions; let i = index">
+                            <td>{{description.language}}</td>
+                            <td>{{description.value}}</td>
+                            <td class="action-column">
+                            <button type="button" class="btn bg-navy" (click)="onUpdateClicked(description, i)" >
+                                <i  class="fa fa-wrench"></i>
+                                {{"Common.Tables.Update" | translate}}
+                            </button>                      
+                            <button type="button" class="btn btn-danger" (click)="onDeleteClicked(i)">
+                                <i  class="fa fa-trash"></i>
+                                {{"Common.Buttons.Delete" | translate}}
+                            </button>
+                            </td>                      
+                        </tr>
+                        <tr *ngIf="model.descriptions.length == 0">
+                            <td colspan="3" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" (click)="modal.hide()" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+            <button type="button" class="btn btn-success" [disabled]="type.invalid || model.descriptions.length == 0 || isSaveInProgress" *ngIf="authorizationService.hasRole('eRisk_MasterData_MeanOfControl_Write')"
+                (click)="onSubmit()">
+                {{"Common.Buttons.Save" | translate}}                
+                <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+            </button>
+        </div>
+    </div>
+</div>

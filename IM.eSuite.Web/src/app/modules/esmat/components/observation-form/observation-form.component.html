@@ -1,0 +1,102 @@
+<div class="row" [formGroup]="observationForm">    
+    <div class="col-xs-12">
+        <div class="form-group" [ngClass]="{'has-error': observationForm.controls.smateeId.invalid && !observationForm.controls.smateeId.pristine}">
+            <label>{{"eSMAT.SmatReceiver.SubTitle" | translate}}
+                <span class="text-danger">*</span>
+            </label>
+            <ngx-select allowClear="true" formControlName="smateeId" [items]="smatees" [placeholder]="'eSMAT.SmatReceiver.SubTitle' | translate"  
+                required></ngx-select>
+            <div class="help-block" *ngIf="observationForm.controls.smateeId.invalid && !observationForm.controls.smateeId.pristine">
+                {{"Common.Forms.RequiredField" | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group" [ngClass]="{'has-error': observationForm.controls.categoryId.invalid && !observationForm.controls.categoryId.pristine}">
+            <label>{{"Common.Fields.Category" | translate}}
+                <span class="text-danger">*</span>
+            </label>
+            <ngx-select allowClear="true" formControlName="categoryId" [items]="categories" [placeholder]="'Common.Fields.Category' | translate" 
+                (select)="onCategorySelected()" (remove)="onCategoryRemoved()" required></ngx-select>
+            <div class="help-block" *ngIf="observationForm.controls.categoryId.invalid && !observationForm.controls.categoryId.pristine">
+                {{"Common.Forms.RequiredField" | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group" [ngClass]="{'has-error': observationForm.controls.subCategoryId.invalid && !observationForm.controls.subCategoryId.pristine}">
+            <label>{{"Common.Fields.SubCategory" | translate}}
+                <span class="text-danger">*</span>
+            </label>
+            <ngx-select allowClear="true" formControlName="subCategoryId" [items]="subcategories" [placeholder]="'Common.Fields.SubCategory' | translate" 
+                required></ngx-select>
+            <div class="help-block" *ngIf="observationForm.controls.subCategoryId.invalid && !observationForm.controls.subCategoryId.pristine">
+                {{"Common.Forms.RequiredField" | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label>{{"eSMAT.Smat.Comment" | translate}}</label>
+            <textarea type="text" class="form-control" formControlName="comment"></textarea>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="form-group" *ngIf="model.type != ObservationTypeEnum.PositivePoint">
+            <i class="fa fa-camera"></i> <label>{{"eSMAT.Smat.Photo" | translate}}</label>
+            <div [ngClass]="{'input-group': model.hasImage}">
+                <input type="file" class="form-control" accept="image/*" capture="camera" (change)="onImageChanged($event)" #imageInputFile />            
+                <div class="input-group-btn" *ngIf="model.hasImage">
+                    <button type="button" class="btn btn-info" (click)="onViewPhotoClicked()"><i class="fa fa-image"></i> {{"eSMAT.Smat.ViewPhoto" | translate}}</button>
+                </div>
+            </div>
+            <div class="help-block">
+                <em>{{"eSMAT.Smat.UploadHelpText" | translate}}</em>
+            </div>
+        </div>
+    </div>    
+
+    <div class="col-xs-12 col-md-6" *ngIf="model.type != ObservationTypeEnum.PositivePoint">
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" formControlName="isImmediateAction" />
+                    <span class="text-bold">{{"eSMAT.Smat.IsImmediateAction" | translate}}&nbsp;&nbsp;</span>
+                    <i class="fa fa-info-circle text-primary" [tooltip]="'eSMAT.Smat.IsImmediateActionToolTip' | translate" placement="auto"></i>
+                </label>
+            </div>            
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6" *ngIf="model.type != ObservationTypeEnum.PositivePoint">
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" formControlName="isTf4Tf5" />
+                    <span class="text-bold">{{"eSMAT.Smat.IsToBeReportedAsTF4Or5" | translate}}&nbsp;&nbsp;</span>
+                    <i class="fa fa-info-circle text-primary" [tooltip]="'eSMAT.Smat.IsToBeReportedAsTF4Or5ToolTip' | translate" placement="auto"></i>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary" (click)="onAddActionClicked()" [disabled]="model.isImmediateAction || !schedule || !schedule.plantId"
+                *ngIf="model.type != ObservationTypeEnum.PositivePoint && authorizationService.hasRole('eAction_Action_Write')">
+                <i class="fa fa-flag-checkered"></i> {{"eSMAT.Smat.AddActionPlan" | translate}}
+            </button>
+            <button type="button" class="btn btn-primary" (click)="onAddObservationClicked()">
+                <i class="fa fa-plus"></i> {{"Common.Buttons.Add" | translate}} {{ "eSMAT.Smat." + ObservationTypeEnum[model.type] | translate }}
+            </button>
+            <button type="button" class="btn btn-danger" (click)="onRemoveButtonClicked()" *ngIf="isRemovable">
+                <i class="fa fa-trash"></i> {{"Common.Buttons.Delete" | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+<div #actionModal="bs-modal" bsModal class="modal fade" *ngIf="model.type != ObservationTypeEnum.PositivePoint && authorizationService.hasRole('eAction_Action_Write')">
+    <app-action-modal [modal]="actionModal" [actionForm]="observationForm.controls.actionPlan" [schedule]="schedule" [actionPlanId]="model.actionPlanId" [observationId]="model.id"></app-action-modal>
+</div>

@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{"Common.Modals.CopyRisks" | translate}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseClick()" [disabled]="isSaveInProgress" >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-location-fields [parentForm]="locationForm"  (onWorkStationChangedRequest)="onWorkStationChanged($event)"></app-location-fields>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default pull-left"  [disabled]="isSaveInProgress" (click)="onCloseClick()">{{"Common.Modals.Close" |
+        translate}}</button>
+      <button type="button" class="btn btn-primary" [disabled]="!locationForm.valid  || isSaveInProgress" (click)="onCopyClicked()">{{"Common.Buttons.Save"
+        | translate}}
+        <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+      </button>
+    </div>
+  </div>
+</div>

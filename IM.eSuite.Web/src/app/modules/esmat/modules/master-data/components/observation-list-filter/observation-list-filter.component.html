@@ -1,0 +1,22 @@
+<div class="row">
+  <form #observationFilterForm="ngForm" (ngSubmit)="onObservationSearchClicked()">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">            
+        <ngx-select allowClear="true" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate" name="plant" [(ngModel)]="model.plantId"
+          (select)="onPlantSelected($event)" (typed)="onPlantSearchChanged($event)" (remove)="onPlantRemoved()" required></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="form-group">            
+        <ngx-select allowClear="true" [items]="categories" [placeholder]="'Common.Fields.Category' | translate" name="category" [(ngModel)]="model.observationCategoryId"
+        (select)="onObservationSelected($event)"></ngx-select>
+      </div>
+    </div>            
+    <div class="col-xs-12 col-md-3">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary pull-right-xs" type="button" [disabled]="observationFilterForm.invalid" 
+          (click)="onObservationSearchClicked()">{{"Common.Buttons.Search" | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>

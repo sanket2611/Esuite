@@ -1,0 +1,38 @@
+<section class="content-header">
+    <h1>{{"Organization.OrganizationDetailsTitle" | translate}}</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <form #organizationForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="box-body">
+                        <div class="form-group" *ngIf="organization.parent">
+                            <label>{{"Organization.ParentOrganization" | translate}}</label>
+                            <span>{{organization.parent.name}}</span>
+                        </div>
+                        <div class="form-group" *ngIf="organization.plant">
+                            <label>{{"Organization.Levels.Plant" | translate}}</label>
+                            <span>{{organization.plant.name}}</span>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': name.invalid && !name.pristine}">
+                            <label>{{"Common.Fields.Name" | translate}} <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control" required
+                                [(ngModel)]="organization.name" #name="ngModel" >
+                            <div class="help-block" *ngIf="name.invalid && !name.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>                                              
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-warning" [routerLink]="['/organizations']" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+                        <button type="submit" class="btn btn-success pull-right" [disabled]="organizationForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eSuite_MasterData_Organization_Write')">
+                            {{"Common.Buttons.Save" | translate}}
+                            <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

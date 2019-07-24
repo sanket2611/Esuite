@@ -1,0 +1,90 @@
+<section class="content-header">
+  <h1>{{"eAction.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eAction.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <a class="btn btn-primary" [routerLink]="['form']" *ngIf="authorizationService.hasRole('eAction_Action_Write')">{{"eAction.AddActionButton" | translate}}</a>               
+            </div>
+          </div>
+          <br/>        
+          <app-action-plan-list-filter [model]="actionPlanFilter" (onActionPlanFilteredRequest)="onActionPlanFiltered($event)"
+            (onActionPlanFilterRemovedRequest)="onActionPlanFilterRemoved()"></app-action-plan-list-filter>
+          <hr/>
+          <div class="row hidden-xs">
+            <div class="col-sm-6">
+              <button class="btn btn-info" [disabled]="isExportInProgress" (click)="onExportClicked()">
+                <i class="fa fa-download"></i> {{"Common.Buttons.Export" | translate}} <i class="fa fa-spinner fa-spin" *ngIf="isExportInProgress"></i>
+              </button>
+            </div>           
+            <div class="col-sm-6">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr class="bg-green">
+                      <th th-sort="id" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.Number" | translate}}</th>
+                      <th th-sort="job" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Job" | translate}}</th>
+                      <th th-sort="description" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Description" | translate}}</th>
+                      <th th-sort="responsible" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.ActionForm.AssignedEmployee" | translate}}</th>
+                      <th th-sort="addedBy" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.CreatedBy" | translate}}</th>
+                      <th th-sort="initialDueDate" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.ActionForm.InitialDueDate" | translate}}</th>
+                      <th th-sort="dueDate" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.ActionForm.DueDate" | translate}}</th>
+                      <th th-sort="completionDate" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.ActionForm.CompletedDate" | translate}}</th>
+                      <th th-sort="status" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.Status" | translate}}</th>
+                      <th th-sort="source" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eAction.Source" | translate}}</th>                      
+                      <th></th>                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let action of data.entries">
+                      <td>{{action.id}}</td>
+                      <td>{{action.job}}</td>
+                      <td>{{action.description}}</td>
+                      <td>{{action.responsible}}</td>
+                      <td>{{action.addedBy}}</td>
+                      <td>{{action.initialDueDate | date:'shortDate':'':locale}}</td>
+                      <td>{{action.dueDate | date:'shortDate':'':locale}}</td>
+                      <td [ngClass]="{'text-red': action.completionDate > action.initialDueDate}">{{action.completionDate | date:'shortDate':'':locale}}</td>
+                      <td>{{action.status}}</td>
+                      <td>{{action.source}}</td>
+                      <td>
+                        <button type="button" class="btn bg-navy" [routerLink]="getLink(action)" *ngIf="authorizationService.hasRole('eAction_Action_Write')">
+                          <i  class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </button>  
+                      </td>
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td colspan="10" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

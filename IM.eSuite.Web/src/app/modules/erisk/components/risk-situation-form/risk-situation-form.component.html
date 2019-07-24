@@ -1,0 +1,21 @@
+<div [formGroup]="situationForm">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group" [ngClass]="{'has-error': situationForm.controls.hazardId.invalid && !situationForm.controls.hazardId.pristine }">
+        <label>{{"eRisk.RiskForm.Hazard" | translate}} <span class="text-danger">*</span></label>
+        <ngx-select allowClear="true" formControlName="hazardId" [items]="hazards" [placeholder]="'eRisk.RiskForm.Hazard' | translate"></ngx-select>
+        <div class="help-block" *ngIf="situationForm.controls.hazardId.invalid && !situationForm.controls.hazardId.pristine" >
+          {{"Common.Forms.RequiredField" | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+        <label>{{"Common.Fields.Description" | translate}}
+        </label>
+        <input class="form-control" type="text" formControlName="description">
+      </div>
+    </div>
+  </div>
+</div>
+

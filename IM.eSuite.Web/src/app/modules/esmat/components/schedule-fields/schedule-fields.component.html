@@ -1,0 +1,116 @@
+<div [formGroup]="scheduleForm">
+  <div class="col-xs-12 col-sm-6">
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.plantId.invalid && !scheduleForm.controls.plantId.pristine}">
+      <label>{{"Organization.Levels.Plant" | translate}} <span class="text-danger">*</span> </label>
+      <ngx-select allowClear="true" formControlName="plantId" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate" 
+        (select)="onPlantSelected($event)" (remove)="onPlantRemoved()" (typed)="onPlantSearchChanged($event)" required></ngx-select>
+      <div class="help-block" *ngIf="scheduleForm.controls.plantId.invalid && !scheduleForm.controls.plantId.pristine">
+          {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.departmentId.invalid && !scheduleForm.controls.departmentId.pristine}" >
+      <label>{{"Organization.Levels.Department" | translate}} <span class="text-danger">*</span> </label>
+      <ngx-select allowClear="true" formControlName="departmentId" [items]="departments" [placeholder]="'Organization.Levels.Department' | translate" 
+        (select)="onDepartmentSelected($event)" (remove)="onDepartmentRemoved()" required></ngx-select>
+      <div class="help-block" *ngIf="scheduleForm.controls.departmentId.invalid && !scheduleForm.controls.departmentId.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.workshopId.invalid && !scheduleForm.controls.workshopId.pristine}">
+      <label>{{"Organization.Levels.Workshop" | translate}} <span class="text-danger">*</span> </label>
+      <ngx-select allowClear="true" formControlName="workshopId" [items]="workshops" [placeholder]="'Organization.Levels.Workshop' | translate" 
+        (select)="onWorkshopSelected($event)" (remove)="onWorkshopRemoved()" required></ngx-select>
+      <div class="help-block" *ngIf="scheduleForm.controls.workshopId.invalid && !scheduleForm.controls.workshopId.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div> 
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.jobId.invalid && !scheduleForm.controls.jobId.pristine}">
+      <label>{{"Organization.Levels.Job" | translate}} <span class="text-danger">*</span> </label>
+      <ngx-select allowClear="true" formControlName="jobId" [items]="jobs" [placeholder]="'Organization.Levels.Job' | translate" 
+        (select)="onJobSelected($event)" (remove)="onJobRemoved()" required></ngx-select>
+      <div class="help-block" *ngIf="scheduleForm.controls.jobId.invalid && !scheduleForm.controls.jobId.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.workstationId.invalid && !scheduleForm.controls.workstationId.pristine}" >
+      <label>{{"Organization.Levels.Workstation" | translate}} <span class="text-danger">*</span> </label>
+      <ngx-select allowClear="true" formControlName="workstationId" [items]="workstations" [placeholder]="'Organization.Levels.Workstation' | translate" 
+        (select)="onWorkstationSelected($event)" (remove)="onWorkstationRemoved()" required></ngx-select>
+      <div class="help-block" *ngIf="scheduleForm.controls.workstationId.invalid && !scheduleForm.controls.workstationId.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div> 
+    <div class="form-group">
+      <label>{{"Organization.Levels.Task" | translate}}</label>
+      <div class="row">
+        <div class="col-xs-12 col-lg-9">
+          <ngx-select allowClear="true" formControlName="taskId" [items]="tasks" [placeholder]="'Organization.Levels.Task' | translate"></ngx-select><br/>
+        </div>  
+        <div class="col-xs-12 col-lg-3">
+          <button type="button" class="btn btn-primary pull-right" (click)="addTask(scheduleForm.controls.workstationId.value)"  [disabled]="scheduleForm.controls.workstationId.invalid">{{"Organization.AddButtons.Task" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="col-xs-12 col-sm-6">
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.smatLeaderId.invalid && !scheduleForm.controls.smatLeaderId.pristine}">
+      <label>{{"eSMAT.SmatLeader" | translate}} <span class="text-danger">*</span> </label>
+      <ngx-select formControlName="smatLeaderId" [items]="smatLeaders" allowClear="true" [placeholder]="'eSMAT.SmatLeader' | translate"
+        required></ngx-select>
+        <div class="help-block" *ngIf="scheduleForm.controls.smatLeaderId.invalid && !scheduleForm.controls.smatLeaderId.pristine">
+          {{"Common.Forms.RequiredField" | translate}}
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.smatLeader2Id.errors?.equal && !scheduleForm.controls.smatLeader2Id.pristine}" >
+      <label>{{"eSMAT.SmatLeader2" | translate}}</label>
+      <ngx-select formControlName="smatLeader2Id" allowClear="true" [placeholder]="'eSMAT.SmatLeader2' | translate"
+        [items]="smatLeaders"></ngx-select> 
+        <div class="help-block" *ngIf="scheduleForm.controls.smatLeader2Id.errors?.equal && !scheduleForm.controls.smatLeader2Id.pristine">
+          {{"eSMAT.Smat.InvalidLeaders" | translate}}
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.smatReceiverId.invalid && !scheduleForm.controls.smatReceiverId.pristine}">
+      <label>{{"eSMAT.SmatReceiver.SubTitle" | translate}} <span class="text-danger">*</span> </label>
+      <div class="row">
+        <div class="col-xs-12 col-lg-8">
+          <ngx-select allowClear="true"  formControlName="smatReceiverId" [items]="smatReceivers" 
+            [placeholder]="'eSMAT.SmatReceiver.SubTitle' | translate"
+            (select)="onSmateeChanged()" (remove)="onSmateeChanged()" required></ngx-select>
+          <div class="help-block" *ngIf="scheduleForm.controls.smatReceiverId.invalid && !scheduleForm.controls.smatReceiverId.pristine">
+            {{"Common.Forms.RequiredField" | translate}}
+          </div>
+        </div>
+        <div class="col-xs-12 col-lg-4">
+          <button type="button" class="btn btn-primary pull-right" (click)="addSmatReceiver()"  [disabled]="scheduleForm.controls.plantId.invalid">{{"eSMAT.AddButtons.Receiver" | translate }}</button>
+        </div>
+      </div>      
+    </div>
+    <div class="form-group"  [ngClass]="{'has-error': scheduleForm.controls.smatReceiver2Id.errors?.equal && !scheduleForm.controls.smatReceiver2Id.pristine}">
+      <label>{{"eSMAT.SmatReceiver2" | translate}}</label>
+      <ngx-select allowClear="true" formControlName="smatReceiver2Id" [placeholder]="'eSMAT.SmatReceiver2' | translate"      
+        [items]="smatReceivers" (select)="onSmateeChanged()" (remove)="onSmateeChanged()"></ngx-select>
+        <div class="help-block" *ngIf="scheduleForm.controls.smatReceiver2Id.errors?.equal && !scheduleForm.controls.smatReceiver2Id.pristine">
+          {{"eSMAT.SmatReceiver.InvalidReceivers" | translate}}
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': scheduleForm.controls.dueDate.invalid && !scheduleForm.controls.dueDate.pristine}">
+      <label>{{"Common.Fields.DueDate" | translate}} <span class="text-danger">*</span> </label>
+      <div class="input-group"> 
+        <input class="form-control" bsDatepicker type="text" formControlName="dueDate"
+          [bsConfig]="{containerClass:'theme-dark-blue'}" #datePicker="bsDatepicker" required />
+        <div class="input-group-addon" (click)="datePicker.toggle()">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+      <div class="help-block" *ngIf="scheduleForm.controls.dueDate.invalid && !scheduleForm.controls.dueDate.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+</div>
+<div #addTaskModal="bs-modal" bsModal class="modal fade" (onHidden)="onAddTaskModalHidden()">
+  <app-task-add [workstation]="selectedWorkstation" [modal]="addTaskModal" [(reset)]="resetAddTaskForm" (addedTaskRequest)="onTaskAdded($event)"></app-task-add>
+</div>
+<div #addReceiverModal="bs-modal" bsModal class="modal fade" (onHidden)="onAddReceiverModalHidden()">
+  <app-smat-receiver-add [plant]="selectedPlant" [modal]="addReceiverModal" [(reset)]="resetAddReceiverForm" (addedReceiverRequest)="onReceiverAdded($event)"></app-smat-receiver-add>
+</div>

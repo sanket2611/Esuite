@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{"eAction.ActionForm.Title" | translate}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="onCancelClicked()">
+        <span aria-hidden="true">&times;</span>
+      </button>      
+    </div>
+    <div class="modal-body">
+      <app-action-fields [actionForm]="actionForm" [plantId]="plantId" [isEditMode]="isEditMode" *ngIf="actionForm"></app-action-fields>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default pull-left" (click)="onCancelClicked()" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+      <button type="button" class="btn btn-success" (click)="onSavedClicked()" [disabled]="actionForm.invalid || isSaveInProgress" *ngIf="actionForm && authorizationService.hasRole('eAction_Action_Write')">
+        <span *ngIf="isEditMode">{{"Common.Buttons.Save" | translate}}</span>
+        <span *ngIf="!isEditMode">{{"Common.Buttons.Add" | translate}}</span>
+        <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+      </button>
+    </div>   
+  </div>
+</div>

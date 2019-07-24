@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="DotNetCore.NPOI" Version="1.0.2" />
+    <PackageReference Include="IM.NETCore.Core" Version="1.0.0" />
+    <PackageReference Include="IM.NETCore.Web" Version="1.0.1" />
+    <PackageReference Include="RawRabbit.Operations.Publish" Version="2.0.0-rc5" />
+    <PackageReference Include="IM.eSuite.Common" Version="1.0.4" />
+    <PackageReference Include="IM.DotNet.Linq" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IM.eSuite.Domain\IM.eSuite.Domain.csproj" />
+  </ItemGroup>
+</Project>

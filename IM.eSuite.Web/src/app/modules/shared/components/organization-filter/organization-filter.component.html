@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="configuration.showPlants">
+    <div class="form-group">            
+      <ngx-select allowClear="true" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate" [(ngModel)]="model.plantId"
+        (select)="onPlantSelected($event)" (remove)="onPlantRemoved()" (typed)="onPlantSearchChanged($event)"></ngx-select>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="configuration.showDepartments">
+    <div class="form-group">
+      <ngx-select name="department" allowClear="true" [items]="departments" [placeholder]="'Organization.Levels.Department' | translate" [(ngModel)]="model.departmentId"
+        (select)="onDepartmentSelected($event)" (remove)="onDepartmentRemoved()"></ngx-select>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="configuration.showWorkshops">
+    <div class="form-group">
+      <ngx-select name="workshop" allowClear="true" [items]="workshops" [placeholder]="'Organization.Levels.Workshop' | translate" [(ngModel)]="model.workshopId" 
+        (select)="onWorkshopSelected($event)" (remove)="onWorkshopRemoved()"></ngx-select>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="configuration.showJobs">
+    <div class="form-group">
+      <ngx-select name="job" allowClear="true" [items]="jobs" [placeholder]="'Organization.Levels.Job' | translate" [(ngModel)]="model.jobId" 
+        (select)="onJobSelected($event)" (remove)="onJobRemoved()"></ngx-select>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="configuration.showWorkstations">
+    <div class="form-group">
+      <ngx-select name="workstation" allowClear="true" [items]="workstations" [placeholder]="'Organization.Levels.Workstation' | translate" [(ngModel)]="model.workstationId"></ngx-select>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="configuration.showDateRange">
+    <div class="form-group">
+      <div class="input-group">
+        <input [placeholder]="'eSMAT.Smat.DateRange' | translate" type="text" class="form-control" bsDaterangepicker [bsConfig]="{containerClass:'theme-dark-blue'}" 
+          #dateRangePicker="bsDaterangepicker" [(ngModel)]="model.dateRange" (bsValueChange)="onDateRangeChanged($event)" />
+        <div class="input-group-addon" (click)="dateRangePicker.toggle()">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3" *ngIf="additionalFieldsTemplate">
+    <div class="form-group">
+      <ng-container *ngTemplateOutlet="additionalFieldsTemplate">
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="form-group">
+      <button class="btn btn-primary pull-right-xs" type="button" (click)="onSearchClicked()">{{"Common.Buttons.Search" | translate}}</button>
+    </div>
+  </div>
+</div>

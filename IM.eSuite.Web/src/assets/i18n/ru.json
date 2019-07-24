@@ -1,0 +1,304 @@
+{
+    "Application": {
+      "Pole": "IM",
+      "Name": "eSuite",
+      "ShortName": "eS"
+    },
+    "Core": {
+      "PageSize": {
+        "Label": "Число входов:"
+      }
+    },
+    "Authentication": {
+      "Login": {
+        "Message": "Войдите, чтобы начать сеанс",
+        "Button": "Войти с SSO"
+      },
+      "SSO": {
+        "Message": "Войдите в систему, подождите, пожалуйста."
+      },
+      "Forbidden": {
+        "Title": "Запрещено",
+        "Message": "Вам не разрешено выполнять требуемые действия."
+      }
+    },
+    "Common": {
+      "Tables": {
+        "Update": "Обновить",
+        "Id": "Я бы",
+        "NoEntries": "Нет записей для отображения."
+      },
+      "Buttons": {
+        "Save": "Сохранить",
+        "Cancel": "Отмена",
+        "Search": "Поиск",
+        "Delete": "Удалить",
+        "Template": "Шаблон",
+        "Import": "Импортировать",
+        "Export": "Экспорт",
+        "Add": "Добавить",
+        "Yes": "Да",
+        "No": "Нет"
+      },
+      "Modals": {
+        "DeleteTitle": "Подтвердить удаление ?",
+        "Close": "Закрыть",
+        "ImportHelpText": "Только файлы .xlsx. Максимальный размер 500kB ",
+        "ErrorsTitle": "Ошибка",
+        "ErrorItem": "Линия {{line}} {{message}}"
+      },
+      "Forms": {
+        "RequiredField": "Это поле обязательно к заполнению.",
+        "InvalidEmail": "Электронная почта недействительна.",
+        "InvalidSGId": "SGId недействителен. Он должен начинаться с заглавной буквы, за которой следует 7 цифр.",
+        "SelectAll": "Выбрать все"
+      },
+      "Fields": {
+        "Name": "Имя",
+        "File": "Файл",
+        "Date": "Дата",
+        "Type": "Тип",
+        "Description": "Описание",
+        "DueDate": "Срок",
+        "Category": "Категория",
+        "SubCategory": "Подкатегория"
+      }
+    },
+    "Home": {
+      "Enter": "Войти",
+      "BackMenu": "Перейдите в eSuite",
+      "Applications": "Приложения",
+      "MasterData": "Основные данные"
+    },
+    "Administration": {
+      "Users": {
+        "Title": "Список пользователей",
+        "SubTitle": "Пользователи",
+        "ImportTitle": "Импортировать пользователей",
+        "UserDetailsTitle": "Сведения о пользователях",
+        "AddUser": "Добавить пользователя",
+        "Users": "Пользователи",
+        "User": "Пользователь",
+        "SGId": "SGID",
+        "FirstName": "Имя",
+        "LastName": "Фамилия",
+        "Email": "Эл. адрес",
+        "PermissionsTitle": "Разрешения по заявке",
+        "SuccessfullyCreated": "Пользователь с SGId {{SGId}} был успешно создан.",
+        "AlreadyExists": "Пользователь с SGId {{SGId}} уже существует.",
+        "SuccessfullyUpdated": "Пользователь с SGId {{SGId}} успешно обновлен.",
+        "NotFound": "Пользователь с id {{id}} не найден.",
+        "NotFoundInDirectory": "Пользователь с SGId {{SGId}} не найден в каталоге.",
+        "ConfirmationDelete": "Вы хотите удалить {{firstName}} {{lastName}} (SGId = {{userName}})?",
+        "SuccessfullyDeleted": "Пользователь с SGId {{SGId}} успешно удален.",
+        "ErrorDeleted": "При удалении пользователя с SGId произошла ошибка {{SGId}}.",
+        "SuccessfullyImported": "{{imported}} пользователи были успешно импортированы."
+      }
+    },
+    "Organization": {
+      "Title": "Список организаций",
+      "SubTitle": "Oganization",
+      "ImportTitle": "Импортные организации",
+      "SubTitles": {
+        "Plants": "Растения",
+        "Departments": "Отделы в {{name}}",
+        "Workshops": "Семинары в {{name}}",
+        "Jobs": "Вакансии в {{name}}",
+        "Workstations": "Рабочие станции в {{name}}",
+        "Tasks": "Задачи в {{name}}"
+      },
+      "OrganizationDetailsTitle": "Сведения об организации",
+      "AddButtons": {
+        "Plant": "Добавить растение",
+        "Department": "Добавить отдел",
+        "Workshop": "Добавить семинар",
+        "Job": "Добавить работу",
+        "Workstation": "Добавить рабочую станцию",
+        "Task": "Добавить задачу"
+      },
+      "DetailButtons": {
+        "Plants": "Растения",
+        "Departments": "Отделы",
+        "Workshops": "Мастерские",
+        "Jobs": "Работа",
+        "Workstations": "Рабочие станции",
+        "Tasks": "Задания"
+      },
+      "Organizations": "Организация",
+      "Organization": "Организация",
+      "LowerLevels": "Нижние уровни",
+      "ParentOrganization": "Родительская организация",
+      "SuccessfullyCreated": "Организация с именем {{name}} была успешно создана.",
+      "AlreadyExists": "Организация с именем {{name}} уже существует.",
+      "SuccessfullyUpdated": "Организация с именем {{name}} успешно обновлена.",
+      "NotFound": "Организация с id {{id}} не найдена.",
+      "ConfirmationDelete": "Вы хотите удалить {{name}}?",
+      "SuccessfullyDeleted": "Организация с именем {{name}} успешно удалена.",
+      "ErrorDeleted": "Ошибка при удалении организации с именем {{name}}.",
+      "SuccessfullyImported": "{{imported}} организации были успешно импортированы.",
+      "Levels": {
+        "Plant": "Растение",
+        "Department": "Отдел",
+        "Workshop": "Мастерская",
+        "Job": "Работа",
+        "Workstation": "Рабочая станция",
+        "Task": "Задача"
+      }
+    },
+    "Plant": {
+      "PlantDetailsTitle": "Сведения о заводе",
+      "GaiaCode": "Код Gaia",
+      "Delegation": "Делегация",
+      "Country": "Страна",
+      "Sector": "Сектор",
+      "BusinessUnit": "Бизнес-единица",
+      "SOA": "SOA",
+      "InvalidGaiaCode": "Код Gaia должен содержать ровно 6 символов верхние и нижние номера",
+      "SuccessfullyCreated": "Завод с именем {{name}} был успешно создан.",
+      "AlreadyExists": "Завод с кодом Гайи {{gaiaCode}} уже существует.",
+      "SuccessfullyUpdated": "Завод с именем {{name}} успешно обновлен.",
+      "NotFound": "Завод с id {{id}} не найден.",
+      "ConfirmationDelete": "Вы хотите удалить {{name}}?",
+      "SuccessfullyDeleted": "Завод с именем {{name}} успешно удален.",
+      "ErrorDeleted": "Ошибка при удалении установки с именем {{name}}."
+    },
+    "eSMAT": {
+      "Title": "Список SMAT",
+      "SmatReceivers": "Приемники SMAT",
+      "SmatReceiverDetails": "Сведения о приемнике SMAT",
+      "SubTitle": "SMATs",
+      "History": "История",
+      "AddButtons": {
+        "Scheduled": "Запланированный SMAT",
+        "Unscheduled": "Внеплановый SMAT",
+        "Receiver": "Добавить приемник",
+        "Observation": "Добавить наблюдение",
+        "Language": "Добавить язык"
+      },
+      "Schedule": {
+        "Title": "Расписание SMAT",
+        "ImportTitle": "Расписание импорта",
+        "SuccessfullyCreated": "График успешно создан",
+        "SuccessfullyUpdated": "Расписание успешно обновлено",
+        "NotFound": "Расписание с id {{id}} не найдено.",
+        "ConfirmationDelete": "Вы хотите удалить расписание с id {{id}}?",
+        "SuccessfullyDeleted": "Расписание с id {{id}} успешно удалено.",
+        "ErrorDeleted": "При удалении расписания с идентификатором произошла ошибка {{id}}.",
+        "SuccessfullyImported": "{{imported}} расписания были успешно импортированы."
+      },
+      "Unscheduled": {
+        "Title": "Добавить внеплановый SMAT"
+      },
+      "Smatee": "Smatee",
+      "Smator": "Smator",
+      "SmatForm": "Форма SMAT",
+      "DueDate": "Срок",
+      "SmatLeader": "Лидер SMAT",
+      "SmatLeader2": "Лидер SMAT 2",
+      "SmatReceiver2": "SMAT Receiver 2",
+      "SmatReceiver": {
+        "Title": "Список приемников Smat",
+        "SubTitle": "Смарт-приемник",
+        "ImportTitle": "Импортировать SMAT-приемник",
+        "SuccessfullyCreated": "Смарт-приемник с именем {{firstName}} {{lastName}} был успешно создан.",
+        "SuccessfullyUpdated": "Смарт-приемник с именем {{firstName}} {{lastName}} был успешно обновлен.",
+        "NotFound": "Смарт-приемник с идентификатором {{id}} не найден.",
+        "ConfirmationDelete": "Вы хотите удалить {{name}}?",
+        "SuccessfullyDeleted": "Приемник Smat с именем {{name}} был успешно удален.",
+        "ErrorDeleted": "Ошибка при удалении приемника smat с именем {{name}}.",
+        "SuccessfullyImported": "{{imported}} SMAT-приемники были успешно импортированы."
+      },
+      "Observations": "Наблюдение",
+      "ObservationManagement": {
+        "Title": "Список наблюдений",
+        "SubTitle": "Наблюдение",
+        "AddCategoryButton": "Добавить категорию",
+        "AddSubCategoryButton": "Добавить подкатегорию",        
+        "SubCategoriesButton": "Подкатегории",
+        "Standard": "Стандарт?",
+        "Enabled": "Включено?",
+        "Language": "Язык",
+        "ConfirmationDelete": "Вы хотите удалить {{значение}}?",
+        "SuccessfullyCreated": "Категория наблюдения была успешно создана",
+        "SuccessfullyUpdated": "Категория наблюдения успешно обновлена",
+        "ConfirmationCategoryDelete": "Вы хотите удалить {{description}}?",
+        "SuccessfullyDeleted": "Категория наблюдения {{description}} успешно удалена.",
+        "ErrorDeleted": "При удалении категории наблюдения произошла ошибка {{description}}.",
+        "SuccessfullyStatusUpdated": "Статус успешно обновлен",
+        "ErrorUpdated": "При обновлении статуса произошла ошибка."
+      },
+      "Smat": {
+        "Start": "Начало",
+        "Shift": "Сдвиг",
+        "PerformedDate": "Дата выполнения",
+        "FeedbackEmails": "Обратная связь электронной почты",
+        "DateRange": "Диапазон дат",
+        "Comment": "Комментарий",
+        "IsImmediateAction": "Это немедленное действие",
+        "IsToBeReportedAsTF4Or5": "Чтобы быть зарегистрированным как TF4 / TF5",
+        "IsImmediateActionToolTip": "Действие вступило в силу через 24 часа после посещения SMAT",
+        "IsToBeReportedAsTF4Or5ToolTip": "Наблюдение SMAT может быть сообщено и проанализировано как приблизительная (TF4) или небезопасная ситуация (TF5)",
+        "PositivePoint": "Позитивные моменты",
+        "UnsafeAct": "Небезопасные действия",
+        "UnsafeCondition": "Небезопасные условия",
+        "General": "Генеральная",
+        "Photo": "Фото",
+        "ViewPhoto": "Просмотр фотографии",
+        "AdditionalInformation": "Дополнительная информация",
+        "AddActionPlan": "Добавить план действий",
+        "UploadHelpText": "Максимальный размер 3 МБ",
+        "ExceededImageSize": "Размер файла превышает 3 МБ",
+        "SuccessfullyCreated": "Smat был успешно создан",
+        "SuccessfullyUpdated": "Смат успешно обновлен",
+        "NotFound": "Smat id {{id}} не найден.",
+        "ConfirmationDelete": "Вы хотите удалить smat с id {{id}}?",
+        "SuccessfullyDeleted": "Smat с id {{id}} успешно удален.",
+        "ErrorDeleted": "При удалении smat с идентификатором {{id}} произошла ошибка.",
+        "UploadingImages": "Загрузка изображений ...",
+        "SuccessfullyUploadedImage": "Изображение {{index}} {{total}} успешно загружено."
+      },
+      "Reporting": {
+        "Title": "Репортажи",
+        "SubTitle": "Составление отчетов",
+        "NoResult": "Нет результатов",
+        "PieChart": "Круговая диаграмма",
+        "BarChart": "Гистограмма",
+        "HorizontalBarChart": "Горизонтальная гистограмма",
+        "Type": {
+          "SmatByEmployee": "Смазы сотрудников",
+          "SmatBySmator": "Лидер SMAT",
+          "SmatByEmployeeExcel": "Смазы сотрудников (Excel)",
+          "SmatBySmatorExcel": "Лидер SMAT (Excel)",
+          "SmatByMonth": "Сматы по месяцам",
+          "SmatByOrganization": "Смазы по организации",
+          "ObservationByType": "Наблюдения по типу",
+          "ObservationByTypeAndMonth": "Наблюдения по месяцам",
+          "ObservationByCategory": "Наблюдения по категориям / подкатегории",
+          "ObservationByOrganization": "Наблюдения по организации",
+          "GaiaExport": "Gaia экспорт файлов (Excel)",
+          "FullReport": "Полный отчет (Excel)"
+        },
+        "NumberOfSmat": "Количество ударов",
+        "Total": "Всего"
+      }
+    },
+    "eAction": {
+      "Title": "Список планов действий",
+      "SubTitle": "Планы действий",
+      "Number": "Действие n °",
+      "CreatedBy": "Сделано",
+      "CreatedAt": "Создан в",
+      "Status": "Положение дел",
+      "Source": "Источник",
+      "ActionForm": {
+        "AdditionalInformation": "Дополнительная информация",
+        "Title": "Добавить план действий",
+        "General": "Целевое наблюдение",
+        "Details": "Детали",
+        "ActionTaken": "Меры, принятые в ответ на инцидент",
+        "AssignedEmployee": "Ответственный сотрудник",
+        "CompletedDate": "Завершенная дата",
+        "ClosedDate": "Закрытая дата"
+      }
+    }
+  }

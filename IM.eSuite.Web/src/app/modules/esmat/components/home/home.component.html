@@ -1,0 +1,110 @@
+<section class="content-header">
+  <h1>{{"eSMAT.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eSMAT.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12">              
+              <button class="btn btn-warning" [routerLink]="['form']" *ngIf="authorizationService.hasRole('eSmat_Smat_Write')">
+                <i class="fa fa-play"></i> {{"eSMAT.AddButtons.Unscheduled" | translate}}
+              </button>
+              <button class="btn btn-info" [routerLink]="['schedule']" *ngIf="authorizationService.hasRole('eSmat_Schedule_Write')">
+                <i class="fa fa-calendar"></i> {{"eSMAT.AddButtons.Scheduled" | translate}}
+              </button>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <ngx-select name="plant" allowClear="true" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate"  [(ngModel)]="plantId" 
+                (select)="loadPage(1)" (remove)="loadPage(1)" (typed)="onPlantSearchChanged($event)"></ngx-select>
+            </div>
+          </div>
+          <hr/>
+          <div class="row hidden-xs">
+            <div class="col-sm-6">
+              <button class="btn btn-warning hidden-xs hidden-sm" (click)="onImportClicked()" *ngIf="authorizationService.hasRole('eSmat_Schedule_Write')">
+                <i class="fa fa-upload"></i> {{"Common.Buttons.Import" | translate}}
+              </button>
+              <button class="btn btn-info" [disabled]="isExportInProgress" (click)="onExportClicked()">
+                <i class="fa fa-download"></i> {{"Common.Buttons.Export" | translate}} <i class="fa fa-spinner fa-spin" *ngIf="isExportInProgress"></i>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr class="bg-orange">
+                      <th th-sort="plantName" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Plant" | translate}}</th>
+                      <th th-sort="departmentName" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Department" | translate}}</th>
+                      <th th-sort="dueDate" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.DueDate" | translate}}</th>
+                      <th th-sort="smatee" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.SmatReceiver.SubTitle" | translate}}</th>
+                      <th th-sort="smatee2" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.SmatReceiver2" | translate}}</th>
+                      <th th-sort="smator" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.SmatLeader" | translate}}</th>
+                      <th th-sort="smator2" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.SmatLeader2" | translate}}</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let schedule of data.entries">
+                      <td>{{schedule.plantName}}</td>
+                      <td>{{schedule.departmentName}}</td>
+                      <td>{{schedule.dueDate | date:'shortDate':'':locale}}</td>
+                      <td>{{schedule.smatee}}</td>
+                      <td>{{schedule.smatee2}}</td>
+                      <td>{{schedule.smator}}</td>
+                      <td>{{schedule.smator2}}</td>
+                      <td class="action-column">
+                        <button type="button" class="btn btn-warning" [routerLink]="[schedule.id, 'form']" *ngIf="authorizationService.hasRole('eSmat_Smat_Write')">
+                          <i  class="fa fa-play"></i>
+                          {{"eSMAT.Smat.Start" | translate}}
+                        </button>
+                        <button type="button" class="btn bg-navy" [routerLink]="['schedule', schedule.id]" *ngIf="authorizationService.hasRole('eSmat_Schedule_Write')">
+                          <i  class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </button>                        
+                        <button type="button" class="btn btn-danger" (click)="onDeleteClicked(schedule.id)" *ngIf="authorizationService.hasRole('eSmat_Schedule_Write')" >
+                          <i  class="fa fa-trash"></i>
+                          {{"Common.Buttons.Delete" | translate}}
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td colspan="8" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div #deleteScheduleModal="bs-modal" bsModal class="modal fade">
+  <app-scheduled-smat-delete [scheduleId]="selectedScheduleId" [modal]="deleteScheduleModal" (deletedScheduleRequest)="onScheduleDeleted($event)"></app-scheduled-smat-delete>
+</div>
+<div #importScheduleModal="bs-modal" bsModal class="modal fade">
+  <app-schedule-import [modal]="importScheduleModal" (importedScheduleRequest)="onScheduleImported()"></app-schedule-import>
+</div>

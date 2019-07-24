@@ -1,0 +1,17 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{"Common.Modals.DeleteTitle" | translate}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{"eSMAT.ObservationManagement.ConfirmationCategoryDelete" | translate: subCategory}}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default pull-left" (click)="modal.hide()">{{"Common.Modals.Close" | translate}}</button>
+      <button type="button" class="btn btn-warning" (click)="onDeleteClicked()">{{"Common.Buttons.Delete" | translate}}</button>
+    </div>
+  </div>
+</div>

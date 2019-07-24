@@ -1,0 +1,304 @@
+{
+    "Application": {
+      "Pole": "IM",
+      "Name": "eSuite",
+      "ShortName": "eS"
+    },
+    "Core": {
+      "PageSize": {
+        "Label": "Počet vstupů:"
+      }
+    },
+    "Authentication": {
+      "Login": {
+        "Message": "Přihlaste se ke spuštění relace",
+        "Button": "Přihlášení pomocí SSO"
+      },
+      "SSO": {
+        "Message": "Probíhá přihlášení, počkejte."
+      },
+      "Forbidden": {
+        "Title": "Zakázáno",
+        "Message": "Nemůžete vykonávat požadovanou akci."
+      }
+    },
+    "Common": {
+      "Tables": {
+        "Update": "Aktualizace",
+        "Id": "Id",
+        "NoEntries": "Neexistují žádné položky k zobrazení."
+      },
+      "Buttons": {
+        "Save": "Uložit",
+        "Cancel": "Zrušení",
+        "Search": "Vyhledávání",
+        "Delete": "Vymazat",
+        "Template": "Šablona",
+        "Import": "Import",
+        "Export": "Vývozní",
+        "Add": "Přidat",
+        "Yes": "Ano",
+        "No": "Ne"
+      },
+      "Modals": {
+        "DeleteTitle": "Potvrdit vymazání ?",
+        "Close": "Zavřít",
+        "ImportHelpText": ".xlsx soubory pouze. Max velikost: 500kB",
+        "ErrorsTitle": "Chyby",
+        "ErrorItem": "Řádek {{line}}: {{message}}"
+      },
+      "Forms": {
+        "RequiredField": "Toto pole je povinné.",
+        "InvalidEmail": "Email je neplatný.",
+        "InvalidSGId": "SGId je neplatné. Mělo by začínat velkým písmenem, po němž následuje 7 číslic.",
+        "SelectAll": "Vybrat vše"
+      },
+      "Fields": {
+        "Name": "Název",
+        "File": "Soubor",
+        "Date": "Datum",
+        "Type": "Typ",
+        "Description": "Popis",
+        "DueDate": "Datum splatnosti",
+        "Category": "Kategorie",
+        "SubCategory": "Podkategorie"
+      }
+    },
+    "Home": {
+      "Enter": "Enter",
+      "BackMenu": "Jdi na eSuite",
+      "Applications": "Aplikace",
+      "MasterData": "Hlavní data"
+    },
+    "Administration": {
+      "Users": {
+        "Title": "Seznam uživatelů",
+        "SubTitle": "Uživatelé",
+        "ImportTitle": "Importovat uživatele",
+        "UserDetailsTitle": "Podrobnosti o uživatelích",
+        "AddUser": "Přidat uživatele",
+        "Users": "Uživatelé",
+        "User": "Uživatel",
+        "SGId": "SGID",
+        "FirstName": "Jméno",
+        "LastName": "Příjmení",
+        "Email": "E-mailem",
+        "PermissionsTitle": "Oprávnění podle aplikace",
+        "SuccessfullyCreated": "Uživatel s SGId {{SGId}} byl úspěšně vytvořen.",
+        "AlreadyExists": "Uživatel s SGId {{SGId}} již existuje.",
+        "SuccessfullyUpdated": "Uživatel s SGId {{SGId}} byl úspěšně aktualizován.",
+        "NotFound": "Uživatel s id {{id}} nebyl nalezen.",
+        "NotFoundInDirectory": "Uživatel s SGId {{SGId}} nebyl nalezen v adresáři.",
+        "ConfirmationDelete": "Chcete odstranit {{firstName}} {{lastName}} (SGId = {{userName}})",
+        "SuccessfullyDeleted": "Uživatel s SGId {{SGId}} byl úspěšně smazán.",
+        "ErrorDeleted": "Při odstraňování uživatele SGId {{SGId}} došlo k chybě.",
+        "SuccessfullyImported": "Uživatelé {{imported}} byli úspěšně importováni."
+      }
+    },
+    "Organization": {
+      "Title": "Seznam organizací",
+      "SubTitle": "Organizace",
+      "ImportTitle": "Importní organizace",
+      "SubTitles": {
+        "Plants": "Rostliny",
+        "Departments": "Oddělení v {{name}}",
+        "Workshops": "Workshopy v {{name}}",
+        "Jobs": "Pracovní místa v {{name}}",
+        "Workstations": "Pracovní stanice v {{name}}",
+        "Tasks": "Úkoly v {{name}}"
+      },
+      "OrganizationDetailsTitle": "Podrobnosti o organizaci",
+      "AddButtons": {
+        "Plant": "Přidat závod",
+        "Department": "Přidat oddělení",
+        "Workshop": "Přidat workshop",
+        "Job": "Přidat úlohu",
+        "Workstation": "Přidat pracovní stanici",
+        "Task": "Přidat úkol"
+      },
+      "DetailButtons": {
+        "Plants": "Rostliny",
+        "Departments": "Oddělení",
+        "Workshops": "Workshopy",
+        "Jobs": "Pracovní místa",
+        "Workstations": "Pracovní stanice",
+        "Tasks": "Úkoly"
+      },
+      "Organizations": "Organizace",
+      "Organization": "Organizace",
+      "LowerLevels": "Nižší úrovně",
+      "ParentOrganization": "Rodičovská organizace",
+      "SuccessfullyCreated": "Organizace s názvem {{name}} byla úspěšně vytvořena.",
+      "AlreadyExists": "Organizace s názvem {{name}} již existuje.",
+      "SuccessfullyUpdated": "Organizace s názvem {{name}} byla úspěšně aktualizována.",
+      "NotFound": "Organizace s id {{id}} nebyla nalezena.",
+      "ConfirmationDelete": "Chcete odstranit {{name}}?",
+      "SuccessfullyDeleted": "Organizace s názvem {{name}} byla úspěšně smazána.",
+      "ErrorDeleted": "Při odstraňování organizace s názvem {{name}} došlo k chybě",
+      "SuccessfullyImported": "Organizace {{imported}} byly úspěšně importovány.",
+      "Levels": {
+        "Plant": "Rostlina",
+        "Department": "Oddělení",
+        "Workshop": "Dílna",
+        "Job": "Práce",
+        "Workstation": "Pracovní stanice",
+        "Task": "Úkol"
+      }
+    },
+    "Plant": {
+      "PlantDetailsTitle": "Podrobnosti o zařízeních",
+      "GaiaCode": "Gaia kód",
+      "Delegation": "Delegace",
+      "Country": "Země",
+      "Sector": "Sektor",
+      "BusinessUnit": "Obchodní jednotka",
+      "SOA": "SOA",
+      "InvalidGaiaCode": "Gaia kód musí obsahovat přesně 6 znaků uppercases nebo čísla.",
+      "SuccessfullyCreated": "Závod s názvem {{name}} byl úspěšně vytvořen.",
+      "AlreadyExists": "Založte kód Gaia {{gaiaCode}} již existuje.",
+      "SuccessfullyUpdated": "Zařízení s názvem {{name}} bylo úspěšně aktualizováno.",
+      "NotFound": "Zařízení s id {{id}} nebylo nalezeno.",
+      "ConfirmationDelete": "Chcete odstranit {{name}}?",
+      "SuccessfullyDeleted": "Zařízení s názvem {{name}} bylo úspěšně smazáno.",
+      "ErrorDeleted": "Při mazání zařízení s názvem {{name}} došlo k chybě."
+    },
+    "eSMAT": {
+      "Title": "Seznam SMATs",
+      "SmatReceivers": "Přijímače SMAT",
+      "SmatReceiverDetails": "Podrobnosti o přijímači SMAT",
+      "SubTitle": "SMATs",
+      "History": "Dějiny",
+      "AddButtons": {
+        "Scheduled": "Naplánovaný SMAT",
+        "Unscheduled": "Neplánované SMAT",
+        "Receiver": "Přidat přijímač",
+        "Observation": "Přidat pozorování",
+        "Language": "Přidat jazyk"
+      },
+      "Schedule": {
+        "Title": "Naplánovat SMAT",
+        "ImportTitle": "Plán importu",
+        "SuccessfullyCreated": "Plán byl úspěšně vytvořen.",
+        "SuccessfullyUpdated": "Plán byl úspěšně aktualizován.",
+        "NotFound": "Plán s id {{id}} nebyl nalezen.",
+        "ConfirmationDelete": "Chcete smazat plán s ID {{id}}?",
+        "SuccessfullyDeleted": "Plán s id {{id}} byl úspěšně smazán.",
+        "ErrorDeleted": "Při mazání plánu s id {{id}} došlo k chybě.",
+        "SuccessfullyImported": "Programy {{imported}} byly úspěšně importovány."
+      },
+      "Unscheduled": {
+        "Title": "Přidat neplánované SMAT"
+      },
+      "Smatee": "Smatee",
+      "Smator": "Smator",
+      "SmatForm": "Formulář SMAT",
+      "DueDate": "Datum splatnosti",
+      "SmatLeader": "SMAT Leader",
+      "SmatLeader2": "SMAT Leader 2",
+      "SmatReceiver2": "SMAT přijímač 2",
+      "SmatReceiver": {
+        "Title": "Seznam Smat přijímače",
+        "SubTitle": "Smat přijímač",
+        "ImportTitle": "Import SMAT přijímače",
+        "SuccessfullyCreated": "Smat přijímač s názvem {{firstName}} {{lastName}} byl úspěšně vytvořen.",
+        "SuccessfullyUpdated": "Smat přijímač s názvem {{firstName}} {{lastName}} byl úspěšně aktualizován.",
+        "NotFound": "Smat přijímač s id {{id}} nebyl nalezen.",
+        "ConfirmationDelete": "Chcete odstranit {{name}}?",
+        "SuccessfullyDeleted": "Přijímač Smat s názvem {{name}} byl úspěšně smazán.",
+        "ErrorDeleted": "Při mazání přijímače smat s názvem {{name}} došlo k chybě.",
+        "SuccessfullyImported": "{{imported}} přijímače SMAT byly úspěšně importovány."
+      },
+      "Observations": "Pozorování",
+      "ObservationManagement": {
+        "Title": "Seznam pozorování",
+        "SubTitle": "Pozorování",
+        "AddCategoryButton": "Přidat kategorii",
+        "AddSubCategoryButton": "Přidat podkategorie",        
+        "SubCategoriesButton": "Podkategorie",
+        "Standard": "Standard ?",
+        "Enabled": "Povoleno?",
+        "Language": "Jazyk",
+        "ConfirmationDelete": "Chcete smazat {{value}}?",
+        "SuccessfullyCreated": "Kategorie sledování bylo úspěšně vytvořeno.",
+        "SuccessfullyUpdated": "Kategorie sledování byla úspěšně aktualizována.",
+        "ConfirmationCategoryDelete": "Chcete odstranit {{description}}?",
+        "SuccessfullyDeleted": "Kategorie sledování {{description}} byla úspěšně smazána.",
+        "ErrorDeleted": "Při odstraňování kategorie sledování došlo k chybě {{description}}.",
+        "SuccessfullyStatusUpdated": "Stav byl úspěšně aktualizován.",
+        "ErrorUpdated": "Při aktualizaci stavu došlo k chybě."
+      },
+      "Smat": {
+        "Start": "Start",
+        "Shift": "Posun",
+        "PerformedDate": "Datum provedení",
+        "FeedbackEmails": "E-maily zpětné vazby",
+        "DateRange": "Časové období",
+        "Comment": "Komentář",
+        "IsImmediateAction": "Toto je okamžitá akce",
+        "IsToBeReportedAsTF4Or5": "Chcete-li být hlášeni jako TF4 / TF5",
+        "IsImmediateActionToolTip": "Akce zahájena nejpozději 24 hodin po návštěvě SMAT",
+        "IsToBeReportedAsTF4Or5ToolTip": "Pozorování SMAT může být hlášeno a analyzováno jako situace blízká chybám (TF4) nebo nebezpečné situaci (TF5)",
+        "PositivePoint": "Pozitivní body",
+        "UnsafeAct": "Nebezpečné věci",
+        "UnsafeCondition": "Nebezpečné podmínky",
+        "General": "Všeobecné",
+        "Photo": "Fotografie",
+        "ViewPhoto": "Zobrazit fotografii",
+        "AdditionalInformation": "Dodatečné informace",
+        "AddActionPlan": "Přidat akční plán",
+        "UploadHelpText": "Max velikost 3 MB",
+        "ExceededImageSize": "Velikost souboru přesahuje 3 MB",
+        "SuccessfullyCreated": "Smat byl úspěšně vytvořen.",
+        "SuccessfullyUpdated": "Smat byl úspěšně aktualizován.",
+        "NotFound": "Smat id {{id}} nebyl nalezen.",
+        "ConfirmationDelete": "Chcete odstranit smat pomocí id {{id}}?",
+        "SuccessfullyDeleted": "Smat s id {{id}} byl úspěšně smazán.",
+        "ErrorDeleted": "Při mazání smat s id {{id}} došlo k chybě.",
+        "UploadingImages": "Nahrávání obrázků ...",
+        "SuccessfullyUploadedImage": "Obrázek {{index}} {{total}} byl úspěšně nahrán."
+      },
+      "Reporting": {
+        "Title": "Reporting",
+        "SubTitle": "Reporting",
+        "NoResult": "Žádné výsledky",
+        "PieChart": "Koláčový graf",
+        "BarChart": "Sloupcový graf",
+        "HorizontalBarChart": "Horizontální sloupcový graf",
+        "Type": {
+          "SmatByEmployee": "Smats zaměstnanci",
+          "SmatBySmator": "Smats by smat leader",
+          "SmatByEmployeeExcel": "Smats zaměstnanci (Excel)",
+          "SmatBySmatorExcel": "Smats by smat leader (Excel)",
+          "SmatByMonth": "Smats by month",
+          "SmatByOrganization": "Smats podle organizace",
+          "ObservationByType": "Pozorování podle typu",
+          "ObservationByTypeAndMonth": "Poznámky měsíčně",
+          "ObservationByCategory": "Pozorování podle kategorie / podkategorie",
+          "ObservationByOrganization": "Pozorování podle organizace",
+          "GaiaExport": "Export souboru Gaia (Excel)",
+          "FullReport": "Úplná zpráva (Excel)"
+        },
+        "NumberOfSmat": "Počet smámů",
+        "Total": "Celkový"
+      }
+    },
+    "eAction": {
+      "Title": "Seznam akčních plánů",
+      "SubTitle": "Akční plány",
+      "Number": "Akce č.",
+      "CreatedBy": "Vytvořil",
+      "CreatedAt": "Vytvořeno u",
+      "Status": "Postavení",
+      "Source": "Zdroj",
+      "ActionForm": {
+        "AdditionalInformation": "Dodatečné informace",
+        "Title": "Přidat akční plán",
+        "General": "Cílový pozorování",
+        "Details": "Podrobnosti",
+        "ActionTaken": "Opatření přijatá v reakci na incident",
+        "AssignedEmployee": "Zaměstnanec odpovědný",
+        "CompletedDate": "Datum dokončení",
+        "ClosedDate": "Uzavřeno datum"
+      }
+    }
+  }

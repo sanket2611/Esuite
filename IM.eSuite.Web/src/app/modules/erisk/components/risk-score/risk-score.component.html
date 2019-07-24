@@ -1,0 +1,70 @@
+<div [formGroup]="scoreForm">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" formControlName="isChronicRiskScore" (change)="onChronicRiskScoreChanged()"/>
+                        <span class="text-bold">{{"eRisk.RiskForm.ChronicRiskScore" | translate}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group" [ngClass]="{'has-error': scoreForm.controls.probabilityId.invalid && !scoreForm.controls.probabilityId.pristine && !isChronicRiskScore}">
+                <label>{{"eRisk.RiskForm.Probability" | translate}} 
+                    <span class="text-danger" *ngIf="hasRequiredFields && !isChronicRiskScore">*</span>
+                    <span class="text-danger" *ngIf="!(hasRequiredFields && !isChronicRiskScore)">({{"eRisk.RiskForm.Optional" | translate}})</span>
+                </label>
+                <i class="fa fa-info-circle text-primary" [tooltip]="'eRisk.RiskForm.ProbabilityToolTip' | translate"
+                    placement="auto"></i>
+                <ngx-select allowClear="true" formControlName="probabilityId" [items]="probabilities" [placeholder]="'eRisk.RiskForm.Probability' | translate"
+                    (select)="onProbabilitySelected()" (remove)="onProbabilityRemoved()" [required]="hasRequiredFields && !isChronicRiskScore" ></ngx-select>
+                <div class="help-block" *ngIf="scoreForm.controls.probabilityId.invalid && !scoreForm.controls.probabilityId.pristine && !isChronicRiskScore">
+                    {{"Common.Forms.RequiredField" | translate}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group" [ngClass]="{'has-error': scoreForm.controls.severityId.invalid && !scoreForm.controls.severityId.pristine && !isChronicRiskScore}">
+                <label>{{"eRisk.RiskForm.Severity" | translate}} 
+                        <span class="text-danger" *ngIf="!(hasRequiredFields && !isChronicRiskScore)">({{"eRisk.RiskForm.Optional" | translate}})</span>
+                        <span class="text-danger" *ngIf="hasRequiredFields && !isChronicRiskScore">*</span>
+                </label>
+                <i class="fa fa-info-circle text-primary" [tooltip]="'eRisk.RiskForm.SeverityToolTip' | translate"
+                    placement="auto"></i>
+                <ngx-select allowClear="true" formControlName="severityId" [items]="severities" [placeholder]="'eRisk.RiskForm.Severity' | translate"
+                    (select)="onSeveritySelected()" (remove)="onSeverityRemoved()" [required]="hasRequiredFields && !isChronicRiskScore"></ngx-select>
+                <div class="help-block" *ngIf="scoreForm.controls.severityId.invalid && !scoreForm.controls.severityId.pristine && !isChronicRiskScore">
+                    {{"Common.Forms.RequiredField" | translate}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group" [ngClass]="{'has-error': scoreForm.controls.frequencyId.invalid && !scoreForm.controls.frequencyId.pristine && !isChronicRiskScore}">
+                <label>{{"eRisk.RiskForm.Frequency" | translate}} <span class="text-danger">({{"eRisk.RiskForm.Optional" | translate}})</span></label>
+                <i class="fa fa-info-circle text-primary" [tooltip]="'eRisk.RiskForm.FrequencyToolTip' | translate"
+                    placement="auto"></i>
+                <ngx-select allowClear="true" formControlName="frequencyId" [items]="frequencies" [placeholder]="'eRisk.RiskForm.Frequency' | translate"
+                    (select)="onFrequencySelected()" (remove)="onFrequencyRemoved()" ></ngx-select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group" [ngClass]="{'has-error': scoreForm.controls.chronicRiskScoreId.invalid && !scoreForm.controls.chronicRiskScoreId.pristine && isChronicRiskScore}">
+                <label>{{"eRisk.RiskForm.ScoreofRisk" | translate}}<span class="text-danger" *ngIf="hasRequiredFields && isChronicRiskScore">*</span> </label>
+                <i class="fa fa-info-circle text-primary" [tooltip]="'eRisk.RiskForm.ScoreofRiskToolTip' | translate"
+                    placement="auto"></i>
+                <ngx-select allowClear="true" formControlName="chronicRiskScoreId" [items]="chronicRiskScores" [placeholder]="'eRisk.RiskForm.ChronicRiskScore' | translate"
+                    (select)="onChronicRiskScoreSelected()" (remove)="onChronicRiskScoreRemoved()" [required]="hasRequiredFields && isChronicRiskScore" *ngIf="isChronicRiskScore"></ngx-select>
+                <div class="help-block" *ngIf="scoreForm.controls.chronicRiskScoreId.invalid && !scoreForm.controls.chronicRiskScoreId.pristine && isChronicRiskScore">
+                    {{"Common.Forms.RequiredField" | translate}}
+                </div>
+                <br *ngIf="isChronicRiskScore" />
+                <span class="pull-right badge" [ngClass]="backgroundClass">&nbsp;&nbsp;{{score}}&nbsp;&nbsp;</span>
+            </div>
+        </div>
+    </div>

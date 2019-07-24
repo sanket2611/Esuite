@@ -1,0 +1,133 @@
+<div class="row" [formGroup]="actionForm">
+  <div class="col-xs-12 col-sm-6">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.responsible.invalid && !actionForm.controls.responsible.pristine}">
+      <label>{{"eAction.ActionForm.AssignedEmployee" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <ngx-select formControlName="responsible" allowClear="true" [items]="responsibles" [placeholder]="'eAction.ActionForm.AssignedEmployee' | translate"
+        (select)="onResponsibleSelected($event)" required></ngx-select>
+      <div class="help-block" *ngIf="actionForm.controls.responsible.invalid && !actionForm.controls.responsible.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.status.invalid && !actionForm.controls.status.pristine}">
+      <label>{{"eAction.Status" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <ngx-select formControlName="status" allowClear="true" [items]="statuses" [placeholder]="'eAction.Status' | translate" 
+        (select)="onStatusSelect($event)" required></ngx-select>
+      <div class="help-block" *ngIf="actionForm.controls.status.invalid && !actionForm.controls.status.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.description.invalid && !actionForm.controls.description.pristine}">
+      <label>{{"Common.Fields.Description" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <textarea type="text" formControlName="description" class="form-control" required></textarea>
+      <div class="help-block" *ngIf="actionForm.controls.description.invalid && !actionForm.controls.description.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.actionTaken.invalid && !actionForm.controls.actionTaken.pristine}">
+      <label>{{"eAction.ActionForm.ActionTaken" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <textarea type="text" formControlName="actionTaken" class="form-control" required></textarea>
+      <div class="help-block" *ngIf="actionForm.controls.actionTaken.invalid && !actionForm.controls.actionTaken.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-3">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.initialDueDate.invalid && !actionForm.controls.initialDueDate.pristine}">
+      <label>{{"eAction.ActionForm.InitialDueDate" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <div class="input-group">
+        <input formControlName="initialDueDate" class="form-control" bsDatepicker type="text" [bsConfig]="{containerClass:'theme-dark-blue'}"
+        #initialDueDate="bsDatepicker" [isDisabled]="isEditMode" [readonly]="isEditMode"/>
+        <div class="input-group-addon" (click)="initialDueDate.toggle()">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+      <div class="help-block" *ngIf="actionForm.controls.initialDueDate.invalid && !actionForm.controls.initialDueDate.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-xs-12 col-sm-3" *ngIf="isEditMode">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.dueDate.value!= null && actionForm.controls.dueDate.invalid && !actionForm.controls.dueDate.pristine }"
+      *ngIf="actionForm.value.status">
+      <label>{{"eAction.ActionForm.DueDate" | translate}}
+      </label>
+      <div class="input-group">
+        <input formControlName="dueDate" class="form-control" bsDatepicker type="text" [bsConfig]="{containerClass:'theme-dark-blue'}"
+          #dueDate="bsDatepicker" />
+        <div class="input-group-addon" (click)="dueDate.toggle()">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+      <div class="help-block" *ngIf="actionForm.controls.dueDate.value!= null && actionForm.controls.dueDate.invalid && !actionForm.controls.dueDate.pristine">
+        {{"Common.Forms.InvalidField" | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.completionDate.invalid && !actionForm.controls.completionDate.pristine}"
+      *ngIf="actionForm.value.status && !isStatus(StatusEnum.Opened)">
+      <label>{{"eAction.ActionForm.CompletedDate" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <div class="input-group">
+        <input formControlName="completionDate" class="form-control" bsDatepicker type="text" [bsConfig]="{containerClass:'theme-dark-blue'}"
+          #completionDate="bsDatepicker" />
+        <div class="input-group-addon" (click)="completionDate.toggle()">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+      <div class="help-block" *ngIf="actionForm.controls.completionDate.invalid && !actionForm.controls.completionDate.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <div class="form-group" [ngClass]="{'has-error': actionForm.controls.closingDate.invalid && !actionForm.controls.closingDate.pristine}"
+      *ngIf="isStatus(StatusEnum.Closed) || isStatus(StatusEnum.Cancelled)">
+      <label>{{"eAction.ActionForm.ClosedDate" | translate}}
+        <span class="text-danger">*</span>
+      </label>
+      <div class="input-group">
+        <input formControlName="closingDate" class="form-control" bsDatepicker type="text" [bsConfig]="{containerClass:'theme-dark-blue'}"
+          #closingDate="bsDatepicker" />
+        <div class="input-group-addon" (click)="closingDate.toggle()">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+      <div class="help-block" *ngIf="actionForm.controls.closingDate.invalid && !actionForm.controls.closingDate.pristine">
+        {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label>{{"eSMAT.Smat.Comment" | translate}}</label>
+      <textarea type="text" formControlName="comment" class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label>{{"eSMAT.Smat.FeedbackEmails" | translate}} </label>
+      <ngx-select [items]="feedbackEmails" allowClear="true" autoClearSearch="true" [placeholder]="'eSMAT.Smat.FeedbackEmails' | translate"
+        [multiple]="true" formControlName="feedbackEmails" (typed)="onEmailTyped($event)"></ngx-select>                      
+    </div>
+  </div>
+</div>

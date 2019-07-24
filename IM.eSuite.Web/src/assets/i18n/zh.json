@@ -1,0 +1,304 @@
+{
+  "Application": {
+    "Pole": "IM",
+    "Name": "eSuite",
+    "ShortName": "eS"
+  },
+  "Core": {
+    "PageSize": {
+      "Label": "登录次数："
+    }
+  },
+  "Authentication": {
+    "Login": {
+      "Message": "登录以开始您的会话",
+      "Button": "使用SSO登录"
+    },
+    "SSO": {
+      "Message": "正在登录,请稍等。"
+    },
+    "Forbidden": {
+      "Title": "禁止",
+      "Message": "你不被允许做所要求的行动。"
+    }
+  },
+  "Common": {
+    "Tables": {
+      "Update": "更新",
+      "Id": "ID",
+      "NoEntries": "没有条目要显示。"
+    },
+    "Buttons": {
+      "Save": "保存",
+      "Cancel": "取消",
+      "Search": "搜索",
+      "Delete": "删除",
+      "Template": "模板",
+      "Import": "导入",
+      "Export": "下载",
+      "Add": "加入",
+      "Yes": "是",
+      "No": "不是"
+    },
+    "Modals": {
+      "DeleteTitle": "确认删除 ？",
+      "Close": "关闭",
+      "ImportHelpText": ".xlsx文件。最大尺寸：500kB",
+      "ErrorsTitle": "错误",
+      "ErrorItem": "行{{line}}：{{message}}"
+    },
+    "Forms": {
+      "RequiredField": "这是必填栏。",
+      "InvalidEmail": "电子邮件无效。",
+      "InvalidSGId": "SGId无效。它应以大写字母开头,后跟7位数。",
+      "SelectAll": "全选"
+    },
+    "Fields": {
+      "Name": "名称",
+      "File": "文件",
+      "Date": "日期",
+      "Type": "类型",
+      "Description": "描述",
+      "DueDate": "截止日期",
+      "Category": "类别",
+      "SubCategory": "子类别"
+    }
+  },
+  "Home": {
+    "Enter": "输入",
+    "BackMenu": "去eSuite",
+    "Applications": "应用",
+    "MasterData": "主要的数据"
+  },
+  "Administration": {
+    "Users": {
+      "Title": "用户列表",
+      "SubTitle": "用户",
+      "ImportTitle": "导入用户",
+      "UserDetailsTitle": "用户详细信息",
+      "AddUser": "添加用户",
+      "Users": "用户",
+      "User": "用户",
+      "SGId": "SGID",
+      "FirstName": "名",
+      "LastName": "姓",
+      "Email": "电子邮件",
+      "PermissionsTitle": "申请批准",
+      "SuccessfullyCreated": "SGId用户：{{SGId}}已成功创建。",
+      "AlreadyExists": "SGId的用户：{{SGId}}已经存在。",
+      "SuccessfullyUpdated": "SGId用户：{{SGId}}已成功更新。",
+      "NotFound": "找不到ID为{{id}}的用户。",
+      "NotFoundInDirectory": "在目录中找不到SGId：{{SGId}}的用户。",
+      "ConfirmationDelete": "是否要删除{{firstName}} {{lastName}}（SGId = {{userName}}）？",
+      "SuccessfullyDeleted": "SGId用户：{{SGId}}已成功删除。",
+      "ErrorDeleted": "使用SGId删除用户时发生错误：{{SGId}}。",
+      "SuccessfullyImported": "{{imported}}用户已成功导入。"
+    }
+  },
+  "Organization": {
+    "Title": "公司名单",
+    "SubTitle": "公司",
+    "ImportTitle": "导入公司",
+    "SubTitles": {
+      "Plants": "工厂",
+      "Departments": "{{name}} 中的部门",
+      "Workshops": "{{name}} 的车间",
+      "Jobs": "{{name}}中的岗位",
+      "Workstations": "{{name}} 中工作站",
+      "Tasks": "{{name}}中的任务"
+    },
+    "OrganizationDetailsTitle": "公司名称",
+    "AddButtons": {
+      "Plant": "添加",
+      "Department": "添加部门",
+      "Workshop": "添加车间",
+      "Job": "添加岗位",
+      "Workstation": "添加工作站",
+      "Task": "添加任务"
+    },
+    "DetailButtons": {
+      "Plants": "工厂",
+      "Departments": "部门",
+      "Workshops": "车间",
+      "Jobs": "工作",
+      "Workstations": "工作站",
+      "Tasks": "任务"
+    },
+    "Organizations": "公司",
+    "Organization": "公司",
+    "LowerLevels": "较低的水平",
+    "ParentOrganization": "上一级公司",
+    "SuccessfullyCreated": "已成功创建名称为{{name}}的公司。",
+    "AlreadyExists": "名称为{{name}}的公司已存在。",
+    "SuccessfullyUpdated": "名称为{{name}}的公司已成功更新。",
+    "NotFound": "找不到ID为{{id}}的公司。",
+    "ConfirmationDelete": "你想删除{{name}}吗？",
+    "SuccessfullyDeleted": "名称为{{name}}的组织已成功删除。",
+    "ErrorDeleted": "删除名称为{{name}}的公司时出错。",
+    "SuccessfullyImported": "{{imported}}公司已成功导入。",
+    "Levels": {
+      "Plant": "厂",
+      "Department": "部门",
+      "Workshop": "车间",
+      "Job": "岗位",
+      "Workstation": "工作站",
+      "Task": "任务"
+    }
+  },
+  "Plant": {
+    "PlantDetailsTitle": "工厂名称",
+    "GaiaCode": "工厂代码",
+    "Delegation": "代表处",
+    "Country": "国家",
+    "Sector": "事业部",
+    "BusinessUnit": "业务部门",
+    "SOA": "SOA",
+    "InvalidGaiaCode": "工厂代码必须包含6个字符：大写字母或数字。",
+    "SuccessfullyCreated": "已成功创建名称为{{name}}的工厂。",
+    "AlreadyExists": "Gaia工厂代码：{{gaiaCode}}已经存在。",
+    "SuccessfullyUpdated": "名称为{{name}}的工厂已成功更新。",
+    "NotFound": "找不到ID为{{id}}的工厂。",
+    "ConfirmationDelete": "你想删除{{name}}吗？",
+    "SuccessfullyDeleted": "名称为{{name}}的工厂已成功删除。",
+    "ErrorDeleted": "删除名称为{{name}}的工厂时发生错误。"
+  },
+  "eSMAT": {
+    "Title": "SMAT列表",
+    "SmatReceivers": "SMAT被访谈员工",
+    "SmatReceiverDetails": "SMAT被访谈员工信息",
+    "SubTitle": "SMATs",
+    "History": "历史",
+    "AddButtons": {
+      "Scheduled": "计划的SMAT",
+      "Unscheduled": "未计划的SMAT",
+      "Receiver": "添加被访谈员工",
+      "Observation": "添加观察",
+      "Language": "添加语言"
+    },
+    "Schedule": {
+      "Title": "计划一个SMAT",
+      "ImportTitle": "导入计划",
+      "SuccessfullyCreated": "已成功创建计划。",
+      "SuccessfullyUpdated": "计划已成功更新。",
+      "NotFound": "找不到包含ID：{{id}}的计划。",
+      "ConfirmationDelete": "您要删除ID为{{id}}的计划吗？",
+      "SuccessfullyDeleted": "ID为{{id}}的计划已成功删除。",
+      "ErrorDeleted": "删除ID为{{id}}的计划时出错。",
+      "SuccessfullyImported": " 已成功导入 {{imported}} 计划。"
+    },
+    "Unscheduled": {
+      "Title": "添加一个未计划的SMAT"
+    },
+    "Smatee": "Smatee",
+    "Smator": "Smator",
+    "SmatForm": "SMAT表格",
+    "DueDate": "截止日期",
+    "SmatLeader": "SMAT访谈者",
+    "SmatLeader2": "SMAT访谈者2",
+    "SmatReceiver2": "SMAT被访谈员工2",
+    "SmatReceiver": {
+      "Title": "Smat被访谈员工清单",
+      "SubTitle": "Smat被访谈员工",
+      "ImportTitle": "导入SMAT被访谈员工",
+      "SuccessfullyCreated": "已成功创建名称为{{firstName}} {{lastName}}的Smat被访谈员工。",
+      "SuccessfullyUpdated": "名称为{{firstName}} {{lastName}}的Smat被访谈员工已成功更新。",
+      "NotFound": "找不到ID为{{id}}的Smat被访谈员工。",
+      "ConfirmationDelete": "你想删除{{name}}吗？",
+      "SuccessfullyDeleted": " 名称为{{name}}的Smat被访谈员工已成功删除",
+      "ErrorDeleted": "删除名称为{{name}}的smat被访谈员工时出错。",
+      "SuccessfullyImported": "{{imported}} SMAT被访谈员工已成功导入。"
+    },
+    "Observations": "观察",
+    "ObservationManagement": {
+      "Title": "观察清单",
+      "SubTitle": "观察",
+      "AddCategoryButton": "添加类别",
+      "AddSubCategoryButton": "添加子类别",      
+      "SubCategoriesButton": "子类别",
+      "Standard": "标准？",
+      "Enabled": "已启用？",
+      "Language": "语言",
+      "ConfirmationDelete": "你想删除{{value}}吗？",
+      "SuccessfullyCreated": "观察类别已成功创建。",
+      "SuccessfullyUpdated": "观察类别已成功更新。",
+      "ConfirmationCategoryDelete": "你想删除{{description}}吗？",
+      "SuccessfullyDeleted": "观察类别：{{description}}已成功删除。",
+      "ErrorDeleted": "删除观察类别时发生错误：{{description}}。",
+      "SuccessfullyStatusUpdated": "状态已成功更新。",
+      "ErrorUpdated": "更新状态时发生错误。"
+    },
+    "Smat": {
+      "Start": "开始",
+      "Shift": "转移",
+      "PerformedDate": "执行日期",
+      "FeedbackEmails": "反馈电子邮件",
+      "DateRange": "日期范围",
+      "Comment": "建议",
+      "IsImmediateAction": "须立即采取行动",
+      "IsToBeReportedAsTF4Or5": "报告为TF4 / TF5",
+      "IsImmediateActionToolTip": "在SMAT访问后24小时内采取行动",
+      "IsToBeReportedAsTF4Or5ToolTip": "SMAT观测可以报告和分析为险兆事件（TF4）或不安全情况（TF5）",
+      "PositivePoint": "好的方面",
+      "UnsafeAct": "不安全的行为",
+      "UnsafeCondition": "不安全的状况",
+      "General": "一般",
+      "Photo": "照片",
+      "ViewPhoto": "查看照片",
+      "AdditionalInformation": "附加信息",
+      "AddActionPlan": "添加行动计划",
+      "UploadHelpText": "最大3MB",
+      "ExceededImageSize": "文件超过3MB",
+      "SuccessfullyCreated": "Smat已成功创建。",
+      "SuccessfullyUpdated": "Smat已成功更新。",
+      "NotFound": "未找到Smat id {{id}}。",
+      "ConfirmationDelete": "您要删除ID为{{id}}的smat吗？",
+      "SuccessfullyDeleted": "标识为{{id}}的Smat已成功删除。",
+      "ErrorDeleted": "删除标识为{{id}}的smat时出错。",
+      "UploadingImages": "正在上传图片...",
+      "SuccessfullyUploadedImage": "{{total}}的图片{{index}}已成功上传。"
+    },
+    "Reporting": {
+      "Title": "报告",
+      "SubTitle": "报告",
+      "NoResult": "没有结果",
+      "PieChart": "饼形图",
+      "BarChart": "条形图",
+      "HorizontalBarChart": "水平条形图",
+      "Type": {
+        "SmatByEmployee": "按员工",
+        "SmatBySmator": "按访谈者",
+        "SmatByEmployeeExcel": "按员工 (Excel)",
+        "SmatBySmatorExcel": "按访谈者 (Excel)",
+        "SmatByMonth": "按月",
+        "SmatByOrganization": "按公司",
+        "ObservationByType": "按类别观察",
+        "ObservationByTypeAndMonth": "按月观察",
+        "ObservationByCategory": "按类别/子类别观察",
+        "ObservationByOrganization": "按工厂观察",
+        "GaiaExport": "Gaia 文件导出 (Excel)",
+        "FullReport": "完整报告 (Excel)"
+      },
+      "NumberOfSmat": "SMAT数量",
+      "Total": "总"
+    }
+  },
+  "eAction": {
+    "Title": "行动计划清单",
+    "SubTitle": "行动计划",
+    "Number": "行动n°",
+    "CreatedBy": "由…创建",
+    "CreatedAt": "创建于",
+    "Status": "状态",
+    "Source": "资源",
+    "ActionForm": {
+      "AdditionalInformation": "附加信息",
+      "Title": "添加行动计划",
+      "General": "目标观察",
+      "Details": "内容",
+      "ActionTaken": "针对事件采取的行动",
+      "AssignedEmployee": "责任人",
+      "CompletedDate": "完成日期",
+      "ClosedDate": "关闭日期"
+    }
+  }
+}

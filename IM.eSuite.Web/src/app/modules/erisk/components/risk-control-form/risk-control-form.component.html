@@ -1,0 +1,132 @@
+<div [formGroup]="riskControlForm">
+  <div class="row" >
+    <div class="col-xs-12">
+      <h4 class="text-primary text-center">
+        {{'eRisk.RiskForm.TechnicalMeasuresTitle' | translate}}
+        <button type="button" class="btn btn-primary pull-right" [disabled]="!plantId" (click)="addMeanOfControl()">{{'eRisk.RiskForm.AddMeansOfControl' | translate}}</button>
+      </h4>      
+    </div>
+  </div>
+  <div class="row" formGroupName="technicalMeasures">
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+        <label>{{'eRisk.RiskForm.TechnicalMeasures' | translate}}</label>
+        <div class="row">
+          <div class="col-xs-12">
+            <angular2-multiselect formControlName="descriptions" [data]="getMeansOfControlsByType(MeanOfControlTypeEnum.TechnicalMeasure)" [settings]="getMultiSelectSettings('eRisk.RiskForm.TechnicalMeasures')"></angular2-multiselect>
+          </div>          
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+        <label>{{'eRisk.RiskForm.Reliability' | translate}}</label>
+        <ngx-select formControlName="reliabilityId" [items]="reliabilities" [placeholder]="'eRisk.RiskForm.Reliability' | translate" allowClear="true"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label>{{'Common.Fields.Comment' | translate}}</label>
+        <textarea type="text" class="form-control" formControlName="comment"></textarea>
+      </div>
+    </div>    
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="text-primary text-center">{{'eRisk.RiskForm.OrganizationAndBehavior' | translate}}</h4>
+    </div>
+  </div>
+  <div formGroupName="organizations">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label>{{'eRisk.RiskForm.Organization' | translate}}</label>        
+          <angular2-multiselect formControlName="descriptions" [data]="getMeansOfControlsByType(MeanOfControlTypeEnum.OrganzationAndBehavior)" 
+            [settings]="getMultiSelectSettings('eRisk.RiskForm.Organization')"></angular2-multiselect>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label>{{'eRisk.RiskForm.Reliability' | translate}}</label>
+          <ngx-select formControlName="reliabilityId" [items]="reliabilities" [placeholder]="'eRisk.RiskForm.Reliability' | translate" allowClear="true"></ngx-select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label>{{'eRisk.RiskForm.CommunicationAndInformation' | translate}}</label>
+          <angular2-multiselect formControlName="communicationAndInformations" [data]="getMeansOfControlsByType(MeanOfControlTypeEnum.CommunicationAndInformation)" 
+            [settings]="getMultiSelectSettings('eRisk.RiskForm.CommunicationAndInformation')"></angular2-multiselect>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label>{{'eRisk.RiskForm.RuleControls' | translate}}</label>
+          <angular2-multiselect formControlName="ruleControls" [data]="getMeansOfControlsByType(MeanOfControlTypeEnum.RulesControl)"
+            [settings]="getMultiSelectSettings('eRisk.RiskForm.RuleControls')"></angular2-multiselect>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label>{{'eRisk.RiskForm.Others' | translate}}</label>
+          <angular2-multiselect formControlName="others" [data]="getMeansOfControlsByType(MeanOfControlTypeEnum.Others)" 
+            [settings]="getMultiSelectSettings('eRisk.RiskForm.Others')"></angular2-multiselect>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label>{{'eRisk.RiskForm.Training' | translate}}</label>
+          <angular2-multiselect formControlName="trainings" [data]="getMeansOfControlsByType(MeanOfControlTypeEnum.Training)" 
+            [settings]="getMultiSelectSettings('eRisk.RiskForm.Training')"></angular2-multiselect>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label>{{'Common.Fields.Comment' | translate}}</label>
+          <textarea type="text" class="form-control" formControlName="comment"></textarea>
+        </div>
+      </div>        
+    </div>
+  </div>
+  <div class="row" >
+    <div class="col-xs-12">
+      <h4 class="text-primary text-center">{{'eRisk.RiskForm.EpiForTask' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row" formGroupName="epis">
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+          <label>{{'Common.Fields.Description' | translate}}</label>
+          <angular2-multiselect formControlName="descriptions" [data]="epis" [settings]="getEpisMultiSelectSettings()"></angular2-multiselect>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+        <label>{{'eRisk.RiskForm.Reliability' | translate}}</label>
+        <ngx-select formControlName="reliabilityId" [items]="reliabilities" [placeholder]="'eRisk.RiskForm.Reliability' | translate" allowClear="true"></ngx-select>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="form-group">
+          <label>{{'eRisk.RiskForm.EmployeesWithSpecificMeasures' | translate}}</label>
+          <input formControlName="employeeType" class="form-control" type="text">
+        </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label>{{'Common.Fields.Comment' | translate}}</label>
+        <textarea type="text" class="form-control" formControlName="comment"></textarea>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<div #addMeanOfControlModal="bs-modal" bsModal class="modal fade">
+  <app-risk-add-mean-of-control-modal [modal]="addMeanOfControlModal" [plantId]="plantId" 
+    (meanOfControlCreatedRequest)="onMeanOfControlCreated($event)"></app-risk-add-mean-of-control-modal>
+</div>

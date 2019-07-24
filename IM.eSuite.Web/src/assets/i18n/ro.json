@@ -1,0 +1,304 @@
+{
+  "Application": {
+    "Pole": "IM",
+    "Name": "eSuite",
+    "ShortName": "eS"
+  },
+  "Core": {
+    "PageSize": {
+      "Label": "Numărul de intrări:"
+    }
+  },
+  "Authentication": {
+    "Login": {
+      "Message": "Conectați-vă pentru a începe sesiunea",
+      "Button": "Conectați-vă cu SSO"
+    },
+    "SSO": {
+      "Message": "Conexiune  în curs, așteptați."
+    },
+    "Forbidden": {
+      "Title": "Interzis",
+      "Message": "Nu vi se permite să faceți acțiunea cerută."
+    }
+  },
+  "Common": {
+    "Tables": {
+      "Update": "Actualizați",
+      "Id": "Id-ul",
+      "NoEntries": "Nu există intrări pentru afișare"
+    },
+    "Buttons": {
+      "Save": "Salvați",
+      "Cancel": "Anulare",
+      "Search": "Căutare",
+      "Delete": "Șterge",
+      "Template": "Șablon",
+      "Import": "Import",
+      "Export": "Export",
+      "Add": "Adăuga",
+      "Yes": "Da",
+      "No": "Nu"
+    },
+    "Modals": {
+      "DeleteTitle": "Confirmi stergerea ?",
+      "Close": "Închide",
+      "ImportHelpText": "Numai fișiere .xlsx. Dimensiune maximă: 500kB",
+      "ErrorsTitle": "Erori",
+      "ErrorItem": "Linia {{line}}: {{message}}"
+    },
+    "Forms": {
+      "RequiredField": "Acest câmp este obligatoriu.",
+      "InvalidEmail": "Adresa de e-mail este invalida.",
+      "InvalidSGId": "SGId este nevalid, ar trebui să înceapă printr-o majuscula urmată de 7 cifre.",
+      "SelectAll": "Selectează tot"
+    },
+    "Fields": {
+      "Name": "Nume",
+      "File": "Fişier",
+      "Date": "Data",
+      "Type": "Tip",
+      "Description": "Descriere",
+      "DueDate": "Data limita",
+      "Category": "Categorie",
+      "SubCategory": "Subcategorie"
+    }
+  },
+  "Home": {
+    "Enter": "Introduce",
+    "BackMenu": "Inapoi la eSuite",
+    "Applications": "Aplicații",
+    "MasterData": "Master Data"
+  },
+  "Administration": {
+    "Users": {
+      "Title": "Lista utilizatorilor",
+      "SubTitle": "Utilizatori",
+      "ImportTitle": "Import de utilizatori",
+      "UserDetailsTitle": "Detalii utilizator",
+      "AddUser": "Adăugați utilizator",
+      "Users": "Utilizatori",
+      "User": "Utilizator",
+      "SGId": "SGID",
+      "FirstName": "Prenume",
+      "LastName": "Numele de familie",
+      "Email": "E-mail",
+      "PermissionsTitle": "Permisiuni prin cerere",
+      "SuccessfullyCreated": "Utilizator cu SGId {{SGId}} a fost creat cu succes.",
+      "AlreadyExists": "Utilizator cu SGId {{SGId}} există deja.",
+      "SuccessfullyUpdated": "Utilizator cu SGId {{SGId}} a fost actualizat cu succes.",
+      "NotFound": "Utilizator cu id {{id}} nu a fost găsit.",
+      "NotFoundInDirectory": "Utilizator cu SGId {{SGId}} nu a fost găsit în director.",
+      "ConfirmationDelete": "Doriți să ștergeți {{firstName}} {{lastName}} (SGId = {{userName}})",
+      "SuccessfullyDeleted": "Utilizator cu SGId {{SGId}} a fost șters cu succes.",
+      "ErrorDeleted": "A apărut o eroare la ștergerea utilizatorului cu SGId {{SGId}}.",
+      "SuccessfullyImported": "Utilizatorii {{imported}} au fost importați cu succes"
+    }
+  },
+  "Organization": {
+    "Title": "Lista organizațiilor",
+    "SubTitle": "Oganizatie",
+    "ImportTitle": "Organizațiile de import",
+    "SubTitles": {
+      "Plants": "Fabrici",
+      "Departments": "Departamentele din {{name}}",
+      "Workshops": "Atelierele din {{name}}",
+      "Jobs": "Locuri de muncă în {{name}}",
+      "Workstations": "Stații de lucru în {{name}}",
+      "Tasks": "Activitati  în {{name}}"
+    },
+    "OrganizationDetailsTitle": "Detalii organizație",
+    "AddButtons": {
+      "Plant": "Adăugați fabrica",
+      "Department": "Adăugați un departament",
+      "Workshop": "Adăugați un atelier",
+      "Job": "Adăugați loc de muncă",
+      "Workstation": "Adăugați o stație de lucru",
+      "Task": "Adăugați o activitate"
+    },
+    "DetailButtons": {
+      "Plants": "Fabrici",
+      "Departments": "Departamente",
+      "Workshops": "Ateliere de lucru",
+      "Jobs": "Locuri de munca",
+      "Workstations": "stații de lucru",
+      "Tasks": "Activitati"
+    },
+    "Organizations": "Organizații",
+    "Organization": "Organizare",
+    "LowerLevels": "Nivele inferioare",
+    "ParentOrganization": "Organizația",
+    "SuccessfullyCreated": "Organizația cu numele {{name}} a fost creată cu succes.",
+    "AlreadyExists": "Organizația cu nume {{name}} există deja.",
+    "SuccessfullyUpdated": "Organizația cu numele {{name}} a fost actualizată cu succes.",
+    "NotFound": "Organizația cu id {{id}} nu a fost găsită.",
+    "ConfirmationDelete": "Doriți să ștergeți {{name}}?",
+    "SuccessfullyDeleted": "Organizația cu numele {{name}} a fost șters cu succes.",
+    "ErrorDeleted": "A apărut o eroare la ștergerea organizației cu nume {{name}}.",
+    "SuccessfullyImported": "Organizațiile {{imported}} au fost importate cu succes",
+    "Levels": {
+      "Plant": "Fabrica",
+      "Department": "Departament",
+      "Workshop": "Atelier",
+      "Job": "Loc de munca",
+      "Workstation": "Stație de lucru",
+      "Task": "Activitate"
+    }
+  },
+  "Plant": {
+    "PlantDetailsTitle": "Detaliile fabricilor",
+    "GaiaCode": "Codul Gaia",
+    "Delegation": "Delegație",
+    "Country": "Țară",
+    "Sector": "Sector",
+    "BusinessUnit": "Business unit",
+    "SOA": "SOA",
+    "InvalidGaiaCode": "Codul Gaia trebuie să conțină exact 6 caractere casete superioare sau numere",
+    "SuccessfullyCreated": "Fabrica {{name}} a fost creată cu succes.",
+    "AlreadyExists": "Fabrica cu codul Gaia {{gaiaCode}} există deja.",
+    "SuccessfullyUpdated": "Fabrica {{name}} a fost actualizată cu succes.",
+    "NotFound": "Fabrica cu id {{id}} nu a fost găsită.",
+    "ConfirmationDelete": "Doriți să ștergeți {{name}}?",
+    "SuccessfullyDeleted": "Fabrica {{name}} a fost ștearsa cu succes.",
+    "ErrorDeleted": "A apărut o eroare la ștergerea fabricii {{name}}."
+  },
+  "eSMAT": {
+    "Title": "Lista SMATs",
+    "SmatReceivers": "Persoana care a primit SMAT",
+    "SmatReceiverDetails": "Detaliile persoanei care a primit SMAT",
+    "SubTitle": "SMATs",
+    "History": "Istoric",
+    "AddButtons": {
+      "Scheduled": "SMAT programat",
+      "Unscheduled": "SMAT neplanificat",
+      "Receiver": "Adăugați persoana care primeste SMAT",
+      "Observation": "Add Observation",
+      "Language": "Selectati limba"
+    },
+    "Schedule": {
+      "Title": "Programați un SMAT",
+      "ImportTitle": "Import programare",
+      "SuccessfullyCreated": "Programarea a fost creata cu succes",
+      "SuccessfullyUpdated": "Programarea a fost actualizata cu succes",
+      "NotFound": "Programarea cu id {{id}} nu a fost găsita.",
+      "ConfirmationDelete": "Doriți să ștergeți programarea cu id {{id}}?",
+      "SuccessfullyDeleted": "Programarea  cu id {{id}} a fost ștearasa cu succes.",
+      "ErrorDeleted": "A apărut o eroare la ștergerea programarii cu id {{id}}.",
+      "SuccessfullyImported": "Programarile {{imported}} au fost importate cu succes"
+    },
+    "Unscheduled": {
+      "Title": "Adăugați un SMAT neprogramat"
+    },
+    "Smatee": "Smatee",
+    "Smator": "Smator",
+    "SmatForm": "Formular SMAT",
+    "DueDate": "Data scadentă",
+    "SmatLeader": "Leader SMAT",
+    "SmatLeader2": "SMAT Leader 2",
+    "SmatReceiver2": "A doua persoana care primeste SMAT",
+    "SmatReceiver": {
+      "Title": "Lista de persoane care primesc Smat",
+      "SubTitle": "Persoana care primeste Smat",
+      "ImportTitle": "Importul functie celui care primeste SMAT",
+      "SuccessfullyCreated": "Persoana care primeste SMAT {{firstName}} {{lastName}} a fost creata cu succes.",
+      "SuccessfullyUpdated": "Persoana care primeste SMAT {{firstName}} {{lastName}} a fost actualizata cu succes.",
+      "NotFound": "Persoana care primeste SMAT cu id {{id}} nu a fost găsita.",
+      "ConfirmationDelete": "Doriți să ștergeți {{name}}?",
+      "SuccessfullyDeleted": "Persoana care primeste SMAT cu nume {{name}} a fost ștersa cu succes.",
+      "ErrorDeleted": "A apărut o eroare la ștergerea persoanei care primeste SMAT cu nume {{name}}.",
+      "SuccessfullyImported": "{{imported}} Persoanele care primesc  SMAT au fost importate cu succes."
+    },
+    "Observations": "Observații",
+    "ObservationManagement": {
+      "Title": "Lista de observații",
+      "SubTitle": "Observare",
+      "AddCategoryButton": "Adăugați categorie",
+      "AddSubCategoryButton": "Adăugați subcategoria",      
+      "SubCategoriesButton": "Subcategorii",
+      "Standard": "Standard?",
+      "Enabled": "Activat ?",
+      "Language": "Limba",
+      "ConfirmationDelete": "Doriți să ștergeți {{value}}?",
+      "SuccessfullyCreated": "Observatia a fost creată cu succes",
+      "SuccessfullyUpdated": "Observatia a fost actualizată cu succes",
+      "ConfirmationCategoryDelete": "Doriți să ștergeți {{description}}?",
+      "SuccessfullyDeleted": "Observatia  {{description}} a fost ștearsa cu succes.",
+      "ErrorDeleted": "A apărut o eroare la ștergerea observației {{description}}.",
+      "SuccessfullyStatusUpdated": "Statusul a fost actualizat cu succes",
+      "ErrorUpdated": "A apărut o eroare la actualizarea statusului."
+    },
+    "Smat": {
+      "Start": "Start",
+      "Shift": "Schimb",
+      "PerformedDate": "Data efectuată",
+      "FeedbackEmails": "E-mailuri de feedback",
+      "DateRange": "Interval de date",
+      "Comment": "Cometariu",
+      "IsImmediateAction": "Aceasta este o acțiune imediată",
+      "IsToBeReportedAsTF4Or5": "Pentru a fi raportat ca TF4 / TF5",
+      "IsImmediateActionToolTip": "Acțiune pusă în aplicare maxim 24 de ore după vizita SMAT",
+      "IsToBeReportedAsTF4Or5ToolTip": "Observatia SMAT poate fi raportată și analizată ca un accident aproape produs (TF4) sau o conditie periculoasa (TF5)",
+      "PositivePoint": "Puncte pozitive",
+      "UnsafeAct": "Actiuni nesigure",
+      "UnsafeCondition": "Condiții periculoase",
+      "General": "General",
+      "Photo": "Fotografie",
+      "ViewPhoto": "Vezi fotografia",
+      "AdditionalInformation": "Informatii suplimentare",
+      "AddActionPlan": "Adăugați un plan de acțiune",
+      "UploadHelpText": "Dimensiune maximă 3MB",
+      "ExceededImageSize": "Dimensiunea fișierului depășește 3MB",
+      "SuccessfullyCreated": "Smat a fost creat cu succes",
+      "SuccessfullyUpdated": "Smat a fost actualizat cu succes",
+      "NotFound": "Smat id {{id}} nu a fost găsit.",
+      "ConfirmationDelete": "Doriți să ștergeți smat cu id {{id}}?",
+      "SuccessfullyDeleted": "Smat cu id {{id}} a fost șters cu succes.",
+      "ErrorDeleted": "A apărut o eroare la ștergerea lui smat cu id {{id}}.",
+      "UploadingImages": "Încărcarea imaginilor ...",
+      "SuccessfullyUploadedImage": "Imaginea {{index}} din {{total}} a fost încărcată cu succes."
+    },
+    "Reporting": {
+      "Title": "raportări",
+      "SubTitle": "Raportare",
+      "NoResult": "Fara rezultate",
+      "PieChart": "Graficul PieChart",
+      "BarChart": "Graficul BarChart",
+      "HorizontalBarChart": "Graficul HorizontalbarChart",
+      "Type": {
+        "SmatByEmployee": "Smaturi per angajat",
+        "SmatBySmator": "Smaturi per smat leader",
+        "SmatByEmployeeExcel": "Smaturi per angajat (Excel)",
+        "SmatBySmatorExcel": "Smaturi per smat leader (Excel)",
+        "SmatByMonth": "Smaturi pe luna",
+        "SmatByOrganization": "Smaturi pe organizatie",
+        "ObservationByType": "Observații după tip",
+        "ObservationByTypeAndMonth": "Observații per lună",
+        "ObservationByCategory": "Observații pe categorii / subcategorii",
+        "ObservationByOrganization": "Observații per organizație",
+        "GaiaExport": "Export de Gaia (Excel)",
+        "FullReport": "Raport complet (Excel)"
+      },
+      "NumberOfSmat": "Numărul de smaturi",
+      "Total": "Total"
+    }
+  },
+  "eAction": {
+    "Title": "Lista planurilor de acțiune",
+    "SubTitle": "Planuri de acțiune",
+    "Number": "Acțiunea nr.",
+    "CreatedBy": "Creat de",
+    "CreatedAt": "Creat la",
+    "Status": "Status",
+    "Source": "Sursă",
+    "ActionForm": {
+      "AdditionalInformation": "Informatii suplimentare",
+      "Title": "Adăugați un plan de acțiune",
+      "General": "Observație",
+      "Details": "Detalii",
+      "ActionTaken": "Acțiuni întreprinse ca răspuns la eveniment",
+      "AssignedEmployee": "Persoana responsabila",
+      "CompletedDate": "Data finalizarii",
+      "ClosedDate": "Data închiderii"
+    }
+  }
+}

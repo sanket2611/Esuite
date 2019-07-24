@@ -1,0 +1,23 @@
+<section class="content-header">
+  <h1>{{"eSMAT.Schedule.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+          <div class="box-body">
+            <app-schedule-fields [parentForm]="scheduleForm"></app-schedule-fields>
+          </div>
+          <div class="box-footer">
+            <button type="button" class="btn btn-default" [routerLink]="['/e-smat']" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+            <button type="submit" class="btn btn-success pull-right" [disabled]="scheduleForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eSmat_Schedule_Write')">
+                {{"Common.Buttons.Save" | translate}}
+                <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

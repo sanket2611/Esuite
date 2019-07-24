@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="form-group">            
+          <ngx-select allowClear="true" [items]="plants" [placeholder]="'Organization.Levels.Plant' | translate" [(ngModel)]="smatReceiverFilter.plantId"
+            (typed)="onPlantSearchChanged($event)" (remove)="onFilterRemoved()"></ngx-select>
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="form-group">            
+          <ngx-select allowClear="true" [items]="employeeTypes" [placeholder]="'Common.Fields.Type' | translate" [(ngModel)]="smatReceiverFilter.employeeTypeId"
+            (remove)="onFilterRemoved()"></ngx-select>
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="form-group">            
+          <input type="text" class="form-control" [placeholder]="'Administration.Users.LastName' | translate" [value]="smatReceiverFilter.name" 
+            (input)="onNameChanged($event)">
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <button class="btn btn-primary" type="button" (click)="onSmatReceiverSearchClicked()">{{"Common.Buttons.Search" | translate}}</button>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<section class="content-header">
+  <h1>{{"eRisk.Hazards" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <form #hazardForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="box-body">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label>{{"Organization.Levels.Plant" | translate}}</label>
+                <span>{{plant.gaiaCode}} - {{plant.name}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <button type="button" class="btn btn-primary" (click)="onAddLanguageClicked()">{{"Common.Buttons.AddLanguage"
+                  | translate}}</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="table-responsive">
+                  <table class="table table-hover table-striped table-bordered dataTable">
+                    <thead>
+                      <tr>
+                        <th>{{"Common.Fields.Language" | translate}}</th>
+                        <th>{{"eRisk.Hazards" | translate}}</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let description of model.descriptions">
+                        <td>{{description.language}}</td>
+                        <td>{{description.value}}</td>
+                        <td class="action-column">
+                          <button type="button" class="btn bg-navy" (click)="onUpdateClicked(description)">
+                            <i class="fa fa-wrench"></i>
+                            {{"Common.Tables.Update" | translate}}
+                          </button>
+                          <button type="button" class="btn btn-danger" (click)="onDeleteClicked(description)">
+                            <i class="fa fa-trash"></i>
+                            {{"Common.Buttons.Delete" | translate}}
+                          </button>
+                        </td>
+                      </tr>
+                      <tr *ngIf="model.descriptions.length == 0">
+                        <td colspan="3" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" |
+                          translate}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="button" class="btn btn-warning" [routerLink]="['/e-risk/master-data/hazard']">{{"Common.Buttons.Cancel"
+              | translate}}</button>
+            <button type="submit" class="btn btn-success pull-right" [disabled]="hazardForm.invalid || model.descriptions.length < 1 || isSaveInProgress">
+              {{"Common.Buttons.Save" | translate}}
+              <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<div #addLanguageModal="bs-modal" bsModal class="modal fade" (onHidden)="onAddLanguageModalHidden()">
+  <app-language-description-add [model]="selectedLanguage" [modal]="addLanguageModal" [(reset)]="resetAddLanguageForm"
+    (addedLanguageRequest)="onLanguageAdded($event)"></app-language-description-add>
+</div>
+<div #deleteLanguageModal="bs-modal" bsModal class="modal fade">
+  <app-language-description-delete [language]="selectedLanguage" [modal]="deleteLanguageModal" (deletedLanguageRequest)="onLanguageDeleted($event)"></app-language-description-delete>
+</div>

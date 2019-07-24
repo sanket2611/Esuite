@@ -1,0 +1,66 @@
+<div class="row" [formGroup]="informationForm">
+  <div class="col-xs-12 col-sm-6">
+    <app-location-fields [parentForm]="informationForm" [location]="location" (onPlantChangedRequest)="onPlantChanged($event)"></app-location-fields>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div class="form-group">
+      <label>{{"eRisk.RiskForm.CreationDate" | translate}}</label>
+      <input class="form-control" value="{{creationDate | date:'yyyy-MM-dd'}}" disabled="disabled" type="text" />
+    </div>
+    <div class="form-group">
+      <label>{{"eRisk.RiskForm.JobDescription" | translate}}
+      </label>        
+      <input class="form-control" type="text" formControlName="jobDescription">  
+    </div>
+    <div class="form-group">
+      <label>{{"eRisk.RiskForm.RiskSource" | translate}}
+      </label>
+      <angular2-multiselect formControlName="riskSources" [data]="riskSources" [settings]="riskSourcesSettings"></angular2-multiselect>
+    </div>
+	  <div class="form-group" *ngIf="displayOtherRiskSource">
+      <label>{{"eRisk.RiskForm.OtherRiskSource" | translate}}
+      </label>
+        <input class="form-control" type="text" formControlName="otherRiskSource">
+    </div>
+    <div class="form-group" *ngIf="displayStandardEvaluationFeedback">
+      <label>{{"eRisk.RiskForm.StandardEvaluationFeedback" | translate}}
+      </label>
+      <angular2-multiselect formControlName="standardEvaluationFeedbacks" [data]="standardEvaluationFeedbacks" [settings]="standardEvaluationFeedBacksSettings"></angular2-multiselect>
+    </div>
+    <div class="form-group">
+      <label>{{"eRisk.RiskForm.EPI" | translate}}</label>
+      <angular2-multiselect [data]="epis" formControlName="epis" [settings]="episSettings"></angular2-multiselect>      
+    </div>
+    <br />
+    <br />
+  </div>  
+</div>
+<div class="row hidden-xs" *ngIf="isEditMode">
+  <div class="col-sm-12">
+    <h4 class="text-primary text-center">{{"eRisk.RiskForm.ModificationInformation" | translate}}</h4>        
+  </div>
+</div>
+<div class="row" *ngIf="isEditMode">
+  <div class="col-xs-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped table-bordered dataTable">
+        <thead>
+          <tr>                        
+            <th>{{"eRisk.RiskForm.LastUpdate" | translate}}</th>
+            <th>{{"eRisk.RiskForm.UpdatedBy" | translate}}</th>
+            <th>{{"eRisk.RiskForm.PrevScore" | translate}}</th>
+            <th>{{"Common.Fields.Description" | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let modification of modificationsTable">
+            <td>{{modification.lastUpdate | date:'yyyy-MM-dd HH:MM'}}</td>
+            <td>{{modification.user.firstName}} {{modification.user.lastName}} </td>
+            <td>{{modification.previousScore }}</td>
+            <td>{{modification.description}}</td>                     
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

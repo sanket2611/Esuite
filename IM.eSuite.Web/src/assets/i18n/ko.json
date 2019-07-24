@@ -1,0 +1,298 @@
+{
+    "Application": {
+        "Pole": "IM",
+        "Name": "eSuite",
+        "ShortName": "eS"
+    },
+    "Core": {
+        "PageSize": {
+            "Label": "목록표시:"
+        }
+    },
+    "Authentication": {
+        "Login": {
+            "Message": "로그인하여 세션 시작",
+            "Button": "SSO로 로그인"
+        },
+        "SSO": {
+            "Message": "로그인 진행 중입니다."
+        },
+        "Forbidden": {
+            "Title": "불가",
+            "Message": "요청한 작업을 수행 할 수 없습니다."
+        }
+    },
+    "Common": {
+        "Tables": {
+            "Update": "업데이트",
+            "Id": "ID",
+            "NoEntries": "표시 할 항목이 없습니다."
+        },
+        "Buttons": {
+            "Save": "저장",
+            "Cancel": "취소",
+            "Search": "검색",
+            "Delete": "삭제",
+            "Template": "양식",
+            "Import": "가져오기",
+            "Export": "내보내기",
+            "Add": "추가"
+        },
+        "Modals": {
+            "DeleteTitle": "삭제 확인?",
+            "Close": "닫기",
+            "ImportHelpText": ".xlsx 파일 만 가능 최대 크기 : 500kB",
+            "ErrorsTitle": "오류",
+            "ErrorItem": "{{line}} 행 : {{message}}"
+        },
+        "Forms": {
+            "RequiredField": "이 필드는 필수 항목입니다.",
+            "InvalidEmail": "이메일이 잘못되었습니다.",
+            "InvalidSGId": "SGID가 유효하지 않습니다. 영문 1자리와 숫자 7 자리를 확인하십시오.",
+            "SelectAll": "모두 선택"
+        },
+        "Fields": {
+            "Name": "이름",
+            "File": "파일",
+            "Date": "날짜",
+            "Type": "유형",
+            "Category": "관찰항록",
+            "SubCategory": "하위 관찰항목",
+            "Description": "설명",
+            "DueDate": "완료예정일"
+        }
+    },
+    "Home": {
+        "Enter": "접속",
+        "BackMenu": "eSuite로 이동",
+        "Applications": "응용 프로그램",
+        "MasterData": "마스터 데이터"
+    },
+    "Administration": {
+        "Users": {
+            "Title": "사용자 목록",
+            "SubTitle": "사용자",
+            "ImportTitle": "사용자 가져 오기",
+            "UserDetailsTitle": "사용자 세부 정보",
+            "AddUser": "사용자 추가",
+            "Users": "사용자",
+            "User": "사용자",
+            "SGId": "SGID",
+            "FirstName": "이름",
+            "LastName": "성",
+            "Email": "이메일",
+            "PermissionsTitle": "응용 프로그램 별 권한",
+            "SuccessfullyCreated": "SGId 사용자  {{SGId}}이 (가) 성공적으로 생성되었습니다.",
+            "AlreadyExists": "SGId 사용자  {{SGId}}이 (가) 이미 있습니다.",
+            "SuccessfullyUpdated": "SGId 사용자  {{SGId}}이 (가) 성공적으로 업데이트되었습니다.",
+            "NotFound": "사용자 ID가 {{id}} 인 사용자가 없습니다.",
+            "NotFoundInDirectory": "SGId  {{SGId}} 사용자가 디렉토리에 없습니다.",
+            "ConfirmationDelete": "{{firstName}} {{lastName}} (SGId = {{userName}})을 삭제 하시겠습니까?",
+            "SuccessfullyDeleted": "SGId  {{SGId}} 사용자가 성공적으로 삭제되었습니다.",
+            "ErrorDeleted": "SGId를 사용하여 사용자를 삭제할 때 오류가 발생했습니다  {{SGId}}.",
+            "SuccessfullyImported": "{{imported}} 사용자를 성공적으로 가져 왔습니다."
+        }
+    },
+    "Organization": {
+        "Title": "조직 목록",
+        "SubTitle": "조직",
+        "ImportTitle": "조직목록 가져오기",
+        "SubTitles": {
+            "Plants": "공장",
+            "Departments": "{{name}}부서",
+            "Workshops": "{{name}}의 워크샵",
+            "Jobs": "{{name}}의 업무",
+            "Workstations": "{{name}}의 워크 스테이션",
+            "Tasks": "{{name}}의 작업 목록"
+        },
+        "OrganizationDetailsTitle": "조직 세부 정보",
+        "AddButtons": {
+            "Plant": "공장 추가",
+            "Department": "부서 추가",
+            "Workshop": "워크숍 추가",
+            "Job": "업무 추가",
+            "Workstation": "워크 스테이션 추가",
+            "Task": "작업 추가"
+        },
+        "DetailButtons": {
+            "Plants": "공장",
+            "Departments": "부서",
+            "Workshops": "워크샵",
+            "Jobs": "업무",
+            "Workstations": "워크 스테이션",
+            "Tasks": "작업"
+        },
+        "Organizations": "조직",
+        "Organization": "조직",
+        "LowerLevels": "하위 레벨",
+        "ParentOrganization": "상위 조직",
+        "SuccessfullyCreated": "이름이 {{name}} 인 조직이 생성되었습니다.",
+        "AlreadyExists": "이름이 {{name}} 인 조직이 이미 존재합니다.",
+        "SuccessfullyUpdated": "이름이 {{name}} 인 조직이 성공적으로 업데이트되었습니다.",
+        "NotFound": "ID가 {{id}} 인 조직을 찾을 수 없습니다.",
+        "ConfirmationDelete": "{{name}}을 (를) 삭제 하시겠습니까?",
+        "SuccessfullyDeleted": "이름이 {{name}} 인 조직이 삭제되었습니다.",
+        "ErrorDeleted": "이름이 {{name}} 인 조직을 삭제하는 중에 오류가 발생했습니다.",
+        "SuccessfullyImported": "{{imported}} 조직을 성공적으로 가져 왔습니다.",
+        "Levels": {
+            "Plant": "공장",
+            "Department": "부서",
+            "Workshop": "작업장",
+            "Job": "업무",
+            "Workstation": "워크 스테이션",
+            "Task": "작업"
+        }
+    },
+    "Plant": {
+        "PlantDetailsTitle": "공장 세부 정보",
+        "GaiaCode": "GAIA 코드",
+        "Delegation": "Delegation",
+        "Country": "국가",
+        "Sector": "부문",
+        "BusinessUnit": "사업 부문",
+        "SOA": "SOA",
+        "InvalidGaiaCode": "가이아 코드에는 정확히 대문자 또는 숫자 6자를 포함해야합니다.",
+        "SuccessfullyCreated": "이름이 {{name}} 인 공장이 성공적으로 생성되었습니다.",
+        "AlreadyExists": "가이아 코드가있는 공장  {{gaiaCode}}이 (가) 이미 존재합니다.",
+        "SuccessfullyUpdated": "이름이 {{name}} 인 공장이 성공적으로 업데이트되었습니다.",
+        "NotFound": "ID가있는 공장  {{id}}을 찾을 수 없습니다.",
+        "ConfirmationDelete": "{{name}}을 (를) 삭제 하시겠습니까?",
+        "SuccessfullyDeleted": "이름이 {{name}} 인 공장이 성공적으로 삭제되었습니다.",
+        "ErrorDeleted": "이름이 {{name}} 인 시스템을 삭제할 때 오류가 발생했습니다."
+    },
+    "eSMAT": {
+        "Title": "SMATs 목록",
+        "SmatReceivers": "SMATee",
+        "SmatReceiverDetails": "SMATee 세부 정보",
+        "SubTitle": "SMATs",
+        "History": "기록",
+        "AddButtons": {
+            "Scheduled": "계획된 SMAT",
+            "Unscheduled": "비계획 SMAT",
+            "Receiver": "SMATee 추가",
+            "Observation": "관찰사항 추가",
+            "Language": "언어 추가"
+        },
+        "Schedule": {
+            "Title": "SMAT 일정 추가",
+            "ImportTitle": "일정 가져오기",
+            "SuccessfullyCreated": "일정이 성공적으로 만들어졌습니다.",
+            "SuccessfullyUpdated": "일정이 성공적으로 업데이트되었습니다.",
+            "NotFound": "ID가있는 일정  {{id}}을 (를) 찾을 수 없습니다.",
+            "ConfirmationDelete": "ID가 {{id}} 인 일정을 삭제 하시겠습니까?",
+            "SuccessfullyDeleted": "ID가있는 일정  {{id}}이 (가) 삭제되었습니다.",
+            "ErrorDeleted": "ID가 {{id}} 인 일정을 삭제할 때 오류가 발생했습니다.",
+            "SuccessfullyImported": "{{imported}} 일정을 성공적으로 가져 왔습니다."
+        },
+        "Unscheduled": {
+            "Title": "비계획 SMAT 추가"
+        },
+        "Smatee": "SMATee",
+        "Smator": "SMATer",
+        "SmatForm": "SMAT 양식",
+        "DueDate": "완료예정일",
+        "SmatLeader": "SMATer",
+        "SmatLeader2": "SMATer 2",
+        "SmatReceiver2": "SMATee 2",
+        "SmatReceiver": {
+            "Title": "SMATee 목록",
+            "SubTitle": "SMATee",
+            "ReceiverTitle": "SMATee 직급",
+            "ImportTitle": "SMATee 가져 오기",
+            "SuccessfullyCreated": "이름이 {{firstName}} {{lastName}} 인 SMATee가 성공적으로 생성되었습니다.",
+            "SuccessfullyUpdated": "SMATee  {{firstName}} {{lastName}}이 (가) 성공적으로 업데이트되었습니다.",
+            "NotFound": "ID가있는 SMATee {{id}}를 찾을 수 없습니다.",
+            "ConfirmationDelete": "{{name}}을 (를) 삭제 하시겠습니까?",
+            "SuccessfullyDeleted": " 이름이  {{name}} 인 SMATee가 성공적으로 삭제되었습니다.",
+            "ErrorDeleted": "이름이 {{name}} 인 SMATee를 삭제할 때 오류가 발생했습니다.",
+            "SuccessfullyImported": "{{imported}}  SMATee를 성공적으로 가져 왔습니다."
+        },
+        "Observations": "관찰항목",
+        "ObservationManagement": {
+            "Title": "관찰항목",
+            "SubTitle": "관찰",
+            "AddCategoryButton": " '카테고리 추가'",
+            "AddSubCategoryButton": "하위 카테고리 추가",
+            "SubCategoriesButton": " '하위 카테고리'",
+            "Standard": "표준",
+            "Enabled": "사용 여부",
+            "Language": "언어",
+            "ConfirmationDelete": "{{value}}을 (를) 삭제 하시겠습니까?",
+            "SuccessfullyCreated": "신규 관찰 항목이 성공적으로 생성되었습니다.",
+            "SuccessfullyUpdated": "신규 관찰 항목이 성공적으로 업데이트되었습니다.",
+            "ConfirmationCategoryDelete": "{{description}} 을 (를) 삭제 하시겠습니까?",
+            "SuccessfullyDeleted": "관측 항목  {{description}}이 (가) 삭제되었습니다.",
+            "ErrorDeleted": "관찰 항목을 삭제할 때 오류가 발생했습니다  {{설명}}.",
+            "SuccessfullyStatusUpdated": "상태가 성공적으로 업데이트되었습니다.",
+            "ErrorUpdated": "상태를 업데이트 할 때 오류가 발생했습니다."
+        },
+        "Smat": {
+            "Start": "시작",
+            "Shift": "작업조",
+            "PerformedDate": "수행한 날짜",
+            "FeedbackEmails": "참조 이메일",
+            "DateRange": "날짜 범위",
+            "Comment": "특이사항",
+            "IsImmediateAction": "즉시개선.",
+            "IsToBeReportedAsTF4Or5": "TF4 / TF5로보고",
+            "IsImmediateActionToolTip": "SMAT 후  24 시간 이내에 개선이 완료되어야 합니다.",
+            "IsToBeReportedAsTF4Or5ToolTip": "관찰사항은 앗차사고(TF4) 또는 불안전한 행동/상태 (TF5)으로보고 분석 될 수 있습니다",
+            "PositivePoint": "긍정적인 측면",
+            "UnsafeAct": "불안전한 행동",
+            "UnsafeCondition": "불안전한 상태",
+            "General": "일반",
+            "Photo": "사진",
+            "ViewPhoto": "사진보기",
+            "AdditionalInformation": "추가 정보",
+            "AddActionPlan": "Action plan 추가",
+            "UploadHelpText": "최대 크기 3MB",
+            "ExceededImageSize": "파일 크기가 3MB를 초과합니다.",
+            "SuccessfullyCreated": "SMAT이 성공적으로 만들어졌습니다.",
+            "SuccessfullyUpdated": "SMAT이 성공적으로 업데이트되었습니다.",
+            "NotFound": "SMAT id {{id}}을 (를) 찾을 수 없습니다.",
+            "ConfirmationDelete": "ID가 {{id}} 인 SMAT을 삭제 하시겠습니까?",
+            "SuccessfullyDeleted": "ID가 {{id}} 인 SMAT이 성공적으로 삭제되었습니다.",
+            "ErrorDeleted": "id가 {{id}} 인 SMAT을 삭제할 때 오류가 발생했습니다.",
+            "UploadingImages": "이미지 업로드 중 ...",
+            "SuccessfullyUploadedImage": "{{총}}의 {{인덱스}} 이미지가 성공적으로 업로드되었습니다."
+        },
+        "Reporting": {
+            "Title": "REPORT",
+            "SubTitle": "REPORT",
+            "NoResult": "결과 없음",
+            "PieChart": "Pie 차트",
+            "BarChart": "막대 차트",
+            "HorizontalBarChart": "수평 막대형 차트",
+            "Type": {
+                "SmatByEmployee": "직원별 결과",
+                "SmatByMonth": "월별 결과",
+                "SmatByOrganization": "조직별 결과",
+                "ObservationByType": "유형별 관찰사항",
+                "ObservationByTypeAndMonth": "월간 유형별 관찰사항",
+                "ObservationByCategory": "카테고리 / 하위 카테고리 별 관찰사항",
+                "ObservationByOrganization": "조직별 관찰사항"
+            },
+            "NumberOfSmat": "SMAT 횟수",
+            "Total": "합계"
+        }
+    },
+    "eAction": {
+        "Title": "Action plan 목록",
+        "SubTitle": "Action plan",
+        "Number": "Action n °",
+        "CreatedBy": "작성자",
+        "CreatedAt": "만든 날짜",
+        "Status": "상태",
+        "Source": "출처",
+        "ActionForm": {
+            "AdditionalInformation": "추가 정보",
+            "Title": "Action plan 추가",
+            "General": "목표 관찰",
+            "Details": "세부",
+            "ActionTaken": "조취 사항",
+            "AssignedEmployee": "개선담당자",
+            "CompletedDate": "완료일자",
+            "ClosedDate": "종료일자"
+        }
+    }
+}

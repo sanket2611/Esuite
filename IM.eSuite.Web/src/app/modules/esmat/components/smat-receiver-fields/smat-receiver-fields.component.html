@@ -1,0 +1,57 @@
+<form #smatReceiverForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="box-body">
+    <div class="form-group" [ngClass]="{'has-error': firstName.invalid && !firstName.pristine}">
+      <label>{{"Administration.Users.FirstName" | translate}} <span class="text-danger">*</span></label>
+      <input type="text" name="firstname" class="form-control" required 
+        [(ngModel)]="receiver.firstName" #firstName="ngModel" >
+      <div class="help-block" *ngIf="firstName.invalid && !firstName.pristine">
+          {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': lastName.invalid && !lastName.pristine}"   >
+      <label>{{"Administration.Users.LastName" | translate}} <span class="text-danger">*</span></label>
+      <input type="text" name="lastname" class="form-control" required
+        [(ngModel)]="receiver.lastName" #lastName="ngModel">
+      <div class="help-block" *ngIf="lastName.invalid && !lastName.pristine" >
+          {{"Common.Forms.RequiredField" | translate}}
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': email.invalid && !email.pristine}" >
+      <label>{{"Administration.Users.Email" | translate}}</label>
+      <input type="text" name="email" class="form-control" pattern="^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+        [(ngModel)]="receiver.email" #email="ngModel" >
+      <div class="help-block" *ngIf="email.invalid && !email.pristine" >          
+        <span *ngIf="email.errors.pattern">{{"Common.Forms.InvalidEmail" | translate}}</span> 
+      </div>
+    </div>
+    <div class="form-group" >
+      <label>{{"Organization.Levels.Job" | translate}}</label>
+      <input type="text" name="receiverTitle" class="form-control" [(ngModel)]="receiver.jobPosition" />             
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': receiverType.invalid && !receiverType.pristine}" >
+      <label>{{"eSMAT.SmatReceiver.ReceiverType" | translate}} <span class="text-danger">*</span></label>
+      <ngx-select name="receiverType" allowClear="true" [items]="employeeTypes"
+        [(ngModel)]="receiver.employeeTypeId" #receiverType="ngModel" required>
+      </ngx-select>
+      <div class="help-block" *ngIf="receiverType.invalid && !receiverType.pristine" >
+        <span >{{"Common.Forms.RequiredField" | translate}}</span>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': plant.invalid && !plant.pristine}" >
+      <label>{{"Organization.Levels.Plant" | translate}} <span class="text-danger">*</span></label>
+      <ngx-select name="plant" allowClear="true" [items]="plants" 
+        [(ngModel)]="receiver.plantId" #plant="ngModel" (typed)="onPlantSearchChanged($event)" required>
+      </ngx-select>
+      <div class="help-block" *ngIf="plant.invalid && !plant.pristine"  >
+        <span >{{"Common.Forms.RequiredField" | translate}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button type="button" class="btn btn-warning" (click)="onCancelClicked()" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+    <button type="submit" class="btn btn-success pull-right" [disabled]="smatReceiverForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eSmat_MasterData_Smatee_Write')" >
+      {{"Common.Buttons.Save" | translate}}
+      <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+    </button>
+  </div>
+</form>

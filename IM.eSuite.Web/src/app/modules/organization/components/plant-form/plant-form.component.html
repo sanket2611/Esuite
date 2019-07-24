@@ -1,0 +1,68 @@
+<section class="content-header">
+    <h1>{{"Plant.PlantDetailsTitle" | translate}}</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <form #plantForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>{{"Plant.Delegation" | translate}}</label>
+                            <ngx-select name="delegation" allowClear="true" [items]="delegations" [(ngModel)]="plant.country.delegationId" 
+                                (select)="onDelegationSelected()" (remove)="onDelegationRemoved()"></ngx-select>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': country.invalid && !country.pristine}">
+                            <label>{{"Plant.Country" | translate}} <span class="text-danger">*</span></label>
+                            <ngx-select name="country" allowClear="true" [items]="countries" [(ngModel)]="plant.countryId" #country="ngModel" required></ngx-select>
+                            <div class="help-block" *ngIf="country.invalid && !country.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{"Plant.Sector" | translate}}</label>
+                            <ngx-select name="sector" allowClear="true" [items]="sectors" [(ngModel)]="plant.soa.businessUnit.sectorId" 
+                                (select)="onSectorSelected()" (remove)="onSectorRemoved()"></ngx-select>
+                        </div>
+                        <div class="form-group">
+                            <label>{{"Plant.BusinessUnit" | translate}}</label>
+                            <ngx-select name="businessUnit" allowClear="true" [items]="businessUnits" [(ngModel)]="plant.soa.businessUnitId" 
+                                (select)="onBusinessUnitSelected()" (remove)="onBusinessUnitRemoved()"></ngx-select>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': soa.invalid && !soa.pristine}">
+                            <label>{{"Plant.SOA" | translate}} <span class="text-danger">*</span></label>
+                            <ngx-select name="soa" allowClear="true" [items]="soas" [(ngModel)]="plant.soaId" #soa="ngModel" required></ngx-select>
+                            <div class="help-block" *ngIf="soa.invalid && !soa.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': name.invalid && !name.pristine}">
+                            <label>{{"Common.Fields.Name" | translate}} <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control" required
+                                [(ngModel)]="plant.name" #name="ngModel" />
+                            <div class="help-block" *ngIf="name.invalid && !name.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': gaiaCode.invalid && !gaiaCode.pristine}">
+                            <label>{{"Plant.GaiaCode" | translate}} <span class="text-danger">*</span></label>
+                            <input type="text" name="gaiaCode" class="form-control" required pattern="[A-Z\d]{6}" maxlength="6" minlength="6"
+                                [(ngModel)]="plant.gaiaCode" #gaiaCode="ngModel" />
+                            <div class="help-block" *ngIf="gaiaCode.invalid && !gaiaCode.pristine">
+                                <span *ngIf="gaiaCode.errors.required">{{"Common.Forms.RequiredField" | translate}}</span>
+                                <span *ngIf="gaiaCode.errors.pattern">{{"Plant.InvalidGaiaCode" | translate}}</span>
+                            </div>
+                        </div>                                              
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-warning" [routerLink]="['/organizations']" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+                        <button type="submit" class="btn btn-success pull-right" [disabled]="plantForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eSuite_MasterData_Plant_Write')">
+                            {{"Common.Buttons.Save" | translate}}
+                            <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

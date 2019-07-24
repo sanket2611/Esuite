@@ -1,0 +1,92 @@
+<section class="content-header">
+  <h1>{{"eRisk.HazardManagement.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eRisk.HazardManagement.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="form-group">
+                <ngx-select allowClear="true" name="plant" [items]='plants' [placeholder]="'Organization.Levels.Plant' | translate"
+                  [(ngModel)]="plantId" (select)="onPlantSelected()" (remove)="onPlantRemoved()"></ngx-select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary pull-right-xs" type="button" [disabled]="!plantId" (click)="onHazardSearchClicked()">{{"Common.Buttons.Search"
+                  | translate}}
+                  <i class="fa fa-spinner fa-spin" *ngIf="isInProgress"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <hr />
+            </div>
+          </div>
+          <div class="row" *ngIf="data">
+            <div class="col-xs-6 form-group">
+              <a class="btn btn-primary" [routerLink]="[plantId,'form']" *ngIf="authorizationService.hasRole('eRisk_MasterData_Hazard_Write')">
+                {{"eRisk.HazardManagement.HazardAddButton" | translate}}
+              </a>
+            </div>
+            <div class="col-sm-6 hidden-xs">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr>
+                      <th th-sort="description" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Name"
+                        | translate}}</th>
+                      <th th-sort="isEnabled" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Enablement"
+                        | translate}}</th>
+                      <th th-sort="isStandard" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)" ></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let hazard of data.entries">
+                      <td>{{hazard.description}}</td>
+                      <td> <input type="checkbox" (change)="onEnablementUpdate(hazard.id,$event)" [checked]='hazard.isEnabled' />
+                      </td>
+                      <td class="action-column">
+                        <a class="btn bg-navy" [routerLink]="[plantId , 'form', hazard.id]" *ngIf='!hazard.isStandard'>
+                          <i class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </a>
+                        <button type="button" class="btn btn-danger" (click)="onDeleteHazardClicked(hazard)" *ngIf="authorizationService.hasRole('eRisk_MasterData_Hazard_Write') && !hazard.isStandard ">
+                          <i class="fa fa-trash"></i>
+                          {{"Common.Buttons.Delete" | translate}}
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td colspan="2" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" |
+                        translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div #deleteHazardModal="bs-modal" bsModal class="modal fade">
+  <app-hazard-delete [hazard]="selectedHazard" [modal]="deleteHazardModal" (deletedHazardRequest)="onHazardDeleted($event)"></app-hazard-delete>
+</div>

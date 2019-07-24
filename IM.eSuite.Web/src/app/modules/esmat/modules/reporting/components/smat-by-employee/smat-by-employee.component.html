@@ -1,0 +1,51 @@
+<div class="row" *ngIf="data.entries.length !== 0">
+  <div class="col-xs-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped table-bordered dataTable">
+        <thead>
+          <tr>
+            <th th-sort="name" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Name" | translate}}</th>
+            <th>{{months[0]}}</th>
+            <th>{{months[1]}}</th>
+            <th>{{months[2]}}</th>
+            <th>{{months[3]}}</th>
+            <th>{{months[4]}}</th>
+            <th>{{months[5]}}</th>
+            <th>{{months[6]}}</th>
+            <th>{{months[7]}}</th>
+            <th>{{months[8]}}</th>
+            <th>{{months[9]}}</th>
+            <th>{{months[10]}}</th>
+            <th>{{months[11]}}</th>
+            <th th-sort="total" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eSMAT.Reporting.Total" | translate}}</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let smatee of data.entries" >           
+            <td>{{smatee.name}}</td>
+            <td>{{getMonthCount(smatee, 1)}}</td>
+            <td>{{getMonthCount(smatee, 2)}}</td>
+            <td>{{getMonthCount(smatee, 3)}}</td>
+            <td>{{getMonthCount(smatee, 4)}}</td>
+            <td>{{getMonthCount(smatee, 5)}}</td>
+            <td>{{getMonthCount(smatee, 6)}}</td>
+            <td>{{getMonthCount(smatee, 7)}}</td>
+            <td>{{getMonthCount(smatee, 8)}}</td>
+            <td>{{getMonthCount(smatee, 9)}}</td>
+            <td>{{getMonthCount(smatee, 10)}}</td>
+            <td>{{getMonthCount(smatee, 11)}}</td>
+            <td>{{getMonthCount(smatee, 12)}}</td>
+            <td>{{smatee.total}}</td>                
+          </tr>          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="data.entries.length !== 0">
+  <div class="col-xs-7 pull-right">
+    <div class="pull-right">
+        <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+    </div>
+  </div>
+</div>

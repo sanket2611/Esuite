@@ -1,0 +1,89 @@
+<section class="content-header">
+  <h1>{{"eSMAT.SmatReceiver.Title" | translate}}</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eSMAT.SmatReceiver.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn btn-primary" [routerLink]="['form']" *ngIf="authorizationService.hasRole('eSmat_MasterData_Smatee_Write')">
+                {{"eSMAT.AddButtons.Receiver" | translate}}
+              </button>
+              <button class="btn btn-warning hidden-xs hidden-sm" (click)="onImportClicked()" *ngIf="authorizationService.hasRole('eSmat_MasterData_Smatee_Write')">
+                <i class="fa fa-upload"></i> {{"Common.Buttons.Import" | translate}}
+              </button>
+              <a class="btn btn-info hidden-xs hidden-sm" [href]="templateUrl" >
+                <i class="fa fa-download"></i> {{"Common.Buttons.Template" | translate}}
+              </a>
+            </div>
+          </div>
+          <br/>
+          <app-smat-receiver-filter (onSmatReceiverFilteredRequest)="onSmatReceiverFiltered($event)" (onFilterRemovedRequest)="onFilterRemoved()"></app-smat-receiver-filter>
+          <hr/>
+          <div class="row hidden-xs">
+            <div class="col-sm-6 col-sm-offset-6">
+              <div class="pull-right">
+                  <app-page-size [model]="pageSizeVm"  (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr>                        
+                      <th th-sort="plantName" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Plant" | translate}}</th>
+                      <th th-sort="name" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Name" | translate}}</th>
+                      <th th-sort="type" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Common.Fields.Type" | translate}}</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr  *ngFor="let receiver of data.entries">
+                      <td>{{receiver.plantName}}</td>
+                      <td>{{receiver.name}}</td>
+                      <td>{{receiver.type}}</td>
+                      <td class="action-column">
+                        <button type="button" class="btn bg-navy" [routerLink]="['form', receiver.id]">
+                          <i  class="fa fa-wrench"></i>
+                          {{"Common.Tables.Update" | translate}}
+                        </button>                      
+                        <button type="button" class="btn btn-danger" (click)="onDeleteClicked(receiver)" *ngIf="authorizationService.hasRole('eSmat_MasterData_Smatee_Write')" >
+                          <i  class="fa fa-trash"></i>
+                          {{"Common.Buttons.Delete" | translate}}
+                        </button>
+                      </td>                      
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td colspan="4" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" | translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>  
+        </div>  
+      </div>
+    </div>
+  </div>
+</section>
+<div #deleteSmatReceiverModal="bs-modal" bsModal class="modal fade">
+   <app-smat-receiver-delete [receiver]="selectedReceiver" [modal]="deleteSmatReceiverModal" (deletedSmatReceiverRequest)="onSmatReceiverDeleted($event)"></app-smat-receiver-delete>
+</div>
+<div #importSmatReceiverModal="bs-modal" bsModal class="modal fade">
+  <app-smat-receiver-import [modal]="importSmatReceiverModal" (importedSmatReceiverRequest)="onSmatReceiverImported()"></app-smat-receiver-import>
+</div>

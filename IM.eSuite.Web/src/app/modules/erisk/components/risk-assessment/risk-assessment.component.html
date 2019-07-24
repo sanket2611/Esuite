@@ -1,0 +1,148 @@
+<section class="content-header">
+  <h1>{{"eRisk.AssessmentTitle" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eRisk.AssessmentSubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <a class="btn btn-primary" [routerLink]="['../evaluation']" *ngIf="authorizationService.hasRole('eRisk_Risk_Write')">{{"eRisk.AddRiskSituationButton"
+                | translate}}</a>
+            </div>
+          </div>
+          <br />
+          <app-organization-filter [configuration]="filterConfiguration" (onFilterChanged)="onFilterChanged($event)"
+            (onFilterRemoved)="onFilterRemoved()" (onPlantChanged)="onPlantChanged($event)">
+            <ng-template>
+              <ngx-select allowClear="true" [items]="hazards" [placeholder]="'eRisk.RiskForm.Hazard' | translate" name="hazard"
+                [(ngModel)]="hazardId" (select)="onHazardSelected($event)" (remove)="onHazardRemoved()"></ngx-select>
+            </ng-template>
+          </app-organization-filter>
+          <hr />
+          <div class="row">
+            <div class="col-sm-6">
+              <button type="button" class="btn bg-navy" (click)="onSafetySheetClicked(organizationFilter.workstationId)"
+                *ngIf="authorizationService.hasRole('eAction_Action_Write') && organizationFilter !== undefined && organizationFilter.workstationId !== undefined">
+                <i class="fa fa-file-text"></i>
+                {{"eRisk.SafetySheet" | translate}}
+                <i class="fa fa-spinner fa-spin" *ngIf="isDownloadInProgress"></i>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <div class="pull-right">
+                <button class="btn btn-primary" (click)="onNoChangeClicked()" [disabled]="selectedRiskIds.length == 0"
+                  *ngIf="authorizationService.hasRole('eRisk_Risk_Write')" title='{{"Common.Buttons.Nochange" | translate}}'>
+                  <i class="fa fa-calendar"></i>
+                </button>
+                <button class="btn btn btn-info hidden-xs hidden-sm" (click)="onTemplateClicked()" *ngIf="authorizationService.hasRole('eRisk_Risk_Write')" title="{{'Common.Buttons.Template' | translate}}">
+                  <i class="fa fa-file-excel-o"></i>
+                </button>
+                <button class="btn btn-warning hidden-xs hidden-sm" (click)="onImportClicked()" *ngIf="authorizationService.hasRole('eRisk_Risk_Write')" title="{{'Common.Buttons.Import' | translate}}">
+                  <i class="fa fa-download"></i>
+                </button>
+                <button class="btn btn-success" (click)="onExportClicked()" [disabled]="selectedRiskIds.length == 0  || isExportInProgress"
+                  *ngIf="authorizationService.hasRole('eRisk_Risk_Read')" title="{{'Common.Buttons.Export' | translate}}">
+                  <i class="fa fa-upload"></i> 
+                  <i class="fa fa-spinner fa-spin" *ngIf="isExportInProgress"></i>
+                </button>
+                <button class="btn btn-primary" (click)="onCopyClicked()" [disabled]="selectedRiskIds.length == 0"
+                  *ngIf="authorizationService.hasRole('eRisk_Risk_Write')" title="{{'Common.Buttons.Copy' | translate}}">
+                  <i class="fa fa-copy"></i>
+                </button>
+                <button class="btn btn-danger" (click)="onDeleteClicked()" [disabled]="selectedRiskIds.length == 0"
+                  *ngIf="authorizationService.hasRole('eRisk_Risk_Write')" title='{{"Common.Buttons.Delete" | translate}}'>
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="pull-right">
+                <app-page-size [model]="pageSizeVm" (pageSizeChangedRequest)="loadPage(1)"></app-page-size>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dataTable">
+                  <thead>
+                    <tr class="bg-purple">
+                      <th><input type="checkbox" [ngModel]="allSelected" (ngModelChange)="onSelectAllClicked()" /></th>
+                      <th th-sort="lastEvaluationDate" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.LastEvaluationDate"
+                        | translate}}</th>
+                      <th th-sort="workstation" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Workstation"
+                        | translate}}</th>
+                      <th th-sort="task" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"Organization.Levels.Task"
+                        | translate}}</th>
+                      <th th-sort="hazard" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.HazardDescription"
+                        | translate}}</th>
+                      <th th-sort="description" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.Description"
+                        | translate}}</th>
+                      <th th-sort="score" [sort]="sortVm" (onSortChangedRequest)="onSortChanged($event)">{{"eRisk.FinalRiskScore"
+                        | translate}}</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let assessment of data.entries">
+                      <td><input type="checkbox" [ngModel]="assessment.selected" (ngModelChange)="onRiskChanged(assessment)" /></td>
+                      <td><span [ngClass]="getlastEvaluationDateBackgroundColor(assessment.lastEvaluationDate)">
+                          {{assessment.lastEvaluationDate | date:'shortDate':'':locale}} </span> </td>
+                      <td>{{assessment.workStation}}</td>
+                      <td>{{assessment.task}}</td>
+                      <td>{{assessment.hazard}}</td>
+                      <td>{{assessment.jobDescription}}</td>
+                      <td>
+                        <span class="pull-right badge" [ngClass]="getScoreBackgroundColor(assessment.score)">&nbsp;&nbsp;{{assessment.score}}&nbsp;&nbsp;</span>
+                      </td>
+                      <td class="action-column">
+                        <a class="btn bg-navy" [routerLink]="['../evaluation', assessment.id]">
+                          <i class="fa fa-pencil"></i> {{"Common.Buttons.Update" | translate}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr *ngIf="data.entries.length == 0">
+                      <td colspan="10" class="text-center text-muted text-bold">{{"Common.Tables.NoEntries" |
+                        translate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7 pull-right">
+              <div class="pull-right">
+                <app-pager [model]="pagerVm" (pageChangedRequest)="loadPage($event)"></app-pager>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div #deleteRiskModal="bs-modal" bsModal class="modal fade">
+  <app-risk-delete [riskIds]="selectedRiskIds" [modal]="deleteRiskModal" (deletedRisksRequest)="onRiskDeleted()"></app-risk-delete>
+</div>
+
+<div #copyRiskModal="bs-modal" bsModal class="modal fade">
+  <app-risks-copy [riskIds]="selectedRiskIds" [modal]="copyRiskModal" (risksCopyRequest)="onRiskCopied()"></app-risks-copy>
+</div>
+
+<div #updateDateRiskModal="bs-modal" bsModal class="modal fade">
+  <app-risk-evaluation-date [riskIds]="selectedRiskIds" [modal]="updateDateRiskModal" (updateRisksDateRequest)="OnDateUpdated()"></app-risk-evaluation-date>
+</div>
+
+
+<div #importRiskModal="bs-modal" bsModal class="modal fade">
+  <app-risk-import [modal]="importRiskModal" ></app-risk-import>
+</div>

@@ -1,0 +1,34 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{"Common.Buttons.AddLanguage" | translate}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form #addLanguageForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="modal-body">
+        <div class="form-group" [ngClass]="{'has-error': language.invalid && !language.pristine}">
+          <label>{{"Common.Fields.Language" | translate}} <span class="text-danger">*</span></label>
+          <ngx-select name="language" allowClear="true" [items]="languages" [placeholder]="'Common.Fields.Language' | translate"
+            [(ngModel)]="model.languageId" #language="ngModel" (select)="onLanguageSelected($event)" required>
+          </ngx-select>
+          <div class="help-block" *ngIf="language.invalid && !language.pristine">
+              {{"Common.Forms.RequiredField" | translate}}
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': value.invalid && !value.pristine}">
+          <label>{{"Common.Fields.Description" | translate}} <span class="text-danger">*</span></label>
+          <input name="value" type="text" [(ngModel)]="model.value" #value="ngModel" class="form-control" required>
+          <div class="help-block" *ngIf="value.invalid && !value.pristine">
+              {{"Common.Forms.RequiredField" | translate}}
+          </div>
+        </div>    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" (click)="modal.hide()">{{ "Common.Buttons.Cancel" | translate }}</button>
+        <button type="submit" class="btn btn-success" [disabled]="addLanguageForm.invalid">{{ "Common.Buttons.Add" | translate }}</button>
+      </div>
+    </form>
+  </div>
+</div>

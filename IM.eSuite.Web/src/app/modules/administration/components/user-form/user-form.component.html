@@ -1,0 +1,97 @@
+<section class="content-header">
+  <h1>{{"Administration.Users.UserDetailsTitle" | translate}}</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="box-body">
+                        <div class="form-group" [ngClass]="{'has-error': userName.invalid && !userName.pristine}">
+                            <label>{{"Administration.Users.SGId" | translate}} <span class="text-danger">*</span></label>
+                            <div [ngClass]="{'input-group': !isEdition}">
+                                <input type="text" id="userName" name="userName" class="form-control" required minlength="8" maxlength="8" 
+                                    [(ngModel)]="user.userName" [disabled]="isEdition" #userName="ngModel" pattern="^[A-Z]{1}[\d]{7}$" >
+                                <div class="input-group-btn" *ngIf="!isEdition">
+                                    <button type="button" class="btn btn-info" (click)="onDirectorySearchClicked()" [disabled]="isDirectorySearchInProgress || userName.invalid">
+                                        {{"Common.Buttons.Search" | translate}}
+                                        <i class="fa fa-spinner fa-spin" *ngIf="isDirectorySearchInProgress"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="help-block" *ngIf="userName.invalid && !userName.pristine">
+                                <span *ngIf="userName.errors.required">{{"Common.Forms.RequiredField" | translate}}</span>
+                                <span *ngIf="userName.errors.pattern">{{"Common.Forms.InvalidSGId" | translate}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': firstName.invalid && !firstName.pristine}">
+                            <label>{{"Administration.Users.FirstName" | translate}} <span class="text-danger">*</span></label>
+                            <input type="text" name="firstname" class="form-control" required
+                                [(ngModel)]="user.firstName" #firstName="ngModel" >
+                            <div class="help-block" *ngIf="firstName.invalid && !firstName.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': lastName.invalid && !lastName.pristine}" >
+                            <label>{{"Administration.Users.LastName" | translate}} <span class="text-danger">*</span></label>
+                            <input type="text" name="lastname" class="form-control" required
+                                [(ngModel)]="user.lastName" #lastName="ngModel" >
+                            <div class="help-block" *ngIf="lastName.invalid && !lastName.pristine">
+                                {{"Common.Forms.RequiredField" | translate}}
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': email.invalid && !email.pristine}">
+                            <label>{{"Administration.Users.Email" | translate}}</label>
+                            <input type="text" name="email" class="form-control" pattern="^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+                                [(ngModel)]="user.email" #email="ngModel" >
+                            <div class="help-block" *ngIf="email.invalid && !email.pristine">
+                                <span *ngIf="email.errors.required">{{"Common.Forms.RequiredField" | translate}}</span>
+                                <span *ngIf="email.errors.pattern">{{"Common.Forms.InvalidEmail" | translate}}</span>
+                            </div>
+                        </div>
+                        <br/>
+                        <h4>{{"Administration.Users.PermissionsTitle" | translate}}</h4>
+                        <hr/>
+                        <div class="form-group row" *ngFor="let a of applications">
+                            <label class="col-xs-4 col-sm-2 col-lg-1">{{a.name}}</label>
+                            <div class="col-xs-8 col-sm-10 col-lg-11">
+                               <select name="userGroup_{{a.id}}" class="form-control" [ngModel]="getApplicationUserGroupId(a.id)" (change)="onUserGroupChanged(a.id, $event)">
+                                <option [value]=""></option>
+                                <option *ngFor="let ug of a.userGroups" [value]="ug.id">{{ug.name}}</option>
+                            </select> 
+                            </div>
+                        </div>
+                        <br/>
+                        <h4>{{"Organization.SubTitles.Plants" | translate}}</h4>
+                        <hr/>
+                        <app-user-form-plant-filter (onPlantFilteredRequest)="onPlantFiltered($event)" (onPlantFilterRemovedRequest)="onPlantFilterRemoved()"></app-user-form-plant-filter>                        
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [checked]="hasAllPlant()" (change)="onAllPlantChanged($event)" />
+                                    <span class="text-bold">{{"Common.Forms.SelectAll" | translate}}</span>
+                                </label> 
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="form-group" *ngFor="let p of plants">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [checked]="hasPlant(p.id)" (change)="onUserPlantChanged(p.id, $event)" />
+                                    {{p.gaiaCode}} - {{p.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-warning" [routerLink]="['/users']" [disabled]="isSaveInProgress">{{"Common.Buttons.Cancel" | translate}}</button>
+                        <button type="submit" class="btn btn-success pull-right" [disabled]="userForm.invalid || isSaveInProgress" *ngIf="authorizationService.hasRole('eSuite_Administration_User_Write')">
+                            {{"Common.Buttons.Save" | translate}}
+                            <i class="fa fa-spinner fa-spin" *ngIf="isSaveInProgress"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

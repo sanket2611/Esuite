@@ -1,0 +1,295 @@
+{
+  "Application": {
+      "Pole": "IM",
+      "Name": "eSuite",
+      "ShortName": "eS"
+  },
+  "Core":{
+      "PageSize": {
+          "Label":  "Merkintöjen määrä"
+      }
+  },
+  "Authentication": {
+      "Login": {
+          "Message":  "Kirjaudu sisään aloittaaksesi istunnon",
+          "Button":  "Kirjaudu sisääm SSO"
+      },
+      "SSO": {
+          "Message":  "Kirjautuminen käynnissä. Ole hyvä ja odota."
+      },
+      "Forbidden": {
+          "Title":  "Kielletty",
+          "Message":  "Et voi tehdä pyydettyä toimintoa."
+      }
+  },
+  "Common": {
+      "Tables": {
+          "Update":  "Päivitä.",
+          "Id" :  "Id",
+          "NoEntries":  "Ei merkintöjä."
+      },
+      "Buttons": {
+          "Save":  "Tallenna",
+          "Cancel":  "Peru",
+          "Search":  "Etsi",
+          "Delete":  "Poista",
+          "Template":  "Sivumalli",
+          "Import":  "Tuo",
+          "Export":"Vie",
+          "Add":"Lisää."
+      },
+      "Modals": {
+          "DeleteTitle":  "Vahvista poisto ?",            
+          "Close":  "Sulje",
+          "ImportHelpText": "vain xlsx-tiedostoja. Enimmäiskoko: 500kB",
+          "ErrorsTitle":  "Virheitä.",
+          "ErrorItem": "Rivi {{rivi}}: {{viesti}}"
+      },
+      "Forms":{
+          "RequiredField":  "Tämä kenttä pitää täyttää.",
+          "InvalidEmail": "Sähköpostiosoitteessa on virhe.",           
+          "InvalidSGId":  "Virheellinen SGId . Sen pitäisi alkaa isolla kirjaimella, jota seuraa 7 numeroa.",
+          "SelectAll":  "Valitse kaikki"          
+      },
+      "Fields":{
+          "Name":  "Nimi",
+          "File":  "Tiedosto",
+          "Date":"Päivämäärä",
+          "Type":  "Malli",
+          "Description":  "Kuvaus",
+          "DueDate":  "Eräpäivä.",
+          "Category": "Kategoria",
+          "SubCategory": "Alakategoria"
+          ,"Enablement" : "Activation"
+      }
+  },
+  "Home": {
+      "Enter":  "Enter",
+      "BackMenu":  "eSuite",
+      "Applications":  "Sovellukset",
+      "MasterData":  "Päätiedot"
+  },
+  "Administration": {
+      "Users": {
+          "Title":  "Käyttäjälista",
+          "SubTitle":  "Käyttäjät",
+          "ImportTitle": "Lisää käyttäjä",
+          "UserDetailsTitle": "Käyttäjän tiedot",
+          "AddUser": "Lisää käyttäjä",
+          "Users": "Käyttäjät",
+          "User":  "Käyttäjä",
+          "SGId":  "SGID",
+          "FirstName": "Etunimi",
+          "LastName": "Sukunimi",
+          "Email": "Sähköpostiosoite",
+          "PermissionsTitle": "Sovelluksen käyttöoikeudet",
+          "SuccessfullyCreated": "Käyttäjä SGId: {{SGId}} luonti onnistui.",            
+          "AlreadyExists": "Käyttäjä SGId: {{SGId}} on jo olemassa.",
+          "SuccessfullyUpdated": "Käyttäjä SGId: {{SGId}} tiedot on päivitetty.",
+          "NotFound": "Käyttäjä id: {{id}} ei löydy.",
+          "NotFoundInDirectory": "Käyttäjä SGId: {{SGId}} ei löydy hakemistosta.",
+          "ConfirmationDelete":  "Haluatko poistaa {{firstName}} {{lastName}} (SGId={{userName}}) ?",
+          "SuccessfullyDeleted": "Käyttäjä SGId: {{SGId}} on poistettu.",
+          "ErrorDeleted": "Käyttäjää SGId: {{SGId}}poistaessa tapahtui virhe.",
+          "SuccessfullyImported": "{{imported}} käyttäjät on luotu."
+      }
+  },
+  "Organization":{        
+      "Titile": "Organisaatio lista",
+      "SubTitle": "Organisaatio",
+      "ImportTitle": "Luo organisaatioita",
+      "SubTitles":{
+          "Plants": "Tehtaat",
+          "Departments": "Osastot {{name}}",
+          "Workshops": "Workshops {{name}}",
+          "Jobs": "Jobs{{name}}",
+          "Workstations": "Työpisteet {{name}}",
+          "Tasks": "Tehtävät {{name}}"
+      },
+      "OrganizationDetailsTitle": "Organisaation tiedot",
+      "AddButtons":{
+          "Plant": "Lisää tehdas",
+          "Department": "Lisää osasto",
+          "Workshop": "Add workshop",
+          "Job": "Add Job",
+          "Workstation": "Lisää työpiste",
+          "Task": "Lisää tehtävä"
+      },
+      "DetailButtons":{            
+          "Plants": "Tehtaat",
+          "Departments": "Osastot",
+          "Workshops": "Workshops",
+          "Jobs": "Jobs",
+          "Workstations": "Työpisteet",
+          "Tasks": "Tehtävät"
+      },
+      "Organizations": "Organisaatiot",
+      "Organization": "Organisaatio",
+      "LowerLevels": "Alemmat tasot",
+      "ParentOrganization":  "Pääorganisaatio",
+      "SuccessfullyCreated": "Organisaatio: {{name}} on luotu onnistuneesti.",  
+      "AlreadyExists": "Organisaatio: {{name}} on jo olemassa.",
+      "SuccessfullyUpdated": "Organisaatio: {{name}} on luotu onnistuneesti.",
+      "NotFound": "Organisaatio id: {{id}} ei löytynyt.",
+      "ConfirmationDelete": "Halautko poistaa {{name}} ?",
+      "SuccessfullyDeleted": "Organisaatio: {{name}} on poistettu.",
+      "ErrorDeleted": "Organisaatiota poistettaessa tapahtui virhe: {{name}}.",
+      "SuccessfullyImported": "{{imported}} Organisaatio on luotu onnistuneesti.",
+      "Levels": {
+          "Plant": "Tehdas",
+          "Department": "Osasto",
+          "Workshop": "Workshop",
+          "Job": "Job",
+          "Workstation": "Työpiste",
+          "Task": "Tehtävä"
+      }        
+  },
+  "Plant":{
+      "PlantDetailsTitle": "Tehtaan tiedot",
+      "GaiaCode": "Gaia koodi",
+      "Delegation": "Delegaatio",
+      "Country": "Maa",
+      "Sector": "Sektori",
+      "BusinessUnit": "Liiketoimintayksikkö.",        
+      "SOA": "SOA",
+      "InvalidGaiaCode": "Gaia koodissa on oltava täsmälleen 6 merkkiä: isoja tai numeroita: Isoja kirjaimia tai numeroita.",
+      "SuccessfullyCreated": "Tehdas: {{name}} on luotu onnistuneesti.",            
+      "AlreadyExists": "Tehdas Gaia koodilla: {{gaiaCode}} on jo olemassa.",
+      "SuccessfullyUpdated": "Tehdas: {{name}} on luotu onnistuneesti.",
+      "NotFound": "Tehdas: {{id}} ei löytynyt.",
+      "ConfirmationDelete": "Haluatko poistaa tehtaan{{name}} ?",
+      "SuccessfullyDeleted": "Tehdas: {{name}} on poistettu.",
+      "ErrorDeleted": "Poistettaessa tapahtui virhe: {{name}}."        
+  },
+  "eSMAT": {
+      "Title": "SMAT lista",
+      "SmatReceivers": "SMAT Vastaanottajat",
+      "SmatReceiverDetails": "SMAT Vastaanottajan tiedot",
+      "SubTitle": "SMATIT",
+      "History": "Historia",
+      "AddButtons":{
+          "Scheduled": "Aikataulutettu SMAT",
+          "Unscheduled": "Aikatauluttamaton SMAT",
+          "Receiver": "Lisää vastaanottaja",
+          "Observation": "Lisää havainto"
+      },
+      "Schedule": {
+          "Title": "Aikatauluta SMAT",
+          "ImportTitle": "Tuo aikataulu",
+          "SuccessfullyCreated": "Aikataulu on luotu onnistuneesti.",
+          "SuccessfullyUpdated": "Aikataulu on päivitetty onnistuneesti.",
+          "NotFound": "Aikataulu id: {{id}} ei löytynyt.",
+          "ConfirmationDelete": "Haluatko poistaa aikataulun {{id}}?",
+          "SuccessfullyDeleted": "Aikataulu: {{id}} on poistettu onnistuneesti.",
+          "ErrorDeleted": "Aikataulua poistettaessa tapahtui virhe: {{id}}.",
+          "SuccessfullyImported": "{{imported}} Aikataulu on luotu onnistuneesti."
+      },        
+      "Unscheduled": {
+          "Title": "Add an unscheduled SMAT"
+      },
+      "SmatForm": "SMAT kaavake",
+      "DueDate": "Eräpäivä.",
+      "SmatLeader": "SMAT johtaja",        
+      "SmatLeader2": "SMAT johtaja 2",
+      "SmatReceiver2": "SMAT Vastaanottaja 2",
+      "SmatReceiver": {
+          "Title": "Smat vastaanottajien listat",
+          "SubTitle": "Smat vastaanottaja",
+          "ReceiverType": "Vastaanottajan nimi",
+          "ImportTitle": "Luo SMAT vastaanottaja",
+          "SuccessfullyCreated": "Smat vastaanottaja: {{firstName}} {{lastName}} on luotu onnistuneesti.",            
+          "SuccessfullyUpdated": "Smat vastaanottaja: {{firstName}} {{lastName}} on päivitetty onnistuneesti.",
+          "NotFound": "Smat vastaanottajaa: {{id}} ei löytynyt.",
+          "ConfirmationDelete": "Haluatko poistaa {{name}}?",
+          "SuccessfullyDeleted": "Smat vastaanottaja: {{name}} on poistettu onnistuneesti.",
+          "ErrorDeleted": "Poistettaessa tapahtui virhe: {{name}}.",
+          "SuccessfullyImported":  "{{imported}} SMAT vastaanottaja on luotu onnistuneesti."
+      },
+      "Observations": "Havainnot",
+      "ObservationManagement": {
+          "Title": "Havainto lista",
+          "SubTitle": "Havainto",
+          "AddCategoryButton": "Lisää kategoria",
+          "AddSubCategoryButton": "Lisää alakategoria",
+          "ObservationCategory":"Kategoria",
+          "Standard": "Standardi ?",
+          "Enabled": "Käytössä ?",            
+          "ConfirmationDelete": "Haluatko poistaa {{value}}?",
+          "SuccessfullyCreated": "Havainto luokka on luotu onnistuneesti.",            
+          "SuccessfullyUpdated": "Havainto luokka on päivitetty onnistuneesti.",
+          "ConfirmationCategoryDelete": "Haluatko poistaa {{description}}?",
+          "SuccessfullyDeleted": "Havainto luokka: {{description}} on poistettu onnistuneesti.",
+          "ErrorDeleted": "Havainto luokkaa poistaessa tapahtui virhe: {{description}}.",
+          "SuccessfullyStatusUpdated": "Tila on päivitetty onnistuneesti.",
+          "ErrorUpdated": "Tilaa päivittäessä tapahtui virhe."
+      },
+      "Smat": {
+          "Start": "Aloita",
+          "Shift": "Vuoro",
+          "PerformedDate": "Suoritus pvm",
+          "FeedbackEmails": "Sähköposti palautteet",
+          "DateRange": "Ajanjakso",
+          "Comment":    "kommentti",        
+          "IsImmediateAction": "Tämä on välitön toimenpide",
+          "IsToBeReportedAsTF4Or5": "Raportoidaan TF4/TF5 ilmoituksena",
+          "IsImmediateActionToolTip": "Toiminta, joka on otettu käyttöön 24 tunnin sisällä SMAT-vierailun jälkeen",
+          "IsToBeReportedAsTF4Or5ToolTip": "SMAT havainto voidaan raportoida läheltäpiti (TF4) tai  vaarallinen tilanne (TF5) ilmoituksena",
+          "PositivePoint": "Positiiviset asiat",
+          "UnsafeAct": "Vaaralliset toimet",
+          "UnsafeCondition": "Vaaralliset olosuhteet",
+          "General": "Yleinen",
+          "Photo": "Kuva",
+          "ViewPhoto": "Katso kuva",
+          "AdditionalInformation": "Lisäinformaatio",       
+          "AddActionPlan": "Lisää toimenpidesuunnitelmaan",
+          "UploadHelpText": "Max koko 3MB",
+          "ExceededImageSize": "Tiedostokoko ylittää 3MB",
+          "SuccessfullyCreated": "Smat on luotu onnistuneesti .",            
+          "SuccessfullyUpdated": "Smat on päivitetty onnistuneesti.",
+          "NotFound": "Smat id {{id}} ei löytynyt.",
+          "ConfirmationDelete": "Haluatko poistaa smatin {{id}}?",
+          "SuccessfullyDeleted": "Smat  {{id}} on poistettu onnistuneesti.",
+          "ErrorDeleted": "Smattia poistaessa tapahtui virhe {{id}}.",
+          "UploadingImages": "Lataa kuvaa...",
+          "SuccessfullyUploadedImage": "Kuva {{index}} {{total}} on ladattu onnistuneesti."
+      },
+      "Reporting":{
+          "Title": "Raportit",
+          "SubTitle": "Raportointi",
+          "NoResult": "Ei tuloksia",
+          "PieChart": "Ympyrädiagrammi",
+          "BarChart": "Pylväsdiagrammi",
+          "HorizontalBarChart": "Vaakasuora viivakaavio",
+          "Type": {                
+              "SmatByEmployee": "Työntekijöiden smatit",
+              "SmatByMonth": "Smatit kuukausittain",
+              "SmatByOrganization": "Smatit organisaatioittain",
+              "ObservationByType": "Havainto kategoriat",
+              "ObservationByTypeAndMonth": "Havainnot kuukausittain",
+              "ObservationByCategory": "Havainnot kategorioittain/alaryhmittäin",
+              "ObservationByOrganization": "Organisaation havainnot"
+          },
+          "NumberOfSmat": "Smat lukumäärä.",
+          "Total": "Yhteensä."
+      }           
+  },
+  "eAction":{
+      "Title": "Toimintasuunnitelma luettelo",
+      "SubTitle": "Toimintasuunnitelmat",
+      "Number": "Toimenpide n°",
+      "CreatedBy": "Luonut",
+      "CreatedAt": "Luotu",
+      "Status": "Tila",
+      "Source": "Lähde",
+      "ActionForm": {
+          "AdditionalInformation": "Lisäinformaatio",       
+          "Title": "Lisää toimintasuunnitelma",
+          "General": "Kohde havainto",
+          "Details": "Yksityiskohdat",            
+          "ActionTaken": "Toimenpiteet tapahtuman johdosta",
+          "AssignedEmployee": "Vastuuhenkilö.",           
+          "CompletedDate": "Suoritus pvm",
+          "ClosedDate": "Suljettu pvm"            
+      }
+  }
+}

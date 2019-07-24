@@ -1,0 +1,22 @@
+<section class="content-header">
+  <h1>{{"eRisk.Reporting.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eRisk.Reporting.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <app-reporting-filter [model]="reportingFilter" (onReportingFilteredRequest)="onReportingFiltered($event)" (onFilterRemovedRequest)="onFilterRemoved()"></app-reporting-filter>
+          <hr/>
+          <app-risk-by-organization [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.RiskByOrganization)"></app-risk-by-organization>
+          <app-scoring-by-organization [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.ScoringByOrganization)"></app-scoring-by-organization>
+          <app-risk-by-hazard [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.RiskByHazard)"></app-risk-by-hazard>
+          <app-overview [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.Overview)"></app-overview>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="content-header">
+  <h1>{{"eSMAT.Reporting.Title" | translate}}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">{{"eSMAT.Reporting.SubTitle" | translate}}</h3>
+        </div>
+        <div class="box-body">
+          <app-reporting-filter [model]="reportingFilter" (onReportingFilteredRequest)="onReportingFiltered($event)" (onFilterRemovedRequest)="onFilterRemoved()"></app-reporting-filter>
+          <hr/>
+          <app-smat-by-employee [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.SmatByEmployee)"></app-smat-by-employee>
+          <app-smat-by-employee-excel [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.SmatByEmployeeExcel)"></app-smat-by-employee-excel>
+          <app-smat-by-smator [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.SmatBySmator)"></app-smat-by-smator>
+          <app-smat-by-smator-excel [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.SmatBySmatorExcel)"></app-smat-by-smator-excel>
+          <app-smat-by-month [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.SmatByMonth)"></app-smat-by-month>
+          <app-smat-by-organization [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.SmatByOrganization)"></app-smat-by-organization>
+          <app-observation-by-type [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.ObservationByType)"></app-observation-by-type>
+          <app-observation-by-type-and-month [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.ObservationByTypeAndMonth)"></app-observation-by-type-and-month>
+          <app-observation-by-category [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.ObservationByCategory)"></app-observation-by-category>
+          <app-observation-by-organization [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.ObservationByOrganization)"></app-observation-by-organization>
+          <app-action-by-status [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.ActionByStatus)"></app-action-by-status>
+          <app-gaia-export [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.GaiaExport)"></app-gaia-export>
+          <app-full-report [model]="reportingFilter" *ngIf="isReport(ReportTypeEnum.FullReport)"></app-full-report>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
